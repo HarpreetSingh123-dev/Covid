@@ -1,12 +1,17 @@
 import React from 'react';
+import './Navbar.css'
+import Image1 from '../../Images/symbol1.jpg'
 
 function Navbar(props) {
     return (
-        <div>
+        <div className="navbarWrapper">
             
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   
-               <a className="navbar-brand" href="#">Navbar</a>
+               <a className="navbar-brand" href="#">
+
+               <img src={Image1} width="60" height="50" alt=""></img>
+               </a>
   
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
@@ -20,26 +25,28 @@ function Navbar(props) {
                          <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                        </li>
      
-                       <li className="nav-item">
-                        <a className="nav-link" href="#">Link</a>
+                       <li className="nav-item active">
+                        <a className="nav-link" href="#">Vaccine</a>
                        </li>
       
-                       <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Dropdown
-                       </a>
-                       
-                           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                             <a className="dropdown-item" href="#">Action</a>
-                             <a className="dropdown-item" href="#">Another action</a>
-                                <div className="dropdown-divider"></div>
-                                    <a className="dropdown-item" href="#">Something else here</a>
-                                </div>
-     
+                       <li className="nav-item active">
+                         <a className="nav-link" href="#">Treatment</a>
                        </li>
-     
-                       <li className="nav-item">
-                         <a className="nav-link disabled" href="#">Disabled</a>
+
+                       <li className="nav-item active">
+                         <a className="nav-link" href="#">Map</a>
+                       </li>
+
+                       <li className="nav-item active">
+                         <a className="nav-link" href="#">News</a>
+                       </li>
+
+                       <li className="nav-item active">
+                         <a className="nav-link" href="#">Articles</a>
+                       </li>
+
+                       <li className="nav-item active">
+                         <a className="nav-link" href="#">About</a>
                        </li>
     
                 </ul>

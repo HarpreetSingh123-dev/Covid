@@ -1,0 +1,33 @@
+.navbarWrapper .nav-item .nav-link:hover {
+  border-bottom: 2px solid white;
+  font-size: larger;
+  font-weight: 500;
+  color: antiquewhite;
+}
+
+.navbarWrapper .navbar {
+  height: 80px;
+}
+
+.navbarWrapper .nav-item {
+  margin: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  /*.navbarWrapper .nav-item .nav-link:hover {
+    color: red;
+  }*/
+
+  .navbarWrapper .navbar {
+    height: initial;
+  }
+
+  .navbarWrapper .form-inline {
+    justify-content: center;
+    align-items: center;
+  }
+  .navbarWrapper .navbar-nav {
+    justify-content: center;
+    align-items: center;
+  }
+}
