@@ -8,7 +8,7 @@ function Navbar(props) {
             
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   
-               <a className="navbar-brand" href="#">
+               <a className="navbar-brand">
 
                <img src={Image1} width="60" height="50" alt=""></img>
                </a>
@@ -22,31 +22,31 @@ function Navbar(props) {
                     <ul className="navbar-nav mr-auto">
                      
                        <li className="nav-item active">
-                         <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                         <a className="nav-link">Home <span class="sr-only">(current)</span></a>
                        </li>
      
                        <li className="nav-item active">
-                        <a className="nav-link" href="#">Vaccine</a>
+                        <a className="nav-link">Vaccine</a>
                        </li>
       
                        <li className="nav-item active">
-                         <a className="nav-link" href="#">Treatment</a>
+                         <a className="nav-link">Treatment</a>
                        </li>
 
                        <li className="nav-item active">
-                         <a className="nav-link" href="#">Map</a>
+                         <a className="nav-link">Map</a>
                        </li>
 
                        <li className="nav-item active">
-                         <a className="nav-link" href="#">News</a>
+                         <a className="nav-link">News</a>
                        </li>
 
                        <li className="nav-item active">
-                         <a className="nav-link" href="#">Articles</a>
+                         <a className="nav-link">Articles</a>
                        </li>
 
                        <li className="nav-item active">
-                         <a className="nav-link" href="#">About</a>
+                         <a className="nav-link">About</a>
                        </li>
     
                 </ul>

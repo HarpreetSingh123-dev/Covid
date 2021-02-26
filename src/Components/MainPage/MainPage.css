@@ -1,0 +1,8 @@
+.MainPage .total .container-fluid {
+  width: 95%;
+}
+
+.MainPage .total {
+  top: 0px;
+  position: relative;
+}

@@ -3,6 +3,7 @@
   font-size: larger;
   font-weight: 500;
   color: antiquewhite;
+  cursor: pointer;
 }
 
 .navbarWrapper .navbar {
