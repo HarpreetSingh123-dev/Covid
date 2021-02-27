@@ -3,6 +3,7 @@ import Skeleton from '@yisheng90/react-loading';
 import './MainPage.css'
 import Navbar from '../Navbar/Navbar'
 import LiveCurrentTotals from './Totals/Totals'
+import Countries from './Countries/Countries'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import axios from 'axios'
 
@@ -15,19 +16,21 @@ class MainPage extends Component {
       this.state={
 
         liveCovidStats:[],
+        countries:[],
         loader:true
         
        
         }
    
-        this.setData= this.setData.bind(this)
+        this.setTotalData= this.setTotalData.bind(this)
+        this.setCountries= this.setCountries.bind(this)
 
     }
     
 ///////////////////////////////////////////////////////////////////////////////////    
 componentDidMount(){
 
-  var options = {
+  var options1 = {
               
     method: 'GET',
     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/world',
@@ -36,27 +39,47 @@ componentDidMount(){
       'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
     }
   };
+
+  var options2 = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
   
-  axios.request(options).then(function (response) {
+/////////////////////////////////////////FIRST API REQUEST/////////////////////////  
+  axios.request(options1).then(function (response) {
    
    
     const data =response.data[0]
-    console.log("data below")
-    console.log(data)
-  
     return data
     
-   }).then(this.setData)
+    }).then(this.setTotalData)
   
   
-     .catch(function (error) {
-                  console.error(error);
+      .catch(function (error) {
+              console.error(error);
            });
-         
+////////////////////////////////////////////////////////////////////////////////////
+
+ axios.request(options2).then(function (response) {
+ 
+     const countries = response.data
+     return countries 
+
+    }).then(this.setCountries)
+    
+    
+    .catch(function (error) {
+       	console.error(error);
+        });
+
 } 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- setData(data){
+ setTotalData(data){
 
       var totalCases= data.TotalCases
       var totalDeaths=data.TotalDeaths
@@ -74,6 +97,21 @@ componentDidMount(){
       this.setState({loader:false})
 
  }  
+
+
+ setCountries(countries){
+
+    var a =[]
+  
+    for(var i=0; i<countries.length; i++){
+
+          var b = countries[i].Country
+
+          a.push(b)
+      }
+  
+    this.setState({countries:a})
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
 
@@ -124,17 +162,38 @@ componentDidMount(){
                 <Jumbotron></Jumbotron>
                
                 <div className="total">
+                   
                     <div className="container-fluid">
                             
-                        { a }
-               
-               
+                        {a}
+                        
+                    </div>
+
+               </div>
+
+               <div className="countries">
+
+                  <div className="container-fluid"> 
+
+                  { this.state.countries.map((cntry)=>
+                  
+                     <Countries
+                         
+                          country={cntry}
+                  
+                  
+                   
+                         ></Countries> ) }
+
+
                   </div>
 
-               
-                </div>
+
+
+               </div>
                 
-                {console.log(this.state.liveCovidStats)}
+               
+               {console.log(this.state)}
                
               
                 

@@ -6,3 +6,8 @@
   top: 0px;
   position: relative;
 }
+
+.MainPage .countries {
+  height: 150px;
+  overflow-y: scroll;
+}
