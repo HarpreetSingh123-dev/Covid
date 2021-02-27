@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Skeleton from '@yisheng90/react-loading';
 import './MainPage.css'
 import Navbar from '../Navbar/Navbar'
 import LiveCurrentTotals from './Totals/Totals'
@@ -13,7 +14,9 @@ class MainPage extends Component {
 
       this.state={
 
-        liveCovidStats:[]
+        liveCovidStats:[],
+        loader:true
+        
        
         }
    
@@ -68,38 +71,67 @@ componentDidMount(){
 
      
       this.setState({liveCovidStats:p})
-
+      this.setState({loader:false})
 
  }  
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
 
     render() {
+
+      var a = null
+         
+      
+        if(this.state.loader) {
+
+                     a= (<Skeleton rows={6} color="lightgray"></Skeleton>)
+               }
+
+         else{
+
+
+           a= (
+                <div>
+                    <h2 className="text-center">Live Covid Status Of The World</h2>
+
+                     <hr></hr>
+            
+                       { this.state.liveCovidStats.map((p)=>
+                                       
+                            <LiveCurrentTotals
+                                  
+                                           totalCases={p.totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                           activeCases={p.activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                           totalDeaths={p.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+
+                                           newCases={p.newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                           seriousCritical={p.seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                           newDeaths={p.newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}  >
+                           </LiveCurrentTotals>
+                        )}
+                </div>)
+
+              }
+
+ 
+
+
         return (
-            <div className="MainPage">
+           
+           <div className="MainPage">
 
                 <Navbar></Navbar>
                 <Jumbotron></Jumbotron>
-                
+               
                 <div className="total">
                     <div className="container-fluid">
+                            
+                        { a }
                
-                        {  this.state.liveCovidStats.map((p)=>
-                                       
-                                              
-                                       <LiveCurrentTotals
-                                                             totalCases={p.totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                                                             activeCases={p.activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                                                             totalDeaths={p.totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-
-                                                              newCases={p.newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                                                              seriousCritical={p.seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                                                              newDeaths={p.newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}  >
-                                       </LiveCurrentTotals>
-                                                                
-                              )}
                
                   </div>
+
+               
                 </div>
                 
                 {console.log(this.state.liveCovidStats)}
