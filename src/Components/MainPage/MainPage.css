@@ -8,6 +8,43 @@
 }
 
 .MainPage .countries {
-  height: 150px;
+  margin-top: 30px;
+}
+
+.MainPage .countries .countryScroll {
+  height: 750px;
   overflow-y: scroll;
+}
+
+.MainPage .countries .continents .nav-item {
+  margin: 8px;
+  width: 100%;
+}
+
+.MainPage .countries .continents .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+.MainPage .countries .mostViewed .nav-item {
+  margin: 8px;
+  width: 100%;
+}
+
+.MainPage .countries .mostViewed .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+/*//////////////////////////////////////*/
+
+.countries .row .col-lg-2 {
+  border: 3px solid black;
+}
+.countries .container-fluid {
+  width: 96%;
 }

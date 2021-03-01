@@ -1,1 +1,10 @@
+.CountryWrapper .nav-item {
+  width: 100%;
+  margin: 8px;
+}
 
+.CountryWrapper .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

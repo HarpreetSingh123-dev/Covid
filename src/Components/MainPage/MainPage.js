@@ -160,35 +160,106 @@ componentDidMount(){
 
                 <Navbar></Navbar>
                 <Jumbotron></Jumbotron>
-               
+          {/*//////////////////////////////////////////////////////////////////*/ }    
                 <div className="total">
                    
                     <div className="container-fluid">
                             
                         {a}
-                        
+
                     </div>
 
                </div>
 
+          {/*///////////////////////////////////////////////////////////////////*/}     
+
                <div className="countries">
 
-                  <div className="container-fluid"> 
+                    <div className="container-fluid"> 
 
-                  { this.state.countries.map((cntry)=>
-                  
-                     <Countries
-                         
-                          country={cntry}
-                  
-                  
+                        <div className="row">
+                    
+                   {/*///FIRST COLUMN STARTS HERE/////////////////////////*/}
+                          <div className="col-lg-2 countryScroll">
+
+                           {/*//////////////////////////////////////////////////////*/}
+                              <div className="continents">
+                              
+                                 <h2 className="text-center"><b>Continents</b></h2>
+                                 
+                                  <ul class="nav nav-pills nav-stacked">
+                       
+                                       <li class="nav-item">
+                                          <a class="nav-link active">World</a>
+                                          <a class="nav-link active">Asia</a>
+                                          <a class="nav-link active">Africa</a>
+                                          <a class="nav-link active">Australia</a>
+                                          <a class="nav-link active">Europe</a>
+                                          <a class="nav-link active">North America</a>
+                                          <a class="nav-link active">South America</a>
+                                         
+                                       </li>
+
+                                  </ul>    
+
+ 
+                               </div> 
+                           {/*//////////////////////////////////////////////////////*/}
+                           
+                           {/*//////////////////////////////////////////////////////*/}
+
+                              <div className="mostViewed">
+
+                                 <h2 className="text-center"><b>Most Viewed</b></h2>
+                                 
+                                     <ul class="nav nav-pills nav-stacked">
+                      
+                                        <li class="nav-item">
+                                           <a class="nav-link active">United States</a>
+                                           <a class="nav-link active">Canada</a>
+                                           <a class="nav-link active">Australia</a>
+                                           <a class="nav-link active">United Kingdom</a>
+                                           <a class="nav-link active">India</a>
+                                         
+                                        </li>
+
+                                    </ul>    
+
+                             </div>
+                            
+                           {/*//////////////////////////////////////////////////////*/} 
+
+                           {/*//////////////////////////////////////////////////////*/}
+                              
+                             
+                             <div> 
+                              
+                                 <h2 className="text-center"><b>Countries</b></h2>
+                                 
+                                    { this.state.countries.map((cntry)=>
                    
-                         ></Countries> ) }
+                                        <Countries
+                                                   country={cntry}
+                                                ></Countries> ) 
+                                               
+                                       }
 
+                             </div>    
+                    
+                          </div>  
+                   
+                        {/*//////////////////////////////////////////////////////*/}
 
-                  </div>
+                       {/*///SECOND COLUMN STARTS HERE/////////////////////////*/}
+                            <div className="col-lg-9">
+    
+                                  <p>jdjdjdjdjdj</p>
+                  
+                            </div>
 
+                        </div>
 
+                    </div>
 
                </div>
                 

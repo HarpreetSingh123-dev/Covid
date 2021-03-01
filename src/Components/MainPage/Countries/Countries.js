@@ -5,22 +5,23 @@ function Countries(props) {
     return (
         
         
-        <div>
+        <div className="CountryWrapper">
             
             <div>
+ 
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="nav-item">
+                          <a class="nav-link active">{props.country}</a>
+                       </li>
+                   </ul>    
+      
+            </div> 
 
-            <ul class="nav nav-pills nav-stacked">
+             
 
-            <li class="nav-item">
-               <a class="nav-link active">{props.country}</a>
-           </li>
-                
-            </ul>    
-                
-                
-            </div>    
-        
+            
         </div>
+        
     );
 }
 
