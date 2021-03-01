@@ -176,7 +176,8 @@ componentDidMount(){
                <div className="countries">
 
                     <div className="container-fluid"> 
-
+                    <h2 className="text-center">Individual Country Mapping Of Covid-19 Cases</h2>
+                    <hr></hr>
                         <div className="row">
                     
                    {/*///FIRST COLUMN STARTS HERE/////////////////////////*/}
@@ -252,6 +253,14 @@ componentDidMount(){
                         {/*//////////////////////////////////////////////////////*/}
 
                        {/*///SECOND COLUMN STARTS HERE/////////////////////////*/}
+                            
+                            <div className="col-sm-12">
+
+                               <p>wohooooooo</p>
+
+                            </div>
+                            
+                            
                             <div className="col-lg-10 col-md-9">
     
                                   <p>jdjdjdjdjdj</p>
