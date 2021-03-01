@@ -180,12 +180,13 @@ componentDidMount(){
                         <div className="row">
                     
                    {/*///FIRST COLUMN STARTS HERE/////////////////////////*/}
-                          <div className="col-lg-2 countryScroll">
+                          <div className="col-lg-2  col-md-3 countryScroll">
 
                            {/*//////////////////////////////////////////////////////*/}
                               <div className="continents">
                               
                                  <h2 className="text-center"><b>Continents</b></h2>
+                               
                                  
                                   <ul class="nav nav-pills nav-stacked">
                        
@@ -251,7 +252,7 @@ componentDidMount(){
                         {/*//////////////////////////////////////////////////////*/}
 
                        {/*///SECOND COLUMN STARTS HERE/////////////////////////*/}
-                            <div className="col-lg-9">
+                            <div className="col-lg-10 col-md-9">
     
                                   <p>jdjdjdjdjdj</p>
                   

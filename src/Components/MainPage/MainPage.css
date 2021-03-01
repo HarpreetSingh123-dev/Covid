@@ -13,7 +13,11 @@
 
 .MainPage .countries .countryScroll {
   height: 750px;
-  overflow-y: scroll;
+  overflow: scroll;
+}
+
+.MainPage .countryScroll::-webkit-scrollbar {
+  display: none;
 }
 
 .MainPage .countries .continents .nav-item {
@@ -47,4 +51,12 @@
 }
 .countries .container-fluid {
   width: 96%;
+}
+
+/*////////////////////////////////////*/
+
+@media only screen and (max-width: 790px) {
+  .MainPage .countries {
+    display: none;
+  }
 }
