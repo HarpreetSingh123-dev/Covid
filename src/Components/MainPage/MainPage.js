@@ -4,6 +4,7 @@ import './MainPage.css'
 import Navbar from '../Navbar/Navbar'
 import LiveCurrentTotals from './Totals/Totals'
 import Countries from './Countries/Countries'
+import ShowCountries from './Countries/ShowCountries'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import axios from 'axios'
 
@@ -17,13 +18,16 @@ class MainPage extends Component {
 
         liveCovidStats:[],
         countries:[],
-        loader:true
+        loader:true,
+        showRegions:false
         
        
         }
    
         this.setTotalData= this.setTotalData.bind(this)
         this.setCountries= this.setCountries.bind(this)
+        this.showRegions= this.showRegions.bind(this)
+        this.closeRegions= this.closeRegions.bind(this)
 
     }
     
@@ -115,6 +119,15 @@ componentDidMount(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
 
+showRegions(){
+
+this.setState({showRegions:true})
+}
+
+closeRegions(){
+  this.setState({showRegions:false})
+}
+
     render() {
 
       var a = null
@@ -151,7 +164,85 @@ componentDidMount(){
 
               }
 
- 
+      var b = null
+
+           if(this.state.showRegions){
+              
+            b =(<div className="showRegions">
+                 
+                 <button type="button" class="close" aria-label="Close" onClick={this.closeRegions}>
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                   
+                   
+                    <div className="showContinents">
+                              
+                               <h2 className="text-center"><b>Continents</b></h2>
+                            
+                              
+                                <ul class="nav nav-pills nav-stacked">
+                    
+                                    <li class="nav-item">
+                                       <a class="nav-link active">World</a>
+                                       <a class="nav-link active">Asia</a>
+                                       <a class="nav-link active">Africa</a>
+                                       <a class="nav-link active">Australia</a>
+                                       <a class="nav-link active">Europe</a>
+                                       <a class="nav-link active">North America</a>
+                                       <a class="nav-link active">South America</a>
+                                      
+                                    </li>
+
+                               </ul>    
+
+
+                    </div>
+
+                    {/*/////////////////////////////////////////////////////////////////*/} 
+
+                    <div className="showMostViewed">
+
+                              <h2 className="text-center"><b>Most Viewed</b></h2>
+
+                                <ul class="nav nav-pills nav-stacked">
+
+                                   <li class="nav-item">
+                                        <a class="nav-link active">United States</a>
+                                        <a class="nav-link active">Canada</a>
+                                        <a class="nav-link active">Australia</a>
+                                        <a class="nav-link active">United Kingdom</a>
+                                        <a class="nav-link active">India</a>
+        
+                                   </li>
+
+                                </ul>    
+
+                    </div>
+
+                   {/*/////////////////////////////////////////////////////////////////*/}
+   
+                   <div> 
+                              
+                              <h2 className="text-center"><b>Countries</b></h2>
+                              
+                                 { this.state.countries.map((cntry)=>
+                
+                                     <ShowCountries
+                                                country={cntry}
+                                             ></ShowCountries> ) 
+                                            
+                                    }
+
+                          </div>  
+
+              
+                 </div>
+                 
+               )
+         
+          }
+
+          
 
 
         return (
@@ -227,7 +318,7 @@ componentDidMount(){
 
                                     </ul>    
 
-                             </div>
+                              </div>
                             
                            {/*//////////////////////////////////////////////////////*/} 
 
@@ -254,16 +345,29 @@ componentDidMount(){
 
                        {/*///SECOND COLUMN STARTS HERE/////////////////////////*/}
                             
-                            <div className="col-sm-12">
+                            <div className="col-sm-12 chooseRegion">
 
-                               <p>wohooooooo</p>
+                                
+                                <div className="chooseButton">
+                                
+                                    <button type="button" className="btn btn-info" onClick={this.showRegions}>Choose Your Region</button>
+                                
+                                </div>
+ 
+                                <div className="box">
+
+                                   {b}
+
+                                </div>
+
+                                
 
                             </div>
                             
                             
                             <div className="col-lg-10 col-md-9">
     
-                                  <p>jdjdjdjdjdj</p>
+                                  <p>Table will Be Here </p>
                   
                             </div>
 

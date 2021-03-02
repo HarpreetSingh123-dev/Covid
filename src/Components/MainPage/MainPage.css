@@ -67,3 +67,55 @@
     display: none;
   }
 }
+
+/*//////////////////////////////////////////////////////*/
+
+.MainPage .showRegions {
+  border: 2px solid black;
+  background-color: lightgray;
+  height: 350px;
+  overflow: scroll;
+}
+
+.MainPage .showRegions::-webkit-scrollbar {
+  display: none;
+}
+
+.MainPage .showRegions .showContinents .nav-item {
+  margin: 8px;
+  width: 100%;
+}
+
+.MainPage .showRegions .showContinents .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+.MainPage .showRegions .showMostViewed .nav-item {
+  margin: 8px;
+  width: 100%;
+}
+
+.MainPage .showRegions .showMostViewed .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+.MainPage .chooseRegion .chooseButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainPage .chooseRegion .chooseButton .btn {
+  width: 90%;
+}
+
+.MainPage .chooseRegion .box {
+  position: relative;
+  top: -50px;
+}
