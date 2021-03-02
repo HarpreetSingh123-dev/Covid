@@ -1,9 +1,8 @@
 .showCountryWrapper .nav-item {
-  width: 100%;
   margin: 8px;
 }
 
-.showCountryWrapper .nav-link {
+.showCountryWrapper .nav {
   display: flex;
   justify-content: center;
   align-items: center;

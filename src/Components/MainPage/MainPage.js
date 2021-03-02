@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar'
 import LiveCurrentTotals from './Totals/Totals'
 import Countries from './Countries/Countries'
 import ShowCountries from './Countries/ShowCountries'
+import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import axios from 'axios'
 
@@ -131,11 +132,12 @@ closeRegions(){
     render() {
 
       var a = null
-         
+      var c = null   
       
         if(this.state.loader) {
 
-                     a= (<Skeleton rows={6} color="lightgray"></Skeleton>)
+                     a = (<Skeleton rows={6} color="lightgray"></Skeleton>)
+                     c = (<Skeleton rows={6} color="lightgray"></Skeleton>)
                }
 
          else{
@@ -161,6 +163,9 @@ closeRegions(){
                            </LiveCurrentTotals>
                         )}
                 </div>)
+
+
+          
 
               }
 
@@ -367,7 +372,7 @@ closeRegions(){
                             
                             <div className="col-lg-10 col-md-9">
     
-                                  <p>Table will Be Here </p>
+                                  <Table></Table>
                   
                             </div>
 
@@ -378,7 +383,7 @@ closeRegions(){
                </div>
                 
                
-               {console.log(this.state)}
+               
                
               
                 

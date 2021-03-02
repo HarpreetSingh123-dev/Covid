@@ -1,0 +1,5 @@
+.mainTable .tableSet {
+  height: 750px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}

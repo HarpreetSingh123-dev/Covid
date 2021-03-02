@@ -83,7 +83,12 @@
 
 .MainPage .showRegions .showContinents .nav-item {
   margin: 8px;
-  width: 100%;
+}
+
+.MainPage .showRegions .showContinents .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .MainPage .showRegions .showContinents .nav-link {
@@ -95,7 +100,6 @@
 
 .MainPage .showRegions .showMostViewed .nav-item {
   margin: 8px;
-  width: 100%;
 }
 
 .MainPage .showRegions .showMostViewed .nav-link {
@@ -103,6 +107,12 @@
   justify-content: center;
   align-items: center;
   margin: 16px;
+}
+
+.MainPage .showRegions .showMostViewed .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .MainPage .chooseRegion .chooseButton {
