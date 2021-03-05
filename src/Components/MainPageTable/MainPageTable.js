@@ -195,6 +195,24 @@ pp(){
        var obj = { number:[i+1], 
                    country: this.state.table[i].Country,
                    totalcases: this.state.table[i].TotalCases,
+                   newcases:this.state.table[i].NewCases,
+                   infectionrisk:this.state.table[i].Infection_Risk,
+                   seriouscritical:this.state.table[i].Serious_Critical,
+                   activecases:this.state.table[i].ActiveCases,
+                   totaldeaths:this.state.table[i].TotalDeaths,
+                   newdeaths:this.state.table[i].NewDeaths,
+                   casefatilityrate:this.state.table[i].Case_Fatality_Rate,
+                   totaltests:this.state.table[i].TotalTests,
+                   testpercentage:this.state.table[i].Test_Percentage,
+                   totalrecovered:this.state.table[i].TotalRecovered,
+                   recoverypercentage:this.state.table[i].Recovery_Proporation,
+                   population:this.state.table[i].Population
+
+
+
+
+
+
                    
                  }
       data.push(obj)
