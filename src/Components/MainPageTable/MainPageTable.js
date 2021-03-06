@@ -3,9 +3,11 @@ import './MainPageTable.css'
 import DataTable from 'react-data-table-component'
 import Skeleton from '@yisheng90/react-loading';
 import axios from 'axios'
-import commaNumber from 'comma-number'
-import './MainPageTable.css'
 
+
+
+import './MainPageTable.css'
+const R = require('ramda');
 const columns = [
     {
       name: <h6>RANKING</h6>,
@@ -132,13 +134,19 @@ class MainPageTable extends Component {
            
             table:[],
             data:[],
-            loader:true
+            loader:true,
+            searchValue:'', 
+
+            searchData:[],
+
+            search:false
        
         }
 
         this.setTable= this.setTable.bind(this)
-        this.pp= this.pp.bind(this)
+        this.pushingValues= this.pushingValues.bind(this)
         this.sort.bind(this)
+        this.change= this.change.bind(this)
     }
  
 /*//////////////////////////////////////////////////////////////////////////////////*/ 
@@ -164,7 +172,7 @@ componentDidMount(){
         
         .then(this.setTable)
 
-        .then(this.pp)
+        .then(this.pushingValues)
         
         .catch(function (error) {
           console.error(error);
@@ -172,7 +180,7 @@ componentDidMount(){
     
 }
 
-
+/*/////////////////////////////////////////////////////////////////////////////////////*/
 
 setTable(tableData){
 
@@ -190,8 +198,9 @@ setTable(tableData){
     
 }
 
+/*//////////////////////////////////////////////////////////////////////////////////// */
 
-pp(){
+pushingValues(){
 
     var data =[]
 
@@ -228,14 +237,72 @@ pp(){
   this.setState({loader:false})
 }
 
-sort(a,b,c){
+/*///////////////////////////////////////////////////////////////////////////////////////////*/
 
+sort(row){
+
+    console.log("row below")
+    console.log(row)
     
     
 }
+
+change(event){
+
+    // console.log("event target vale")
+    //console.log(event.target.value)
+   
+    var d =[]
+
+  if(event.target.value.length>0){
     
-/*/////////////////////////////////////////////////////////////////////////////////*/  
-    render() {
+    this.setState({searchValue:event.target.value})
+
+    var state = this.state.data
+
+    var searchVal = this.state.searchValue 
+
+
+    var k = R.find(R.propEq('country',searchVal))(state)
+        
+
+      if(k===undefined){
+
+console.log("udududu")
+      } 
+    
+      else {
+
+        d.push(k)
+            this.setState({searchData:d})
+           this.setState({search:true})
+      }       
+           
+
+    //var k = R.find(R.propEq('country',searchVal))(state)
+    
+   
+   
+    //this.setState({searchData:k})
+  //  this.setState({search:true})
+    
+    }
+
+    else{
+       
+        console.log("noooo")
+        this.setState({search:false})
+        return
+    }
+   
+}
+
+
+    
+/*////////////////////////////////////////////////////////////////////////////////////////*/  
+    
+
+  render() {
         
         const conditionalRowStyles = [
          {
@@ -247,22 +314,25 @@ sort(a,b,c){
 
          }
         ]
-    
+     ///////////////////////////////////
         var a = null
 
         if(this.state.loader){
+                 a =(<Skeleton rows={38} color="lightgray"></Skeleton>)
+         }
 
+        else {
 
-            a =(<Skeleton rows={38} color="lightgray"></Skeleton>)
-        }
+            if(this.state.search===false){
+             
+             a= ( <div className="tableSet">
+                  
+                   <div className="searchInput">
 
-        else{
+                   <input type="text" class="form-control" onChange={this.change}></input>
 
-            a= (
+                   </div>
 
-               
-                
-                  <div className="tableSet">
 
                       <DataTable
                 
@@ -279,7 +349,7 @@ sort(a,b,c){
                                 
                                
                                 conditionalRowStyles={conditionalRowStyles}
-                                onRowClicked={(row) => console.log(row.totaldeaths)}
+                                onRowClicked={(row) => this.sort(row)}
                                 
                                  >
 
@@ -288,15 +358,57 @@ sort(a,b,c){
 
                  </div>
              
-            )
-        }
+              )}
+
+              else {
+
+
+                 a = (
+
+                    <div className="tableSet">
+                  
+                    <div className="searchInput">
+ 
+                    <input type="text" class="form-control" onChange={this.change}></input>
+ 
+                    </div>
+ 
+                        <p>fjjhdjdjdjjdj</p>
+                       <DataTable
+                 
+                                 title={<h2>World Data -Live Update</h2>}
+                                 columns={columns}
+                                 data={this.state.searchData}
+                                 highlightOnHover={true}
+                                 pointerOnHover={true}
+                                 fixedHeader={true}
+                                 theme={'dark'}
+                                 overflowY={true}
+                                 subHeader={true}
+                                 
+                                 
+                                
+                                 conditionalRowStyles={conditionalRowStyles}
+                                 onRowClicked={(row) => this.sort(row)}
+                                 
+                                  >
+ 
+ 
+                      </DataTable>
+ 
+                  </div>
+
+                  )
+              }
+            }
          
         return (
+            
             <div className="mainTable">
                 
                 {a}
 
-                {console.log(this.state)}
+              {console.log(this.state)}
             </div>
         );
     }
