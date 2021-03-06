@@ -147,7 +147,7 @@ closeRegions(){
                 <div>
                     <h2 className="text-center">Live Covid Status Of The World</h2>
 
-                     <hr></hr>
+                     <hr className="rule"></hr>
             
                        { this.state.liveCovidStats.map((p)=>
                                        
@@ -273,7 +273,7 @@ closeRegions(){
 
                     <div className="container-fluid"> 
                     <h2 className="text-center">Individual Country Mapping Of Covid-19 Cases</h2>
-                    <hr></hr>
+                    <hr className="rule"></hr>
                         <div className="row">
                     
                    {/*///FIRST COLUMN STARTS HERE/////////////////////////*/}
@@ -282,7 +282,7 @@ closeRegions(){
                            {/*//////////////////////////////////////////////////////*/}
                               <div className="continents">
                               
-                                 <h2 className="text-center"><b>Continents</b></h2>
+                                 <h2 className="text-center" style={{color: "white"}}><b>Continents</b></h2>
                                
                                  
                                   <ul class="nav nav-pills nav-stacked">
@@ -308,7 +308,7 @@ closeRegions(){
 
                               <div className="mostViewed">
 
-                                 <h2 className="text-center"><b>Most Viewed</b></h2>
+                                 <h2 className="text-center" style={{color: "white"}}><b>Most Viewed</b></h2>
                                  
                                      <ul class="nav nav-pills nav-stacked">
                       
@@ -332,7 +332,7 @@ closeRegions(){
                              
                              <div> 
                               
-                                 <h2 className="text-center"><b>Countries</b></h2>
+                                 <h2 className="text-center"style={{color: "white"}} ><b>Countries</b></h2>
                                  
                                     { this.state.countries.map((cntry)=>
                    

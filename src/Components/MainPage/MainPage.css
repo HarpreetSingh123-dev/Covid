@@ -11,6 +11,10 @@
   margin-top: 70px;
 }
 
+.MainPage .countries .row {
+  margin-top: 50px;
+}
+
 .MainPage .countries .countryScroll {
   height: 750px;
   overflow: scroll;
@@ -128,4 +132,23 @@
 .MainPage .chooseRegion .box {
   position: relative;
   top: -50px;
+}
+
+/*////////////////////////////*/
+
+.MainPage .countries .countryScroll {
+  background-color: rgb(66, 66, 66);
+}
+
+/*///////////////////////////*/
+
+.MainPage .rule {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
 }

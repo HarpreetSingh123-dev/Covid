@@ -3,115 +3,124 @@ import './MainPageTable.css'
 import DataTable from 'react-data-table-component'
 import Skeleton from '@yisheng90/react-loading';
 import axios from 'axios'
+import commaNumber from 'comma-number'
 import './MainPageTable.css'
 
 const columns = [
     {
-      name: 'Number',
+      name: <h6>RANKING</h6>,
       selector: 'number',
+      center:true
+     
+    }, 
+    {
+      name: <h6>COUNTRY</h6>,
+      selector: 'country',
+      allowOverflow:'True',
+      center:true,
+      
+     
      
     },
-    {
-      name: 'Country',
-      selector: 'country',
-      sortable: true,
-      right: true,
-    },
 
     {
-        name: 'Total Cases',
+        name: <h6>TOTAL CASES</h6>,
         selector: 'totalcases',
-        sortable: true,
-        right: true,
+        center:true,
+       
+      
       },
 
       {
-        name: 'New Cases',
+        name: <h6>NEW CASES</h6>,
         selector: 'newcases',
-        sortable: true,
-        right: true,
+        center:true,
+        sortable:true,
+        grow:1
       },
 
       {
-        name: 'Infection Risk',
+        name: <h6>INFECTION RISK</h6>,
         selector: 'infectionrisk',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:1
       },
 
       {
-        name: 'Serious Critical',
+        name: <h6>SERIOUS CRITICAL</h6>,
         selector: 'seriouscritical',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:1
+        
       },
 
       {
-        name: 'Active Cases',
+        name: <h6>ACTIVE CASES</h6>,
         selector: 'activecases',
-        sortable: true,
-        right: true,
+        center:'True',
+        sortable:'True',
+        grow:1
       },
 
       {
-        name: 'Total Deaths',
+        name: <h6>TOTAL DEATHS</h6>,
         selector: 'totaldeaths',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:1
       },
 
       {
-        name: 'New Deaths',
+        name: <h6>NEW DEATHS</h6>,
         selector: 'newdeaths',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:1
       },
 
       {
-        name: 'Case Fatility Rate',
+        name: <h6>CASE FATILITY RATE</h6>,
         selector: 'casefatilityrate',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:1
       },
 
       {
-        name: 'Total Tests',
+        name: <h6>TOTAL TESTS</h6>,
         selector: 'totaltests',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:6
+        
       },
 
       {
-        name: 'Test Percentage',
+        name: <h6>TEST PERCENTAGE</h6>,
         selector: 'testpercentage',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:5
       },
 
       {
-        name: 'Total Recovered',
+        name: <h6>TOTAL RECOVERED</h6>,
         selector: 'totalrecovered',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:5
       },
 
       {
-        name: 'Recovery Percentage',
+        name: <h6>RECOVERY PERCENTAGE</h6>,
         selector: 'recoverypercentage',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:5
       },
 
       {
-        name: 'Population',
+        name: <h6>POPULATION</h6>,
         selector: 'population',
-        sortable: true,
-        right: true,
+        center:'True',
+        grow:5
       },
 
   ];
 
-  
 
 class MainPageTable extends Component {
     
@@ -129,6 +138,7 @@ class MainPageTable extends Component {
 
         this.setTable= this.setTable.bind(this)
         this.pp= this.pp.bind(this)
+        this.sort.bind(this)
     }
  
 /*//////////////////////////////////////////////////////////////////////////////////*/ 
@@ -207,25 +217,37 @@ pp(){
                    totalrecovered:this.state.table[i].TotalRecovered,
                    recoverypercentage:this.state.table[i].Recovery_Proporation,
                    population:this.state.table[i].Population
-
-
-
-
-
-
                    
                  }
-      data.push(obj)
+      
+                 data.push(obj)
+
   }
 
   this.setState({data:data})
   this.setState({loader:false})
 }
 
- 
+sort(a,b,c){
+
+    
+    
+}
+    
 /*/////////////////////////////////////////////////////////////////////////////////*/  
     render() {
-       
+        
+        const conditionalRowStyles = [
+         {
+            when: row => row.totaldeaths>50000,
+
+            style: {
+                backgroundColor: 'darkred',
+            }
+
+         }
+        ]
+    
         var a = null
 
         if(this.state.loader){
@@ -244,9 +266,21 @@ pp(){
 
                       <DataTable
                 
-                                title="World Data -Live Update"
+                                title={<h2>World Data -Live Update</h2>}
                                 columns={columns}
                                 data={this.state.data}
+                                highlightOnHover={true}
+                                pointerOnHover={true}
+                                fixedHeader={true}
+                                theme={'dark'}
+                                overflowY={true}
+                                subHeader={true}
+                                
+                                
+                               
+                                conditionalRowStyles={conditionalRowStyles}
+                                onRowClicked={(row) => console.log(row.totaldeaths)}
+                                
                                  >
 
 
