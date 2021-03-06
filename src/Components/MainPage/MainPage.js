@@ -373,17 +373,48 @@ closeRegions(){
                             <div className="col-lg-10 col-md-9">
     
                                   <Table></Table>
+
+                                  
+                              <div className="scientificTerms">
+                                 <p style={{color: "white"}}><h5 style={{color: "#1F9D63"}}>INFECTION RISK:</h5><span>Total Number of covid-19 cases divided by Total Population since the beginning of outbreak</span></p>
+                                
+                                <span><p style={{color: "#1F9D63"}}>INFECTION RISK:</p><p style={{color: "white"}}>Total Number of covid-19 cases divided by Total Population since the beginning of outbreak</p></span>
+                                
+                                 <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>TEST PERCENTAGE:</b> Total number of tests divided by total population</p>
+                                 <p style={{color: "white"}}><b style={{color: "#A11A2E"}}>CASE FATALITY RATE (CFR):</b> Total Number of Deaths due to Covid-19 divided by Total 
+                                    Number of confirmed cases since the beginning of outbreak
+                                    (It shows that how lethal covid-19 is in any country)
+                                    </p>
+
+                                 <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>RECOVERY PERCENTAGE:</b> Total number of recovered cases divided by Total number of covid-19 cases</p>
+                              </div>
+                        
                   
                             </div>
 
                         </div>
+
+                       
 
                     </div>
 
                </div>
                 
                
-               
+               <div className="footerSet">
+ 
+                   <div className="footerStyle">
+                        
+                        <div className="container">
+                        <p>hhhhhythyghfgh</p>
+                        <p>njjugjj</p>
+
+                        <p>hhhhhhhskjbfkjsb</p>
+                   </div>
+                   </div>
+
+
+               </div>
                
               
                 

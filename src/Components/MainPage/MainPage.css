@@ -152,3 +152,31 @@
     rgba(0, 0, 0, 0)
   );
 }
+
+.MainPage .footerSet {
+  display: block;
+
+  height: 60px;
+  width: 100%;
+}
+
+.MainPage .footerStyle {
+  text-align: center;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  margin-top: 50px;
+  background-color: #343a40;
+}
+
+.MainPage .scientificTerms {
+  border: 2px solid black;
+  margin-top: 20px;
+  background-color: #343a40;
+}
+
+.MainPage .h {
+  display: inline;
+}
