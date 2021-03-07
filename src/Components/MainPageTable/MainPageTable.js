@@ -212,7 +212,7 @@ pushingValues(){
 
 
        var obj = { number:[i+1], 
-                   country: this.state.table[i].Country,
+                   country: this.state.table[i].Country.toUpperCase(),
                    totalcases: this.state.table[i].TotalCases,
                    newcases:this.state.table[i].NewCases,
                    infectionrisk:this.state.table[i].Infection_Risk,
@@ -249,51 +249,40 @@ sort(row){
 
 change(event){
 
-    // console.log("event target vale")
-    //console.log(event.target.value)
    
-    var d =[]
+     var d =[]
 
-  if(event.target.value.length>0){
+        if (event.target.value.length>0) {
     
-    this.setState({searchValue:event.target.value})
+                  this.setState({searchValue:event.target.value.toUpperCase()})
 
-    var state = this.state.data
+                  var state = this.state.data
 
-    var searchVal = this.state.searchValue 
+                  var searchVal = this.state.searchValue 
 
-
-    var k = R.find(R.propEq('country',searchVal))(state)
+                  var k = R.find(R.propEq('country',searchVal))(state)
         
+                          if (k===undefined) {
 
-      if(k===undefined){
-
-console.log("udududu")
-      } 
+                               console.log("udududu")
+                               return
+                             } 
     
-      else {
+      
+                             else {
 
-        d.push(k)
-            this.setState({searchData:d})
-           this.setState({search:true})
-      }       
-           
+                                   d.push(k)
+                                   this.setState({searchData:d})
+                                   this.setState({search:true})
+                                 }       
+           }
 
-    //var k = R.find(R.propEq('country',searchVal))(state)
-    
-   
-   
-    //this.setState({searchData:k})
-  //  this.setState({search:true})
-    
-    }
-
-    else{
+       else  {
        
-        console.log("noooo")
-        this.setState({search:false})
-        return
-    }
+           console.log("noooo")
+          this.setState({search:false})
+          return
+       }
    
 }
 
