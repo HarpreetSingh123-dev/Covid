@@ -318,8 +318,20 @@ change(event){
                   
                    <div className="searchInput">
 
-                   <input type="text" class="form-control" onChange={this.change}></input>
+                     <div class="input-group mb-3">
+                       
+                        <div class="input-group-prepend">
+                          
+                            <span class="input-group-text" id="inputGroup-sizing-default"><b>Type Name Of The Country For Search</b></span>
+                        
+                        </div>
+                   
+                   
+                               <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
 
+                      </div>
+                  
+                  
                    </div>
 
 
@@ -334,10 +346,10 @@ change(event){
                                 theme={'dark'}
                                 overflowY={true}
                                 subHeader={true}
-                                
+                                fixedHeaderScrollHeight={'800px'}
                                 
                                
-                                conditionalRowStyles={conditionalRowStyles}
+                                /*conditionalRowStyles={conditionalRowStyles}*/
                                 onRowClicked={(row) => this.sort(row)}
                                 
                                  >
@@ -358,11 +370,22 @@ change(event){
                   
                     <div className="searchInput">
  
-                    <input type="text" class="form-control" onChange={this.change}></input>
+                    <div class="input-group mb-3">
+                       
+                       <div class="input-group-prepend">
+                         
+                           <span class="input-group-text" id="inputGroup-sizing-default"><b>Type Name Of The Country For Search</b></span>
+                       
+                       </div>
+                        
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
  
+                        
+                  </div>
+
                     </div>
  
-                        <p>fjjhdjdjdjjdj</p>
+                      <h4>Following Result Found</h4>
                        <DataTable
                  
                                  title={<h2>World Data -Live Update</h2>}
@@ -377,7 +400,7 @@ change(event){
                                  
                                  
                                 
-                                 conditionalRowStyles={conditionalRowStyles}
+                                 //conditionalRowStyles={conditionalRowStyles}
                                  onRowClicked={(row) => this.sort(row)}
                                  
                                   >

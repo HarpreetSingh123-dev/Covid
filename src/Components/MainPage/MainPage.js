@@ -376,17 +376,43 @@ closeRegions(){
 
                                   
                               <div className="scientificTerms">
-                                 <p style={{color: "white"}}><h5 style={{color: "#1F9D63"}}>INFECTION RISK:</h5><span>Total Number of covid-19 cases divided by Total Population since the beginning of outbreak</span></p>
+
+                              <div className="container-fluid">
+                              
+                               <div className="row"> 
+                              
+                                  <div className=" col-sm col-lg">  
+                                    <p style={{color: "white"}}> <span style={{color: "#1F9D63"}}><b>INFECTION RISK</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of covid-19 cases divided by Total Population since the beginning of outbreak. Those who are at risk of developing more severe disease or outcomes from COVID-19 are people: who are an older adult (increasing risk with each decade, especially over 60 years)
+of any age with chronic medical conditions</span></p>
+                                 </div>
+
+                                 <div className="col-lg col-sm">
+                                    <p style={{color: "white",}}> <span style={{color: "#1AB0DA"}}><b>TEST PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of tests divided by total population.  Along with laboratory testing, chest CT scans may be helpful to diagnose COVID-19 in individuals with a high clinical suspicion of infection</span></p>
+                                 </div>
+
+                               </div>
+
+                               <div className="row">
+
+                                 <div className="col-lg col-sm">
+                                     <p style={{color: "white"}}> <span style={{color: "#F7384F"}}><b>CASE FATALITY RATE (CFR)</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of Deaths due to Covid-19 divided by Total 
+                                        Number of confirmed cases since the beginning of outbreak
+                                         (It shows that how lethal covid-19 is in any country). Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.</span></p>
+
+                                 </div>
+
+                                 <div className="col-lg col-sm">
+                                 <p style={{color: "white"}}> <span style={{color: "#19DAA4"}}><b>RECOVERY PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of recovered cases divided by Total number of covid-19 cases. People with mild symptoms who are otherwise healthy should manage their symptoms at home. On average it takes 5–6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days</span></p>
+                                </div>
                                 
-                                <span><p style={{color: "#1F9D63"}}>INFECTION RISK:</p><p style={{color: "white"}}>Total Number of covid-19 cases divided by Total Population since the beginning of outbreak</p></span>
-                                
-                                 <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>TEST PERCENTAGE:</b> Total number of tests divided by total population</p>
+                                </div>
+                               {/*  <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>TEST PERCENTAGE:</b> Total number of tests divided by total population</p>
                                  <p style={{color: "white"}}><b style={{color: "#A11A2E"}}>CASE FATALITY RATE (CFR):</b> Total Number of Deaths due to Covid-19 divided by Total 
                                     Number of confirmed cases since the beginning of outbreak
                                     (It shows that how lethal covid-19 is in any country)
-                                    </p>
+                                      </p>
 
-                                 <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>RECOVERY PERCENTAGE:</b> Total number of recovered cases divided by Total number of covid-19 cases</p>
+                                      <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>RECOVERY PERCENTAGE:</b> Total number of recovered cases divided by Total number of covid-19 cases</p>*/}
                               </div>
                         
                   
@@ -394,7 +420,7 @@ closeRegions(){
 
                         </div>
 
-                       
+                       </div>
 
                     </div>
 
