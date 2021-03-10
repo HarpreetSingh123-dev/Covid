@@ -9,6 +9,11 @@ import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import axios from 'axios'
 
+import LinkedIn from '../../Images/iconfinder_Vector-4_4747495.png'
+import Twitter from '../../Images/iconfinder_Rounded_Twitter5_svg_5282551.png'
+import Facebook from '../../Images/iconfinder_Rounded_Facebook_svg_5282541.png'
+import Instagram from '../../Images/iconfinder_Rounded_Instagram_svg_5282544.png'
+
 class MainPage extends Component {
     
     constructor(props){
@@ -377,42 +382,45 @@ closeRegions(){
                                   
                               <div className="scientificTerms">
 
-                              <div className="container-fluid">
+                                  <div className="container-fluid">
                               
-                               <div className="row"> 
+                                      <div className="row"> 
                               
-                                  <div className=" col-sm col-lg">  
-                                    <p style={{color: "white"}}> <span style={{color: "#1F9D63"}}><b>INFECTION RISK</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of covid-19 cases divided by Total Population since the beginning of outbreak. Those who are at risk of developing more severe disease or outcomes from COVID-19 are people: who are an older adult (increasing risk with each decade, especially over 60 years)
-of any age with chronic medical conditions</span></p>
-                                 </div>
+                                         <div className=" col-sm col-lg">  
+                                           
+                                            <p style={{color: "white"}}> <span style={{color: "#1F9D63"}}><b>INFECTION RISK</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of covid-19 cases divided by Total Population since the beginning of outbreak. Those who are at risk of developing more severe disease or outcomes from COVID-19 are people: who are an older adult (increasing risk with each decade, especially over 60 years)
+                                              of any age with chronic medical conditions</span></p>
+                                            </div>
 
-                                 <div className="col-lg col-sm">
-                                    <p style={{color: "white",}}> <span style={{color: "#1AB0DA"}}><b>TEST PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of tests divided by total population.  Along with laboratory testing, chest CT scans may be helpful to diagnose COVID-19 in individuals with a high clinical suspicion of infection</span></p>
-                                 </div>
+                                 
+                                         <div className="col-lg col-sm">
+                                    
+                                            <p style={{color: "white",}}> <span style={{color: "#1AB0DA"}}><b>TEST PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of tests divided by total population.  Along with laboratory testing, chest CT scans may be helpful to diagnose COVID-19 in individuals with a high clinical suspicion of infection</span></p>
+                                         </div>
 
-                               </div>
+                                      </div>
 
-                               <div className="row">
+                               
+                                      <div className="row">
 
-                                 <div className="col-lg col-sm">
-                                     <p style={{color: "white"}}> <span style={{color: "#F7384F"}}><b>CASE FATALITY RATE (CFR)</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of Deaths due to Covid-19 divided by Total 
-                                        Number of confirmed cases since the beginning of outbreak
-                                         (It shows that how lethal covid-19 is in any country). Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.</span></p>
+                                 
+                                         <div className="col-lg col-sm">
+                                    
+                                            <p style={{color: "white"}}> <span style={{color: "#F7384F"}}><b>CASE FATALITY RATE (CFR)</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of Deaths due to Covid-19 divided by Total 
+                                                Number of confirmed cases since the beginning of outbreak
+                                               (It shows that how lethal covid-19 is in any country). Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.</span></p>
 
-                                 </div>
+                                         </div>
 
-                                 <div className="col-lg col-sm">
-                                 <p style={{color: "white"}}> <span style={{color: "#19DAA4"}}><b>RECOVERY PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of recovered cases divided by Total number of covid-19 cases. People with mild symptoms who are otherwise healthy should manage their symptoms at home. On average it takes 5–6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days</span></p>
-                                </div>
+                                 
+                                        <div className="col-lg col-sm">
                                 
-                                </div>
-                               {/*  <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>TEST PERCENTAGE:</b> Total number of tests divided by total population</p>
-                                 <p style={{color: "white"}}><b style={{color: "#A11A2E"}}>CASE FATALITY RATE (CFR):</b> Total Number of Deaths due to Covid-19 divided by Total 
-                                    Number of confirmed cases since the beginning of outbreak
-                                    (It shows that how lethal covid-19 is in any country)
-                                      </p>
-
-                                      <p style={{color: "white"}}><b style={{color: "#19D3DA"}}>RECOVERY PERCENTAGE:</b> Total number of recovered cases divided by Total number of covid-19 cases</p>*/}
+                                             <p style={{color: "white"}}> <span style={{color: "#19DAA4"}}><b>RECOVERY PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of recovered cases divided by Total number of covid-19 cases. People with mild symptoms who are otherwise healthy should manage their symptoms at home. On average it takes 5–6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days</span></p>
+                                        
+                                        </div>
+                                
+                                      </div>
+                               
                               </div>
                         
                   
@@ -431,20 +439,148 @@ of any age with chronic medical conditions</span></p>
  
                    <div className="footerStyle">
                         
-                        <div className="container">
-                        <p>hhhhhythyghfgh</p>
-                        <p>njjugjj</p>
+                        <div className="container-fluid">
+                        
+                         <div className="row">
 
-                        <p>hhhhhhhskjbfkjsb</p>
-                   </div>
-                   </div>
+                           <div className="col-lg-3 col-md-3 col-sm-12">
 
 
-               </div>
+                             <h1 className="text-center">COVID-19.LIVE</h1>
+                             <hr className="ruleTwo"></hr>
+                             <p className="live">VacCovid is an up to date vaccine and covid-19 tracker which has been
+                                landed in order to inform people from all over the planet about the present novel 
+                                coronavirus (COVID-19) pandemic.</p>
+                           
+                           </div>
+
+                           <div className="col-lg-3 col-md-3 col-sm-12">
+                           
+                              <h1 className="text-center">Vaccine</h1>
+                            
+                                 <hr className="ruleTwo"></hr>
+ 
+                             
+                                   <p className="text-center">All Vaccines</p>
+                                   <p className="text-center">Pfizer</p>
+                                   <p className="text-center">Moderna</p>
+                                   <p className="text-center">Oxford</p>
+                                   <p className="text-center">Novavax</p>
+                                   <p className="text-center">Sinovac</p>
+
+                            
+
+                            <h1 className="text-center">Treatment</h1>
+                           
+                                <hr className="ruleTwo"></hr>
+
+                           
+                                   <p className="text-center">All Treatments</p>
+                                   <p className="text-center">Remdesivir</p>
+                                   <p className="text-center">Favilavir</p>
+                                   <p className="text-center">Chloroquine</p>
+                                   <p className="text-center">Ivermectin</p>
+                                   <p className="text-center">Tocilizumab</p>
+
+                         
+
+
+                           </div>
+
+                           <div className="col-lg-3 col-md-3 col-sm-12">
+
+                              <h1 className="text-center">COVID-19</h1>
+                          
+                                 <hr className="ruleTwo"></hr>
+
+                                   <div className="row">
+
+                                    <div className="col-lg-6 col-md-6 col-sm-12">
+                                   
+                                     <p className="text-center">World Data</p>
+                                     <p className="text-center">Canada</p>
+                                     <p className="text-center">Australia</p>
+                                     <p className="text-center">Japan</p>
+                                     <p className="text-center">France</p>
+                                     <p className="text-center">Netherlands</p>
+
+                                     <p className="text-center">China</p>
+                                     <p className="text-center">Columbia</p>
+                                     <p className="text-center">Mexico</p>
+                                     <p className="text-center">Preu</p>
+                                     <p className="text-center">Spain</p>
+                                     <p className="text-center">Ukraine</p>
+                            
+                                   </div>
+                             
+                                   <div className="col-lg-6 col-md-6 col-sm-12">
+                             
+                                    <p className="text-center">United States of America</p>
+                                    <p className="text-center">India</p>
+                                    <p className="text-center">Brazil</p>
+                                    <p className="text-center">Germany</p>
+                                    <p className="text-center">United Kingdom</p>
+                                    <p className="text-center">Italy</p>
+
+                                    <p className="text-center">Chile</p>
+                                    <p className="text-center">Denmark</p>
+                                    <p className="text-center">Pakistan</p>
+                                    <p className="text-center">Russia</p>
+                                    <p className="text-center">Sweden</p>
+                             
+                                  </div>
+                          
+                               </div>
+                          
+                           </div>
+
+                           <div className="col-lg-3 col-md-3 col-sm-12">
+
+                               <h1 className="text-center">News</h1>
+                           
+                                 <hr className="ruleTwo"></hr>  
+
+                                   <p className="text-center">Vaccine News</p>
+                                   <p className="text-center">COVID-19 News</p>
+                                   <p className="text-center">Health News</p>
+
+                             
+                          </div> 
+                         <hr className="ruleTwo"></hr>
+                     </div>
+
+                    <div className="container">
+                        
+                           <div className="row glyp">
+                          
+                              <span>
+                                <img src={LinkedIn} width="40" height="40"></img>
+                                <img src={Twitter} width="40" height="40"></img>
+                                <img src={Facebook} width="40" height="40"></img>
+                                <img src={Instagram} width="40" height="40"></img>
+                                
+                                </span>
+
+                           </div>
+                 
+                    </div>
+                       
+                   <div className="row">
+
+                          <h6 className="col text-center">Please let us know if we can provide and other additional features</h6>
+                        
+                  </div>
+              </div>
+
+
+          </div>
+
+
+       </div>
                
               
                 
-            </div>
+  </div>
         );
     }
 }

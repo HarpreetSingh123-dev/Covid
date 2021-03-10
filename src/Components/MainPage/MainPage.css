@@ -16,7 +16,7 @@
 }
 
 .MainPage .countries .countryScroll {
-  height: 750px;
+  height: 1105px;
   overflow: scroll;
 }
 
@@ -152,16 +152,25 @@
   );
 }
 
-.MainPage .footerSet {
-  display: block;
+.MainPage .ruleTwo {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0)
+  );
+  width: 80%;
+}
 
+.MainPage .footerSet {
   height: 60px;
   width: 100%;
+  color: white;
 }
 
 .MainPage .footerStyle {
-  text-align: center;
-
   left: 0;
   bottom: 0;
 
@@ -170,16 +179,40 @@
   background-color: #343a40;
 }
 
+.MainPage .footerSet .footerStyle .container-fluid {
+  width: 85%;
+}
+
+.MainPage .footerSet .footerStyle .container-fluid .col-lg-3 {
+  margin-top: 50px;
+}
+
+.MainPage .footerSet .live {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .MainPage .scientificTerms {
-  border: 2px solid black;
   margin-top: 20px;
   background-color: #343a40;
 }
 
 .MainPage .scientificTerms p {
   font-size: larger;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .MainPage .scientificTerms .text {
   font-size: medium;
+}
+
+.MainPage .glyp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainPage .glyp img {
+  margin: 10px;
 }
