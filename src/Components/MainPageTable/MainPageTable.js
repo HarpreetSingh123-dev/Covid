@@ -4,6 +4,8 @@ import DataTable from 'react-data-table-component'
 import Skeleton from '@yisheng90/react-loading';
 import axios from 'axios'
 
+import {Link} from 'react-router-dom'
+
 
 
 import './MainPageTable.css'
@@ -121,6 +123,13 @@ const columns = [
         grow:5
       },
 
+      {
+        name: <h6>COUNTRY CODE</h6>,
+        selector: 'countrycode',
+        center:'True',
+        grow:5
+      },
+
   ];
 
 
@@ -139,14 +148,20 @@ class MainPageTable extends Component {
 
             searchData:[],
 
-            search:false
+            search:false,
+
+            selectedRowCountry:'',
+ 
+            threeLetterCode:''
+           
        
         }
 
         this.setTable= this.setTable.bind(this)
         this.pushingValues= this.pushingValues.bind(this)
-        this.sort.bind(this)
+        this.selectedCountry=this.selectedCountry.bind(this)
         this.change= this.change.bind(this)
+        this.test = this.test.bind(this)
     }
  
 /*//////////////////////////////////////////////////////////////////////////////////*/ 
@@ -225,7 +240,8 @@ pushingValues(){
                    testpercentage:this.state.table[i].Test_Percentage,
                    totalrecovered:this.state.table[i].TotalRecovered,
                    recoverypercentage:this.state.table[i].Recovery_Proporation,
-                   population:this.state.table[i].Population
+                   population:this.state.table[i].Population,
+                   countrycode:this.state.table[i].ThreeLetterSymbol
                    
                  }
       
@@ -239,12 +255,18 @@ pushingValues(){
 
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
 
-sort(row){
+selectedCountry(row){
 
+  
+    
     console.log("row below")
+    
     console.log(row)
+
     
-    
+    this.setState({selectedRowCountry:row.country})
+    this.setState({threeLetterCode:row.countrycode})
+    //this.setState({toggle:false})
 }
 
 change(event){
@@ -286,14 +308,23 @@ change(event){
    
 }
 
+test(){
 
+  console.log("hey there")
+}
     
 /*////////////////////////////////////////////////////////////////////////////////////////*/  
     
 
   render() {
         
-        const conditionalRowStyles = [
+       var h =(
+
+        
+          <h1>{this.state.seletedRowCountry}</h1>
+       )
+    
+     /*   const conditionalRowStyles = [
          {
             when: row => row.totaldeaths>50000,
 
@@ -302,7 +333,7 @@ change(event){
             }
 
          }
-        ]
+        ]*/
      ///////////////////////////////////
         var a = null
 
@@ -335,7 +366,7 @@ change(event){
                    </div>
 
 
-                      <DataTable
+                  {/*  <Link to={`/Country/${this.state.val }`}>*/} <DataTable
                 
                                 title={<h2>World Data -Live Update</h2>}
                                 columns={columns}
@@ -350,12 +381,22 @@ change(event){
                                 
                                
                                 /*conditionalRowStyles={conditionalRowStyles}*/
-                                onRowClicked={(row) => this.sort(row)}
+                                onRowClicked={
+                                  
+                                  (row) => this.selectedCountry(row)}
+
+                                expandableRows={true}
+
+                                expandOnRowClicked={true}
+
+                                expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}><h1>{this.state.selectedRowCountry}</h1></Link>}
+
+                                expandableRowsHideExpander={true}
                                 
                                  >
 
 
-                     </DataTable>
+                     </DataTable>  {/*</Link>*/}
 
                  </div>
              
@@ -395,13 +436,23 @@ change(event){
                                  pointerOnHover={true}
                                  fixedHeader={true}
                                  theme={'dark'}
-                                 overflowY={true}
+                                
                                  subHeader={true}
                                  
                                  
                                 
                                  //conditionalRowStyles={conditionalRowStyles}
-                                 onRowClicked={(row) => this.sort(row)}
+                                 onRowClicked={
+                                  
+                                  (row) => this.selectedCountry(row)}
+
+                                expandableRows={true}
+
+                                expandOnRowClicked={true}
+
+                                expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }`}><h1>{this.state.selectedRowCountry}</h1></Link>}
+
+                                expandableRowsHideExpander={true}
                                  
                                   >
  
