@@ -17,6 +17,9 @@ const columns = [
       center:true
      
     }, 
+
+    
+
     {
       name: <h6>COUNTRY</h6>,
       selector: 'country',
@@ -130,6 +133,8 @@ const columns = [
         grow:5
       },
 
+      
+
   ];
 
 
@@ -152,8 +157,11 @@ class MainPageTable extends Component {
 
             selectedRowCountry:'',
  
-            threeLetterCode:''
+            threeLetterCode:'',
            
+            toggle:true,
+
+
        
         }
 
@@ -227,7 +235,7 @@ pushingValues(){
 
 
        var obj = { number:[i+1], 
-                   country: this.state.table[i].Country.toUpperCase(),
+                   country: <Link to={`/Country/${this.state.table[i].Country.toUpperCase() }/${this.state.table[i].ThreeLetterSymbol}`}>{this.state.table[i].Country.toUpperCase()}</Link>,
                    totalcases: this.state.table[i].TotalCases,
                    newcases:this.state.table[i].NewCases,
                    infectionrisk:this.state.table[i].Infection_Risk,
@@ -241,7 +249,8 @@ pushingValues(){
                    totalrecovered:this.state.table[i].TotalRecovered,
                    recoverypercentage:this.state.table[i].Recovery_Proporation,
                    population:this.state.table[i].Population,
-                   countrycode:this.state.table[i].ThreeLetterSymbol
+                   countrycode:this.state.table[i].ThreeLetterSymbol,
+                  // details:<Link to={`/Country/${this.state.table[i].Country.toUpperCase() }/${this.state.table[i].ThreeLetterSymbol}`}>{this.state.table[i].Country.toUpperCase()}</Link>
                    
                  }
       
@@ -257,8 +266,8 @@ pushingValues(){
 
 selectedCountry(row){
 
-  
     
+ 
     console.log("row below")
     
     console.log(row)
@@ -266,7 +275,7 @@ selectedCountry(row){
     
     this.setState({selectedRowCountry:row.country})
     this.setState({threeLetterCode:row.countrycode})
-    //this.setState({toggle:false})
+    
 }
 
 change(event){
@@ -310,19 +319,31 @@ change(event){
 
 test(){
 
-  console.log("hey there")
+  console.log("boo")
 }
     
+componentDidUpdate(){
+
+
+}
 /*////////////////////////////////////////////////////////////////////////////////////////*/  
     
 
   render() {
         
-       var h =(
+       var h = null
+       
+       
+      
 
-        
-          <h1>{this.state.seletedRowCountry}</h1>
-       )
+         h= (<button onClick={this.test}>More Details</button>)
+
+      
+
+
+       
+         
+      
     
      /*   const conditionalRowStyles = [
          {
@@ -367,7 +388,7 @@ test(){
 
 
                   {/*  <Link to={`/Country/${this.state.val }`}>*/} <DataTable
-                
+              
                                 title={<h2>World Data -Live Update</h2>}
                                 columns={columns}
                                 data={this.state.data}
@@ -381,17 +402,24 @@ test(){
                                 
                                
                                 /*conditionalRowStyles={conditionalRowStyles}*/
-                                onRowClicked={
-                                  
-                                  (row) => this.selectedCountry(row)}
+                               onRowClicked={ (row) => this.selectedCountry(row) }
 
                                 expandableRows={true}
 
+                                
+                            
                                 expandOnRowClicked={true}
-
-                                expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}><h1>{this.state.selectedRowCountry}</h1></Link>}
+                                
 
                                 expandableRowsHideExpander={true}
+
+                                 expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}>{h}</Link>}
+
+                               
+
+                                 onRowExpandToggled={(s,p) => this.test(s)} 
+
+
                                 
                                  >
 
@@ -444,15 +472,21 @@ test(){
                                  //conditionalRowStyles={conditionalRowStyles}
                                  onRowClicked={
                                   
-                                  (row) => this.selectedCountry(row)}
+                                  (row) => this.selectedCountry(row)
+                                
+                                  
+                                
+                                }
 
+                                  expandableRowsHideExpander={true}
+                                   
                                 expandableRows={true}
 
                                 expandOnRowClicked={true}
 
-                                expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }`}><h1>{this.state.selectedRowCountry}</h1></Link>}
+                                expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}><h1>{this.state.selectedRowCountry}</h1></Link>}
 
-                                expandableRowsHideExpander={true}
+                                
                                  
                                   >
  

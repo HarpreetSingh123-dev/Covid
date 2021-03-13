@@ -17,15 +17,52 @@ class SpecificCountry extends Component {
     
 componentDidMount(){
 
-console.log(this.props.match.params.id)
-var country = this.props.match.params.id.toLowerCase()
-var countryCode = this.props.match.params.type
+   //console.log(this.props.match.params.id)
+   var country = this.props.match.params.id.toLowerCase()
+   var countryCode = this.props.match.params.type
+   var setCountry 
+   
+  // function capitalizeFirstLetter(string) {
+  //  return string.charAt(0).toUpperCase() + string.slice(1);
+ //}
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+
+  if ( country === 'usa' ){
+
+    
+       var b = country.toUpperCase()
+
+       //setCountry = capitalizeFirstLetter(b)
+
+       setCountry= b
+
 }
 
- var setCountry = capitalizeFirstLetter(country)
+else{
+
+    const myCountry = country
+    const words = myCountry.split(" ")
+
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+
+    var k = words.join(" ")
+
+    console.log("country below")
+    //console.log(capitalizeFirstLetter(country))
+   // setCountry = capitalizeFirstLetter(country)
+
+   console.log(k)
+   setCountry = k
+
+}
+   
+
+ 
+    
+   
+   
 
  var options = {
     method: 'GET',
