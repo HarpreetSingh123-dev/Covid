@@ -27,17 +27,24 @@ componentDidMount(){
  //}
 
 
-  if ( country === 'usa' ){
+  if ( country === 'usa' || country === 'uk'){
 
     
        var b = country.toUpperCase()
 
-       //setCountry = capitalizeFirstLetter(b)
+       
 
        setCountry= b
 
 }
 
+/*
+if( country === 'uk'){
+
+    var b = country.toUpperCase()
+    setCountry= b
+}
+*/
 else{
 
     const myCountry = country

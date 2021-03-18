@@ -5,10 +5,25 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import FinalAssembly from './FinalAssembly'
 
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
+import Reducer from './Redux/CombineReducers'
+
+const Store = createStore(Reducer)
+
 ReactDOM.render(
-  <React.StrictMode>
-    <FinalAssembly></FinalAssembly>
+ 
+ <React.StrictMode>
+    
+    <Provider store={Store}>
+
+       <FinalAssembly></FinalAssembly>
+    
+    </Provider>
+  
   </React.StrictMode>,
+  
   document.getElementById('root')
 );
 

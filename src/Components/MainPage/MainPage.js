@@ -9,6 +9,13 @@ import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import axios from 'axios'
 
+import {Link} from 'react-router-dom'
+
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+
+import setRegionAction from '../../Redux/Actions/RegionAction'
+
 import LinkedIn from '../../Images/iconfinder_Vector-4_4747495.png'
 import Twitter from '../../Images/iconfinder_Rounded_Twitter5_svg_5282551.png'
 import Facebook from '../../Images/iconfinder_Rounded_Facebook_svg_5282541.png'
@@ -25,7 +32,9 @@ class MainPage extends Component {
         liveCovidStats:[],
         countries:[],
         loader:true,
-        showRegions:false
+        showRegions:false,
+
+        region:''
         
        
         }
@@ -34,6 +43,8 @@ class MainPage extends Component {
         this.setCountries= this.setCountries.bind(this)
         this.showRegions= this.showRegions.bind(this)
         this.closeRegions= this.closeRegions.bind(this)
+
+        this.Asia = this.Asia.bind(this)
 
     }
     
@@ -115,7 +126,7 @@ componentDidMount(){
   
     for(var i=0; i<countries.length; i++){
 
-          var b = countries[i].Country
+          var b = countries[i]
 
           a.push(b)
       }
@@ -124,25 +135,36 @@ componentDidMount(){
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
+Asia(){
+
+   //this.props.setRegionAction('Asia')
+
+   this.setState({region:'asia'})
+
+}
+
 
 showRegions(){
 
 this.setState({showRegions:true})
+
 }
 
 closeRegions(){
+
   this.setState({showRegions:false})
+
 }
 
     render() {
 
       var a = null
-      var c = null   
+     
       
         if(this.state.loader) {
 
                      a = (<Skeleton rows={6} color="lightgray"></Skeleton>)
-                     c = (<Skeleton rows={6} color="lightgray"></Skeleton>)
+                   
                }
 
          else{
@@ -217,7 +239,7 @@ closeRegions(){
                                 <ul class="nav nav-pills nav-stacked">
 
                                    <li class="nav-item">
-                                        <a class="nav-link active">United States</a>
+                                        <a class="nav-link active"><Link to={`/Country/USA/usa}`}>United States</Link></a>
                                         <a class="nav-link active">Canada</a>
                                         <a class="nav-link active">Australia</a>
                                         <a class="nav-link active">United Kingdom</a>
@@ -238,7 +260,8 @@ closeRegions(){
                                  { this.state.countries.map((cntry)=>
                 
                                      <ShowCountries
-                                                country={cntry}
+                                     country={cntry.Country}
+                                     threeDigitCode={cntry.ThreeLetterSymbol}
                                              ></ShowCountries> ) 
                                             
                                     }
@@ -252,6 +275,86 @@ closeRegions(){
          
           }
 
+
+          var c = null 
+          
+          if(this.state.loader){
+
+            c = (<Skeleton rows={80} height={20} color="lightgray"></Skeleton>)
+
+          }
+
+          else{
+
+            
+             c = (    <div>  
+                   
+                       <div className="continents">
+                              
+                          {/* <h2 className="text-center" style={{color: "white"}}><b>Continents</b></h2>
+                               
+                                 
+                                  <ul class="nav nav-pills nav-stacked">
+                       
+                                       <li class="nav-item">
+                                          <a class="nav-link active">World</a>
+                                          <a class="nav-link active" onClick={this.Asia}>Asia</a>
+                                          <a class="nav-link active">Africa</a>
+                                          <a class="nav-link active">Australia</a>
+                                          <a class="nav-link active">Europe</a>
+                                          <a class="nav-link active">North America</a>
+                                          <a class="nav-link active">South America</a>
+                                         
+                                       </li>
+
+                                  </ul>    
+             */}
+ 
+                           </div> 
+                          
+                          
+                           
+                         <div className="mostViewed">
+
+                                 <h2 className="text-center" style={{color: "white"}}><b>Most Viewed</b></h2>
+                                 
+                                     <ul class="nav nav-pills nav-stacked">
+                      
+                                        <li class="nav-item">
+                                           <a class="nav-link active" ><Link to={`/Country/USA/usa`} style={{color: "white"}}>United States</Link></a>
+                                           <a class="nav-link active"><Link  to={`/Country/CANADA/can`} style={{color: "white"}}>Canada</Link></a>
+                                           <a class="nav-link active"><Link  to={`/Country/AUSTRALIA/aus`} style={{color: "white"}}>Australia</Link></a>
+                                           <a class="nav-link active"><Link  to={`/Country/UK/gbr`} style={{color: "white"}}>United Kingdom</Link></a>
+                                           <a class="nav-link active"><Link  to={`/Country/INDIA/ind`} style={{color: "white"}}>India</Link></a>
+                                         
+                                        </li>
+
+                                    </ul>    
+
+                        </div>
+                            
+                           
+                         <div> 
+                              
+                                 <h2 className="text-center"style={{color: "white"}} ><b>Countries</b></h2>
+                                 
+                                    { this.state.countries.map((cntry)=>
+                   
+                                        <Countries
+                                                   country={cntry.Country}
+                                                   threeDigitCode={cntry.ThreeLetterSymbol}
+                                               
+                                                   ></Countries> ) 
+                                               
+                                       }
+
+                        </div>    
+             
+                  </div>  
+            
+              )
+
+            }
           
 
 
@@ -260,6 +363,7 @@ closeRegions(){
            <div className="MainPage">
 
                 <Navbar></Navbar>
+
                 <Jumbotron></Jumbotron>
           {/*//////////////////////////////////////////////////////////////////*/ }    
                 <div className="total">
@@ -285,75 +389,14 @@ closeRegions(){
                           <div className="col-lg-2  col-md-3 countryScroll">
 
                            {/*//////////////////////////////////////////////////////*/}
-                              <div className="continents">
                               
-                                 <h2 className="text-center" style={{color: "white"}}><b>Continents</b></h2>
-                               
-                                 
-                                  <ul class="nav nav-pills nav-stacked">
-                       
-                                       <li class="nav-item">
-                                          <a class="nav-link active">World</a>
-                                          <a class="nav-link active">Asia</a>
-                                          <a class="nav-link active">Africa</a>
-                                          <a class="nav-link active">Australia</a>
-                                          <a class="nav-link active">Europe</a>
-                                          <a class="nav-link active">North America</a>
-                                          <a class="nav-link active">South America</a>
-                                         
-                                       </li>
-
-                                  </ul>    
-
- 
-                               </div> 
-                           {/*//////////////////////////////////////////////////////*/}
-                           
-                           {/*//////////////////////////////////////////////////////*/}
-
-                              <div className="mostViewed">
-
-                                 <h2 className="text-center" style={{color: "white"}}><b>Most Viewed</b></h2>
-                                 
-                                     <ul class="nav nav-pills nav-stacked">
-                      
-                                        <li class="nav-item">
-                                           <a class="nav-link active">United States</a>
-                                           <a class="nav-link active">Canada</a>
-                                           <a class="nav-link active">Australia</a>
-                                           <a class="nav-link active">United Kingdom</a>
-                                           <a class="nav-link active">India</a>
-                                         
-                                        </li>
-
-                                    </ul>    
-
-                              </div>
-                            
-                           {/*//////////////////////////////////////////////////////*/} 
-
-                           {/*//////////////////////////////////////////////////////*/}
-                              
-                             
-                             <div> 
-                              
-                                 <h2 className="text-center"style={{color: "white"}} ><b>Countries</b></h2>
-                                 
-                                    { this.state.countries.map((cntry)=>
-                   
-                                        <Countries
-                                                   country={cntry}
-                                                ></Countries> ) 
-                                               
-                                       }
-
-                             </div>    
-                    
+                             {c}
+                          
                           </div>  
                    
                         {/*//////////////////////////////////////////////////////*/}
 
-                       {/*///SECOND COLUMN STARTS HERE/////////////////////////*/}
+                       {/*///FIRST COLUMN STARTS HERE (For Mobiles Devices)/////////////////////////*/}
                             
                             <div className="col-sm-12 chooseRegion">
 
@@ -377,7 +420,7 @@ closeRegions(){
                             
                             <div className="col-lg-10 col-md-9">
     
-                                  <Table></Table>
+                                  <Table check={this.state.region}></Table>
 
                                   
                               <div className="scientificTerms">
@@ -578,11 +621,21 @@ closeRegions(){
 
        </div>
                
-              
+             
                 
   </div>
         );
     }
 }
 
-export default MainPage;
+const mapActionsToProps =(dispatch) =>{
+
+   return bindActionCreators({
+ 
+   setRegionAction  ,
+     
+   }, dispatch)
+ 
+ }
+
+export default connect(null, mapActionsToProps) (MainPage);

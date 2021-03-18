@@ -3,12 +3,38 @@
   overflow: hidden;
 }
 
-.mainTable .input-group {
-  border: 2px solid #424242;
+.mainTable .continentBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
+.mainTable .continentBar .nav {
+  width: 100%;
+}
+
+.mainTable .continentBar .nav a {
+  width: 90%;
+  background-color: #424242;
+  color: white;
+}
+
+.mainTable .continentBar .nav a:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.mainTable .continentBar .nav a:active {
+  background-color: white;
+  color: black;
+}
 @media only screen and (max-width: 790px) {
   .mainTable {
     margin-top: 40px;
+  }
+
+  .mainTable .continentBar .nav a {
+    margin-top: 10px;
   }
 }

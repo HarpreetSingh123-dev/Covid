@@ -12,7 +12,7 @@ import './MainPageTable.css'
 const R = require('ramda');
 const columns = [
     {
-      name: <h6>RANKING</h6>,
+      name: <h6 className="text-center">RANKING</h6>,
       selector: 'number',
       center:true
      
@@ -21,7 +21,7 @@ const columns = [
     
 
     {
-      name: <h6>COUNTRY</h6>,
+      name: <h6 className="text-center">COUNTRY</h6>,
       selector: 'country',
       allowOverflow:'True',
       center:true,
@@ -31,7 +31,7 @@ const columns = [
     },
 
     {
-        name: <h6>TOTAL CASES</h6>,
+        name: <h6 className="text-center">TOTAL<br></br> CASES</h6>,
         selector: 'totalcases',
         center:true,
        
@@ -39,22 +39,22 @@ const columns = [
       },
 
       {
-        name: <h6>NEW CASES</h6>,
+        name: <h6 className="text-center">NEW <br></br>CASES</h6>,
         selector: 'newcases',
         center:true,
-        sortable:true,
+      
         grow:1
       },
 
       {
-        name: <h6>INFECTION RISK</h6>,
+        name: <h6 className="text-center">INFECTION <br></br>RISK</h6>,
         selector: 'infectionrisk',
         center:'True',
         grow:1
       },
 
       {
-        name: <h6>SERIOUS CRITICAL</h6>,
+        name: <h6 className="text-center">SERIOUS <br></br>CRITICAL</h6>,
         selector: 'seriouscritical',
         center:'True',
         grow:1
@@ -62,36 +62,36 @@ const columns = [
       },
 
       {
-        name: <h6>ACTIVE CASES</h6>,
+        name: <h6 className="text-center">ACTIVE <br></br>CASES</h6>,
         selector: 'activecases',
         center:'True',
-        sortable:'True',
+        
         grow:1
       },
 
       {
-        name: <h6>TOTAL DEATHS</h6>,
+        name: <h6 className="text-center">TOTAL <br></br>DEATHS</h6>,
         selector: 'totaldeaths',
         center:'True',
         grow:1
       },
 
       {
-        name: <h6>NEW DEATHS</h6>,
+        name: <h6 className="text-center">NEW <br></br>DEATHS</h6>,
         selector: 'newdeaths',
         center:'True',
         grow:1
       },
 
       {
-        name: <h6>CASE FATILITY RATE</h6>,
+        name: <h6 className="text-center">CASE <br></br>FATILITY <br></br> RATE</h6>,
         selector: 'casefatilityrate',
         center:'True',
         grow:1
       },
 
       {
-        name: <h6>TOTAL TESTS</h6>,
+        name: <h6 className="text-center">TOTAL <br></br>TESTS</h6>,
         selector: 'totaltests',
         center:'True',
         grow:6
@@ -99,28 +99,28 @@ const columns = [
       },
 
       {
-        name: <h6>TEST PERCENTAGE</h6>,
+        name: <h6 className="text-center">TEST<br></br> PERCENTAGE</h6>,
         selector: 'testpercentage',
         center:'True',
         grow:5
       },
 
       {
-        name: <h6>TOTAL RECOVERED</h6>,
+        name: <h6 className="text-center">TOTAL <br></br>RECOVERED</h6>,
         selector: 'totalrecovered',
         center:'True',
         grow:5
       },
 
       {
-        name: <h6>RECOVERY PERCENTAGE</h6>,
+        name: <h6 className="text-center">RECOVERY <br></br>PERCENTAGE</h6>,
         selector: 'recoverypercentage',
         center:'True',
         grow:5
       },
 
       {
-        name: <h6>POPULATION</h6>,
+        name: <h6 className="text-center">POPULATION</h6>,
         selector: 'population',
         center:'True',
         grow:5
@@ -130,10 +130,17 @@ const columns = [
         name: <h6>COUNTRY CODE</h6>,
         selector: 'countrycode',
         center:'True',
-        grow:5
+        grow:5,
+        omit:'True'
       },
 
-      
+      {
+        name: <h6>S COUNTRY</h6>,
+        selector: 'searchcountry',
+        center:'True',
+        grow:5,
+        omit:'True'
+      },
 
   ];
 
@@ -158,8 +165,12 @@ class MainPageTable extends Component {
             selectedRowCountry:'',
  
             threeLetterCode:'',
+            
+            continent:'',
+
+            active:'active'
            
-            toggle:true,
+           
 
 
        
@@ -167,9 +178,18 @@ class MainPageTable extends Component {
 
         this.setTable= this.setTable.bind(this)
         this.pushingValues= this.pushingValues.bind(this)
-        this.selectedCountry=this.selectedCountry.bind(this)
+        // this.selectedCountry=this.selectedCountry.bind(this)
         this.change= this.change.bind(this)
-        this.test = this.test.bind(this)
+        
+        this.setAsiaData=this.setAsiaData.bind(this)
+        this.setWorldData=this.setWorldData.bind(this)
+        this.setAfricaData= this.setAfricaData.bind(this)
+        this.setAustraliaData= this.setAustraliaData.bind(this)
+        this.setEuropeData=this.setEuropeData.bind(this)
+        this.setNorthAmericaData=this.setNorthAmericaData.bind(this)
+        this.setSouthAmericaData=this.setSouthAmericaData.bind(this)
+     
+       
     }
  
 /*//////////////////////////////////////////////////////////////////////////////////*/ 
@@ -201,9 +221,9 @@ componentDidMount(){
           console.error(error);
       });
     
+      this.setState({continent:'World Data -Live Update'})
 }
-
-/*/////////////////////////////////////////////////////////////////////////////////////*/
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 setTable(tableData){
 
@@ -235,20 +255,21 @@ pushingValues(){
 
 
        var obj = { number:[i+1], 
-                   country: <Link to={`/Country/${this.state.table[i].Country.toUpperCase() }/${this.state.table[i].ThreeLetterSymbol}`}>{this.state.table[i].Country.toUpperCase()}</Link>,
-                   totalcases: this.state.table[i].TotalCases,
-                   newcases:this.state.table[i].NewCases,
-                   infectionrisk:this.state.table[i].Infection_Risk,
-                   seriouscritical:this.state.table[i].Serious_Critical,
-                   activecases:this.state.table[i].ActiveCases,
-                   totaldeaths:this.state.table[i].TotalDeaths,
-                   newdeaths:this.state.table[i].NewDeaths,
-                   casefatilityrate:this.state.table[i].Case_Fatality_Rate,
-                   totaltests:this.state.table[i].TotalTests,
-                   testpercentage:this.state.table[i].Test_Percentage,
-                   totalrecovered:this.state.table[i].TotalRecovered,
-                   recoverypercentage:this.state.table[i].Recovery_Proporation,
-                   population:this.state.table[i].Population,
+                   country: <Link style={{color: "white"}}to={`/Country/${this.state.table[i].Country.toUpperCase() }/${this.state.table[i].ThreeLetterSymbol}`}>{this.state.table[i].Country.toUpperCase()}</Link>,
+                   searchcountry:this.state.table[i].Country.toUpperCase(),
+                   totalcases: this.state.table[i].TotalCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   newcases:this.state.table[i].NewCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   infectionrisk:this.state.table[i].Infection_Risk+ "%",
+                   seriouscritical:this.state.table[i].Serious_Critical.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   activecases:this.state.table[i].ActiveCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   totaldeaths:this.state.table[i].TotalDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   newdeaths:this.state.table[i].NewDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   casefatilityrate:this.state.table[i].Case_Fatality_Rate + "%",
+                   totaltests:this.state.table[i].TotalTests.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   testpercentage:this.state.table[i].Test_Percentage + "%",
+                   totalrecovered:this.state.table[i].TotalRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                   recoverypercentage:this.state.table[i].Recovery_Proporation + "%",
+                   population:this.state.table[i].Population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
                    countrycode:this.state.table[i].ThreeLetterSymbol,
                   // details:<Link to={`/Country/${this.state.table[i].Country.toUpperCase() }/${this.state.table[i].ThreeLetterSymbol}`}>{this.state.table[i].Country.toUpperCase()}</Link>
                    
@@ -260,24 +281,10 @@ pushingValues(){
 
   this.setState({data:data})
   this.setState({loader:false})
+ 
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
-
-selectedCountry(row){
-
-    
- 
-    console.log("row below")
-    
-    console.log(row)
-
-    
-    this.setState({selectedRowCountry:row.country})
-    this.setState({threeLetterCode:row.countrycode})
-    
-}
-
 change(event){
 
    
@@ -291,13 +298,12 @@ change(event){
 
                   var searchVal = this.state.searchValue 
 
-                  var k = R.find(R.propEq('country',searchVal))(state)
+                  var k = R.find(R.propEq('searchcountry',searchVal))(state)
         
                           if (k===undefined) {
 
-                               console.log("udududu")
                                return
-                             } 
+                            } 
     
       
                              else {
@@ -306,56 +312,231 @@ change(event){
                                    this.setState({searchData:d})
                                    this.setState({search:true})
                                  }       
-           }
+             }
 
        else  {
        
-           console.log("noooo")
+           
           this.setState({search:false})
           return
        }
    
 }
 
-test(){
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+setWorldData(){
 
-  console.log("boo")
+  this.setState({loader:true})
+
+  this.componentDidMount()
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+setAsiaData(){
+  
+  this.setState({loader:true})
+  this.setState({continent:'Asia -Live Update'})
+  const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/asia',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
     
-componentDidUpdate(){
+        const tableData = response.data
+
+        return tableData
+  
+  })
+        .then(this.setTable)
+
+        .then(this.pushingValues)
+  
+  .catch(function (error) {
+    console.error(error);
+  });
 
 
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+setAfricaData(){
+ 
+  this.setState({loader:true})
+  this.setState({continent:'Africa -Live Update'})
+  
+  const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/africa',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    
+    const tableData = response.data
+
+        return tableData
+    
+  })
+  
+  .then(this.setTable)
+
+  .then(this.pushingValues)
+  
+  .catch(function (error) {
+    console.error(error);
+  });
+
+
+}
+
+
 /*////////////////////////////////////////////////////////////////////////////////////////*/  
     
+setAustraliaData(){
+  
+  this.setState({loader:true})
+  this.setState({continent:'Australia -Live Update'})
 
-  render() {
-        
-       var h = null
-       
-       
-      
+  const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/australia',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+   
+    const tableData = response.data
 
-         h= (<button onClick={this.test}>More Details</button>)
-
-      
-
-
-       
-         
-      
+        return tableData
     
-     /*   const conditionalRowStyles = [
-         {
-            when: row => row.totaldeaths>50000,
+  })
+  
+  .then(this.setTable)
 
-            style: {
-                backgroundColor: 'darkred',
-            }
+  .then(this.pushingValues)
 
-         }
-        ]*/
-     ///////////////////////////////////
+  .catch(function (error) {
+    console.error(error);
+  });
+
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+setEuropeData(){
+
+  this.setState({loader:true})
+  this.setState({continent:'Europe -Live Update'})
+
+
+  const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/europe',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+   
+    const tableData = response.data
+
+    return tableData
+
+  })
+  
+  .then(this.setTable)
+
+  .then(this.pushingValues)
+
+  .catch(function (error) {
+    console.error(error);
+  });
+
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+setNorthAmericaData(){
+
+  this.setState({loader:true})
+  this.setState({continent:'North America -Live Update'})
+  
+  const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    
+    const tableData = response.data
+
+    return tableData
+    
+
+  })
+  
+  .then(this.setTable)
+
+  .then(this.pushingValues)
+  
+  .catch(function (error) {
+    console.error(error);
+  });
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+
+setSouthAmericaData(){
+  
+  this.setState({loader:true})
+  this.setState({continent:'South America -Live Update'})
+  
+  const options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/southamerica',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    
+    const tableData = response.data
+
+    return tableData
+
+  })
+  
+  .then(this.setTable)
+
+  .then(this.pushingValues)
+  
+  
+  .catch(function (error) {
+    console.error(error);
+  });
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+  render() {
+      
         var a = null
 
         if(this.state.loader){
@@ -372,11 +553,11 @@ componentDidUpdate(){
 
                      <div class="input-group mb-3">
                        
-                        <div class="input-group-prepend">
+                     {/*   <div class="input-group-prepend">
                           
                             <span class="input-group-text" id="inputGroup-sizing-default"><b>Type Name Of The Country For Search</b></span>
                         
-                        </div>
+            </div>*/}
                    
                    
                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
@@ -387,9 +568,9 @@ componentDidUpdate(){
                    </div>
 
 
-                  {/*  <Link to={`/Country/${this.state.val }`}>*/} <DataTable
+                          <DataTable
               
-                                title={<h2>World Data -Live Update</h2>}
+                                title={<h2>{this.state.continent}</h2>}
                                 columns={columns}
                                 data={this.state.data}
                                 highlightOnHover={true}
@@ -402,29 +583,16 @@ componentDidUpdate(){
                                 
                                
                                 /*conditionalRowStyles={conditionalRowStyles}*/
-                               onRowClicked={ (row) => this.selectedCountry(row) }
-
-                                expandableRows={true}
-
-                                
-                            
-                                expandOnRowClicked={true}
-                                
-
-                                expandableRowsHideExpander={true}
-
-                                 expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}>{h}</Link>}
-
-                               
-
-                                 onRowExpandToggled={(s,p) => this.test(s)} 
+                                //onRowClicked={ (row) => this.selectedCountry(row) }
+                                //expandableRows={true}
+                                //expandOnRowClicked={true}
+                                //expandableRowsHideExpander={true}
+                                //expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}>KK</Link>}
+                                //onRowExpandToggled={(s,p) => this.test(s)} 
+                                >
 
 
-                                
-                                 >
-
-
-                     </DataTable>  {/*</Link>*/}
+                                 </DataTable>  
 
                  </div>
              
@@ -441,11 +609,11 @@ componentDidUpdate(){
  
                     <div class="input-group mb-3">
                        
-                       <div class="input-group-prepend">
+                      {/* <div class="input-group-prepend">
                          
                            <span class="input-group-text" id="inputGroup-sizing-default"><b>Type Name Of The Country For Search</b></span>
                        
-                       </div>
+                 </div>*/}
                         
                         <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
  
@@ -457,7 +625,7 @@ componentDidUpdate(){
                       <h4>Following Result Found</h4>
                        <DataTable
                  
-                                 title={<h2>World Data -Live Update</h2>}
+                                 title={<h2>{this.state.continent}</h2>}
                                  columns={columns}
                                  data={this.state.searchData}
                                  highlightOnHover={true}
@@ -470,25 +638,12 @@ componentDidUpdate(){
                                  
                                 
                                  //conditionalRowStyles={conditionalRowStyles}
-                                 onRowClicked={
-                                  
-                                  (row) => this.selectedCountry(row)
-                                
-                                  
-                                
-                                }
-
-                                  expandableRowsHideExpander={true}
-                                   
-                                expandableRows={true}
-
-                                expandOnRowClicked={true}
-
-                                expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}><h1>{this.state.selectedRowCountry}</h1></Link>}
-
-                                
-                                 
-                                  >
+                                 //onRowClicked={(row) => this.selectedCountry(row)}
+                                 //expandableRowsHideExpander={true}
+                                 //expandableRows={true}
+                                 //expandOnRowClicked={true}
+                                //expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}><h1>{this.state.selectedRowCountry}</h1></Link>}
+                              >
  
  
                       </DataTable>
@@ -503,9 +658,61 @@ componentDidUpdate(){
             
             <div className="mainTable">
                 
+               <div className="continentBar"> 
+                
+               <nav class="nav nav-pills  nav-fill">
+ 
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setWorldData} ><b>WORLD</b></a>
+                     
+                      {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setWorldData}>WORLD</button>*/}
+                     </li>
+  
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setAsiaData} ><b>ASIA</b></a>
+                      {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAsiaData}>ASIA</button>*/}
+                     </li>
+  
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setAfricaData}><b>AFRICA</b></a>
+                     {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAfricaData}>AFRICA</button>*/}
+                     </li>
+  
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setAustraliaData} ><b>AUSTRALIA</b></a>
+                     {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAustraliaData}>AUSTRALIA</button>*/}
+                     </li>
+
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setEuropeData}><b>EUROPE</b></a>
+                     {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setEuropeData}>EUROPE</button>*/}
+                     </li>
+
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setNorthAmericaData} ><b>NORTH AMERICA</b></a>
+                     {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setNorthAmericaData}>NORTH-AMERICA</button>*/}
+                     </li>
+
+                     <li class="nav-item">
+                     <a class="flex-sm-fill text-sm-center nav-link" onClick={this.setSouthAmericaData} ><b>SOUTH AMERICA</b></a>
+                     {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setSouthAmericaData}>SOUTH-AMERICA</button>*/}
+                     </li>
+
+                  </nav>
+
+                   {/*  <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setWorldData}>WORLD</button></div>
+                     <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAsiaData}>ASIA</button></div>
+                     <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAfricaData}>AFRICA</button></div>
+                     <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAustraliaData}>AUSTRALIA</button></div>
+                     <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setEuropeData}>EUROPE</button></div>
+                     <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setNorthAmericaData}>NORTH AMERICA</button></div>
+                     <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setSouthAmericaData}>SOUTH AMERICA</button></div>
+              
+        */}
+              </div>   
                 {a}
 
-              {console.log(this.state)}
+              {/*console.log(this.state)*/}
             </div>
         );
     }
