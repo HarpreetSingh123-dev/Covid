@@ -3,7 +3,7 @@ import './MainPageTable.css'
 import DataTable from 'react-data-table-component'
 import Skeleton from '@yisheng90/react-loading';
 import axios from 'axios'
-
+import Countdown from 'react-countdown'
 import {Link} from 'react-router-dom'
 
 
@@ -168,12 +168,11 @@ class MainPageTable extends Component {
             
             continent:'',
 
-            active:'active'
-           
-           
+            active:'active',
 
+            noResult: false,
 
-       
+            
         }
 
         this.setTable= this.setTable.bind(this)
@@ -190,12 +189,49 @@ class MainPageTable extends Component {
         this.setSouthAmericaData=this.setSouthAmericaData.bind(this)
      
        
+        this.fetchDataFromBackend=this.fetchDataFromBackend.bind(this)
+        
     }
  
 /*//////////////////////////////////////////////////////////////////////////////////*/ 
+fetchDataFromBackend(){
+  this.setState({loader:true})
+  var options = {
+    method: 'GET',
+    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries',
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+     
+    const tableData = response.data
+
+    return tableData
+ 
+ 
+    })
+    
+    .then(this.setTable)
+
+    .then(this.pushingValues)
+    
+    .catch(function (error) {
+      console.error(error);
+  });
+
+  this.setState({continent:'World Data - Live Update'})
+
+  
+
+}
+
+
 componentDidMount(){
 
-    var options = {
+ /*   var options = {
         method: 'GET',
         url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries',
         headers: {
@@ -222,8 +258,29 @@ componentDidMount(){
       });
     
       this.setState({continent:'World Data -Live Update'})
+
+      let timeLeftVar = this.secondsToTime(this.state.seconds);
+      this.setState({ time: timeLeftVar });
+
+      this.startTimer()
+      setInterval(this.componentDidMount, 10000)*/
+
+      this.fetchDataFromBackend()
+
+     // setInterval(this.fetchDataFromBackend,600000 )
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 setTable(tableData){
 
@@ -287,7 +344,7 @@ pushingValues(){
 /*///////////////////////////////////////////////////////////////////////////////////////////*/
 change(event){
 
-   
+  this.setState({search:true})
      var d =[]
 
         if (event.target.value.length>0) {
@@ -299,19 +356,45 @@ change(event){
                   var searchVal = this.state.searchValue 
 
                   var k = R.find(R.propEq('searchcountry',searchVal))(state)
-        
-                          if (k===undefined) {
+           
+                 /* let myPromise = new Promise(function(myResolve, myReject){
 
+                    var k = R.find(R.propEq('searchcountry',searchVal))(state)
+
+                    if(k===undefined){
+                      myReject("no result found")
+                    }
+                    else{
+                    myResolve(k); // when successful
+                    }
+                  })
+
+                  myPromise.then(
+                    function(value) { d.push(value)
+                                      this.setState({searchData:d})
+                                      this.setState({search:true}) 
+                                      this.se
+                                     },
+                    function(error) {return}
+                  );*/
+                 
+
+
+                 
+                  if (k==undefined) {
+                  
+                    this.setState({noResult:true})
                                return
                             } 
     
-      
+                       
                              else {
 
                                    d.push(k)
+                                   this.setState({noResult:false})
                                    this.setState({searchData:d})
-                                   this.setState({search:true})
-                                 }       
+                                   
+                                 }     
              }
 
        else  {
@@ -537,6 +620,8 @@ setSouthAmericaData(){
 /////////////////////////////////////////////////////////////////////////////////////////////
   render() {
       
+
+
         var a = null
 
         if(this.state.loader){
@@ -553,13 +638,6 @@ setSouthAmericaData(){
 
                      <div class="input-group mb-3">
                        
-                     {/*   <div class="input-group-prepend">
-                          
-                            <span class="input-group-text" id="inputGroup-sizing-default"><b>Type Name Of The Country For Search</b></span>
-                        
-            </div>*/}
-                   
-                   
                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
 
                       </div>
@@ -570,7 +648,7 @@ setSouthAmericaData(){
 
                           <DataTable
               
-                                title={<h2>{this.state.continent}</h2>}
+                                title={<h2><b>{this.state.continent}</b></h2>}
                                 columns={columns}
                                 data={this.state.data}
                                 highlightOnHover={true}
@@ -580,6 +658,14 @@ setSouthAmericaData(){
                                 overflowY={true}
                                 subHeader={true}
                                 fixedHeaderScrollHeight={'800px'}
+                                subHeaderComponent={<h4 style={{color: "white"}}><b>Next Update In&nbsp;:&nbsp; <Countdown
+                                                     date={Date.now() + 600000}           
+                                                     onComplete={this.fetchDataFromBackend}
+                                                     ></Countdown>
+                                                     </b>
+                                                     </h4>                  
+                                                    }
+                                subHeaderAlign={'right'}
                                 
                                
                                 /*conditionalRowStyles={conditionalRowStyles}*/
@@ -635,7 +721,16 @@ setSouthAmericaData(){
                                 
                                  subHeader={true}
                                  
-                                 
+                                 noDataComponent={<h1>hhhhhhh</h1>}
+
+                                 subHeaderComponent={<h4 style={{color: "white"}}><b>Next Update In&nbsp;:&nbsp; <Countdown
+                                                     date={Date.now() + 600000}           
+                                                     onComplete={this.fetchDataFromBackend}
+                                                     ></Countdown>
+                                                     </b>
+                                                     </h4>                  
+                                                    }
+                                subHeaderAlign={'right'}
                                 
                                  //conditionalRowStyles={conditionalRowStyles}
                                  //onRowClicked={(row) => this.selectedCountry(row)}
@@ -651,9 +746,36 @@ setSouthAmericaData(){
                   </div>
 
                   )
+
+          if(this.state.noResult) {
+               
+               
+               a= ( <div className="tableSet">
+                  
+                      <div className="searchInput">
+
+                       <div class="input-group mb-3">
+                   
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
+
+                    
+                      </div>
+
+                     </div>
+
+                     <DataTable
+                      noDataComponent={<h1>No Result Found</h1>}
+                     >
+
+
+                     </DataTable>
+                   
+                  </div>)  
+                  
+                }
               }
             }
-         
+          
         return (
             
             <div className="mainTable">
@@ -699,7 +821,7 @@ setSouthAmericaData(){
                      </li>
 
                   </nav>
-
+                    
                    {/*  <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setWorldData}>WORLD</button></div>
                      <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAsiaData}>ASIA</button></div>
                      <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAfricaData}>AFRICA</button></div>
@@ -710,8 +832,9 @@ setSouthAmericaData(){
               
         */}
               </div>   
+              <hr className="rulee" ></hr>
                 {a}
-
+              
               {/*console.log(this.state)*/}
             </div>
         );

@@ -8,3 +8,8 @@
   justify-content: center;
   align-items: center;
 }
+
+.CountryWrapper .nav-item a {
+  background-color: steelblue;
+  color: white;
+}

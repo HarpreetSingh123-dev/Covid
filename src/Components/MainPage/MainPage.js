@@ -10,6 +10,7 @@ import Jumbotron from '../Jumbotron/Jumbotron'
 import axios from 'axios'
 
 import {Link} from 'react-router-dom'
+import Countdown from 'react-countdown';
 
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -44,60 +45,68 @@ class MainPage extends Component {
         this.showRegions= this.showRegions.bind(this)
         this.closeRegions= this.closeRegions.bind(this)
 
-        this.Asia = this.Asia.bind(this)
-
+        this.fetchDataFromBackend=this.fetchDataFromBackend.bind(this)
+        
     }
     
 ///////////////////////////////////////////////////////////////////////////////////    
 componentDidMount(){
 
-  var options1 = {
-              
-    method: 'GET',
-    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/world',
-    headers: {
-      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
-      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
-    }
-  };
-
-  var options2 = {
-    method: 'GET',
-    url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
-    headers: {
-      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
-      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
-    }
-  };
-  
-/////////////////////////////////////////FIRST API REQUEST/////////////////////////  
-  axios.request(options1).then(function (response) {
-   
-   
-    const data =response.data[0]
-    return data
-    
-    }).then(this.setTotalData)
-  
-  
-      .catch(function (error) {
-              console.error(error);
-           });
-////////////////////////////////////////////////////////////////////////////////////
-
- axios.request(options2).then(function (response) {
- 
-     const countries = response.data
-     return countries 
-
-    }).then(this.setCountries)
-    
-    
-    .catch(function (error) {
-       	console.error(error);
-        });
+ this.fetchDataFromBackend()
 
 } 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+fetchDataFromBackend(){
+
+   this.setState({loader:true})
+   var options1 = {
+              
+      method: 'GET',
+      url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/world',
+      headers: {
+        'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+        'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+      }
+    };
+  
+    var options2 = {
+      method: 'GET',
+      url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
+      headers: {
+        'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+        'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+      }
+    };
+    
+  /////////////////////////////////////////FIRST API REQUEST/////////////////////////  
+    axios.request(options1).then(function (response) {
+     
+     
+      const data =response.data[0]
+      return data
+      
+      }).then(this.setTotalData)
+    
+    
+        .catch(function (error) {
+                console.error(error);
+             });
+  ////////////////////////////////////////////////////////////////////////////////////
+  
+   axios.request(options2).then(function (response) {
+   
+       const countries = response.data
+       return countries 
+  
+      }).then(this.setCountries)
+      
+      
+      .catch(function (error) {
+            console.error(error);
+          });
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  setTotalData(data){
@@ -135,15 +144,8 @@ componentDidMount(){
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
-Asia(){
 
-   //this.props.setRegionAction('Asia')
-
-   this.setState({region:'asia'})
-
-}
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 showRegions(){
 
 this.setState({showRegions:true})
@@ -175,7 +177,14 @@ closeRegions(){
                     <h2 className="text-center">Live Covid Status Of The World</h2>
 
                      <hr className="rule"></hr>
-            
+              
+                     <h4 className="text-center" style={{color: "black"}}>Next Update In&nbsp;:&nbsp; <Countdown
+                                                     date={Date.now() + 600000}           
+                                                     onComplete={this.fetchDataFromBackend}
+                                                     ></Countdown>
+                                                     
+                                                     </h4>
+                     
                        { this.state.liveCovidStats.map((p)=>
                                        
                             <LiveCurrentTotals
@@ -321,11 +330,11 @@ closeRegions(){
                                      <ul class="nav nav-pills nav-stacked">
                       
                                         <li class="nav-item">
-                                           <a class="nav-link active" ><Link to={`/Country/USA/usa`} style={{color: "white"}}>United States</Link></a>
-                                           <a class="nav-link active"><Link  to={`/Country/CANADA/can`} style={{color: "white"}}>Canada</Link></a>
-                                           <a class="nav-link active"><Link  to={`/Country/AUSTRALIA/aus`} style={{color: "white"}}>Australia</Link></a>
-                                           <a class="nav-link active"><Link  to={`/Country/UK/gbr`} style={{color: "white"}}>United Kingdom</Link></a>
-                                           <a class="nav-link active"><Link  to={`/Country/INDIA/ind`} style={{color: "white"}}>India</Link></a>
+                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/USA/usa`} ><b>UNITED STATES</b></Link></a>
+                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}}><Link  style={{color: "white"}} to={`/Country/CANADA/can`} ><b>CANADA</b></Link></a>
+                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/AUSTRALIA/aus`} ><b>AUSTRALIA</b></Link></a>
+                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/UK/gbr`} ><b>UNITED KINGDOM</b></Link></a>
+                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}}><Link style={{color: "white"}} to={`/Country/INDIA/ind`} ><b>INDIA</b></Link></a>
                                          
                                         </li>
 
