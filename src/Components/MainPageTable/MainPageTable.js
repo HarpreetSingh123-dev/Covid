@@ -665,7 +665,7 @@ setSouthAmericaData(){
                                                      </b>
                                                      </h4>                  
                                                     }
-                                subHeaderAlign={'right'}
+                                subHeaderAlign={'left'}
                                 
                                
                                 /*conditionalRowStyles={conditionalRowStyles}*/
@@ -730,7 +730,7 @@ setSouthAmericaData(){
                                                      </b>
                                                      </h4>                  
                                                     }
-                                subHeaderAlign={'right'}
+                                subHeaderAlign={'left'}
                                 
                                  //conditionalRowStyles={conditionalRowStyles}
                                  //onRowClicked={(row) => this.selectedCountry(row)}
