@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navbar.css'
+import {Link} from 'react-router-dom'
 import Image1 from '../../Images/symbol1.jpg'
 
 function Navbar(props) {
@@ -22,31 +23,34 @@ function Navbar(props) {
                     <ul className="navbar-nav mr-auto">
                      
                        <li className="nav-item active">
-                         <a className="nav-link">Home <span class="sr-only">(current)</span></a>
+                        {/* <a className="nav-link">Home <span class="sr-only">(current)</span></a>*/}
+                         <Link to={'/'}className="nav-link">Covid-Live</Link>
                        </li>
      
                        <li className="nav-item active">
-                        <a className="nav-link">Vaccine</a>
+                       {/* <a className="nav-link">Vaccine</a>*/}
+                        <Link to={'/Vaccine'}className="nav-link">Vaccine</Link>
                        </li>
       
                        <li className="nav-item active">
-                         <a className="nav-link">Treatment</a>
+                        {/* <a className="nav-link">Treatment</a>*/}
+                         <Link to={'/Treatment'}className="nav-link">Treatment</Link>
                        </li>
 
                        <li className="nav-item active">
-                         <a className="nav-link">Map</a>
+                         {/*<a className="nav-link">Map</a>*/}
+                         <Link to={'/Map'}className="nav-link">Map</Link>
                        </li>
 
                        <li className="nav-item active">
-                         <a className="nav-link">News</a>
+                         {/*<a className="nav-link">News</a>*/}
+                         <Link to={'/News'}className="nav-link">News</Link>
                        </li>
 
+                       
                        <li className="nav-item active">
-                         <a className="nav-link">Articles</a>
-                       </li>
-
-                       <li className="nav-item active">
-                         <a className="nav-link">About</a>
+                        {/* <a className="nav-link">About</a>*/}
+                         <Link to={'/About'}className="nav-link">About</Link>
                        </li>
     
                 </ul>

@@ -659,7 +659,7 @@ setSouthAmericaData(){
                                 subHeader={true}
                                 fixedHeaderScrollHeight={'800px'}
                                 subHeaderComponent={<h4 style={{color: "white"}}><b>Next Update In&nbsp;:&nbsp; <Countdown
-                                                     date={Date.now() + 600000}           
+                                                     date={Date.now() + 900000}           
                                                      onComplete={this.fetchDataFromBackend}
                                                      ></Countdown>
                                                      </b>

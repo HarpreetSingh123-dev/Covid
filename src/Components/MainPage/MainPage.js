@@ -549,36 +549,37 @@ closeRegions(){
 
                                     <div className="col-lg-6 col-md-6 col-sm-12">
                                    
-                                     <p className="text-center">World Data</p>
-                                     <p className="text-center">Canada</p>
-                                     <p className="text-center">Australia</p>
-                                     <p className="text-center">Japan</p>
-                                     <p className="text-center">France</p>
-                                     <p className="text-center">Netherlands</p>
+                                     <p className="text-center"><Link to={'/'}>World Data</Link></p>
+                                     
+                                     <p className="text-center"><Link>Canada</Link></p>
+                                     <p className="text-center"><Link>Australia</Link></p>
+                                     <p className="text-center"><Link>Japan</Link></p>
+                                     <p className="text-center"><Link>France</Link></p>
+                                     <p className="text-center"><Link>Netherlands</Link></p>
 
-                                     <p className="text-center">China</p>
-                                     <p className="text-center">Columbia</p>
-                                     <p className="text-center">Mexico</p>
-                                     <p className="text-center">Preu</p>
-                                     <p className="text-center">Spain</p>
-                                     <p className="text-center">Ukraine</p>
+                                     <p className="text-center"><Link>China</Link></p>
+                                     <p className="text-center"><Link>Columbia</Link></p>
+                                     <p className="text-center"><Link>Mexico</Link></p>
+                                     <p className="text-center"><Link>Preu</Link></p>
+                                     <p className="text-center"><Link>Spain</Link></p>
+                                     <p className="text-center"><Link>Ukraine</Link></p>
                             
                                    </div>
                              
                                    <div className="col-lg-6 col-md-6 col-sm-12">
                              
-                                    <p className="text-center">United States of America</p>
-                                    <p className="text-center">India</p>
-                                    <p className="text-center">Brazil</p>
-                                    <p className="text-center">Germany</p>
-                                    <p className="text-center">United Kingdom</p>
-                                    <p className="text-center">Italy</p>
+                                    <p className="text-center"><Link>United States of America</Link></p>
+                                    <p className="text-center"><Link>India</Link></p>
+                                    <p className="text-center"><Link>Brazil</Link></p>
+                                    <p className="text-center"><Link>Germany</Link></p>
+                                    <p className="text-center"><Link>United Kingdom</Link></p>
+                                    <p className="text-center"><Link>Italy</Link></p>
 
-                                    <p className="text-center">Chile</p>
-                                    <p className="text-center">Denmark</p>
-                                    <p className="text-center">Pakistan</p>
-                                    <p className="text-center">Russia</p>
-                                    <p className="text-center">Sweden</p>
+                                    <p className="text-center"><Link>Chile</Link></p>
+                                    <p className="text-center"><Link>Denmark</Link></p>
+                                    <p className="text-center"><Link>Pakistan</Link></p>
+                                    <p className="text-center"><Link>Russia</Link></p>
+                                    <p className="text-center"><Link>Sweden</Link></p>
                              
                                   </div>
                           

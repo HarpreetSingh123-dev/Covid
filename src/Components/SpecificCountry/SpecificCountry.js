@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
+import Navbar from '../Navbar/Navbar'
+
 class SpecificCountry extends Component {
     
     
@@ -100,7 +102,8 @@ else{
     render() {
         return (
             <div>
-                <h1>boooooooo</h1>
+                <Navbar></Navbar>
+                <h1>Specific Country Data Component</h1>
             </div>
         );
     }
