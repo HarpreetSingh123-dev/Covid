@@ -7,6 +7,7 @@ import Countries from './Countries/Countries'
 import ShowCountries from './Countries/ShowCountries'
 import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
+import Footer from '../Footer/Footer'
 import axios from 'axios'
 
 import {Link} from 'react-router-dom'
@@ -17,10 +18,7 @@ import {bindActionCreators} from 'redux'
 
 import setRegionAction from '../../Redux/Actions/RegionAction'
 
-import LinkedIn from '../../Images/iconfinder_Vector-4_4747495.png'
-import Twitter from '../../Images/iconfinder_Rounded_Twitter5_svg_5282551.png'
-import Facebook from '../../Images/iconfinder_Rounded_Facebook_svg_5282541.png'
-import Instagram from '../../Images/iconfinder_Rounded_Instagram_svg_5282544.png'
+
 
 class MainPage extends Component {
     
@@ -298,30 +296,6 @@ closeRegions(){
             
              c = (    <div>  
                    
-                       <div className="continents">
-                              
-                          {/* <h2 className="text-center" style={{color: "white"}}><b>Continents</b></h2>
-                               
-                                 
-                                  <ul class="nav nav-pills nav-stacked">
-                       
-                                       <li class="nav-item">
-                                          <a class="nav-link active">World</a>
-                                          <a class="nav-link active" onClick={this.Asia}>Asia</a>
-                                          <a class="nav-link active">Africa</a>
-                                          <a class="nav-link active">Australia</a>
-                                          <a class="nav-link active">Europe</a>
-                                          <a class="nav-link active">North America</a>
-                                          <a class="nav-link active">South America</a>
-                                         
-                                       </li>
-
-                                  </ul>    
-             */}
- 
-                           </div> 
-                          
-                          
                            
                          <div className="mostViewed">
 
@@ -394,10 +368,10 @@ closeRegions(){
                     <hr className="rule"></hr>
                         <div className="row">
                     
-                   {/*///FIRST COLUMN STARTS HERE/////////////////////////*/}
+                       {/*///FIRST COLUMN STARTS HERE FOR DESKTOP /////////////////////////*/}
                           <div className="col-lg-2  col-md-3 countryScroll">
 
-                           {/*//////////////////////////////////////////////////////*/}
+                          
                               
                              {c}
                           
@@ -405,7 +379,7 @@ closeRegions(){
                    
                         {/*//////////////////////////////////////////////////////*/}
 
-                       {/*///FIRST COLUMN STARTS HERE (For Mobiles Devices)/////////////////////////*/}
+                       {/*///FIRST COLUMN STARTS HERE (For Mobiles Devices)/////////////////////////////////*/}
                             
                             <div className="col-sm-12 chooseRegion">
 
@@ -425,11 +399,11 @@ closeRegions(){
                                 
 
                             </div>
-                            
+                        {/* ////////////////////////////////////////////////////////////////////////////////*/}    
                             
                             <div className="col-lg-10 col-md-9">
     
-                                  <Table check={this.state.region}></Table>
+                                  <Table></Table>
 
                                   
                               <div className="scientificTerms">
@@ -489,144 +463,7 @@ closeRegions(){
                
                <div className="footerSet">
  
-                   <div className="footerStyle">
-                        
-                        <div className="container-fluid">
-                        
-                         <div className="row">
-
-                           <div className="col-lg-3 col-md-3 col-sm-12">
-
-
-                             <h1 className="text-center">COVID-19.LIVE</h1>
-                             <hr className="ruleTwo"></hr>
-                             <p className="live">VacCovid is an up to date vaccine and covid-19 tracker which has been
-                                landed in order to inform people from all over the planet about the present novel 
-                                coronavirus (COVID-19) pandemic.</p>
-                           
-                           </div>
-
-                           <div className="col-lg-3 col-md-3 col-sm-12">
-                           
-                              <h1 className="text-center">Vaccine</h1>
-                            
-                                 <hr className="ruleTwo"></hr>
- 
-                             
-                                   <p className="text-center">All Vaccines</p>
-                                   <p className="text-center">Pfizer</p>
-                                   <p className="text-center">Moderna</p>
-                                   <p className="text-center">Oxford</p>
-                                   <p className="text-center">Novavax</p>
-                                   <p className="text-center">Sinovac</p>
-
-                            
-
-                            <h1 className="text-center">Treatment</h1>
-                           
-                                <hr className="ruleTwo"></hr>
-
-                           
-                                   <p className="text-center">All Treatments</p>
-                                   <p className="text-center">Remdesivir</p>
-                                   <p className="text-center">Favilavir</p>
-                                   <p className="text-center">Chloroquine</p>
-                                   <p className="text-center">Ivermectin</p>
-                                   <p className="text-center">Tocilizumab</p>
-
-                         
-
-
-                           </div>
-
-                           <div className="col-lg-3 col-md-3 col-sm-12">
-
-                              <h1 className="text-center">COVID-19</h1>
-                          
-                                 <hr className="ruleTwo"></hr>
-
-                                   <div className="row">
-
-                                    <div className="col-lg-6 col-md-6 col-sm-12">
-                                   
-                                     <p className="text-center"><Link to={'/'}>World Data</Link></p>
-                                     
-                                     <p className="text-center"><Link>Canada</Link></p>
-                                     <p className="text-center"><Link>Australia</Link></p>
-                                     <p className="text-center"><Link>Japan</Link></p>
-                                     <p className="text-center"><Link>France</Link></p>
-                                     <p className="text-center"><Link>Netherlands</Link></p>
-
-                                     <p className="text-center"><Link>China</Link></p>
-                                     <p className="text-center"><Link>Columbia</Link></p>
-                                     <p className="text-center"><Link>Mexico</Link></p>
-                                     <p className="text-center"><Link>Preu</Link></p>
-                                     <p className="text-center"><Link>Spain</Link></p>
-                                     <p className="text-center"><Link>Ukraine</Link></p>
-                            
-                                   </div>
-                             
-                                   <div className="col-lg-6 col-md-6 col-sm-12">
-                             
-                                    <p className="text-center"><Link>United States of America</Link></p>
-                                    <p className="text-center"><Link>India</Link></p>
-                                    <p className="text-center"><Link>Brazil</Link></p>
-                                    <p className="text-center"><Link>Germany</Link></p>
-                                    <p className="text-center"><Link>United Kingdom</Link></p>
-                                    <p className="text-center"><Link>Italy</Link></p>
-
-                                    <p className="text-center"><Link>Chile</Link></p>
-                                    <p className="text-center"><Link>Denmark</Link></p>
-                                    <p className="text-center"><Link>Pakistan</Link></p>
-                                    <p className="text-center"><Link>Russia</Link></p>
-                                    <p className="text-center"><Link>Sweden</Link></p>
-                             
-                                  </div>
-                          
-                               </div>
-                          
-                           </div>
-
-                           <div className="col-lg-3 col-md-3 col-sm-12">
-
-                               <h1 className="text-center">News</h1>
-                           
-                                 <hr className="ruleTwo"></hr>  
-
-                                   <p className="text-center">Vaccine News</p>
-                                   <p className="text-center">COVID-19 News</p>
-                                   <p className="text-center">Health News</p>
-
-                             
-                          </div> 
-                         <hr className="ruleTwo"></hr>
-                     </div>
-
-                    <div className="container">
-                        
-                           <div className="row glyp">
-                          
-                              <span>
-                                <img src={LinkedIn} width="40" height="40"></img>
-                                <img src={Twitter} width="40" height="40"></img>
-                                <img src={Facebook} width="40" height="40"></img>
-                                <img src={Instagram} width="40" height="40"></img>
-                                
-                                </span>
-
-                           </div>
-                 
-                    </div>
-                       
-                   <div className="row">
-
-                          <h6 className="col text-center">Please let us know if we can provide and other additional features</h6>
-                        
-                  </div>
-              </div>
-
-
-          </div>
+                   <Footer></Footer>
 
 
        </div>

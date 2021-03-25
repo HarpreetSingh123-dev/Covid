@@ -658,12 +658,12 @@ setSouthAmericaData(){
                                 overflowY={true}
                                 subHeader={true}
                                 fixedHeaderScrollHeight={'800px'}
-                                subHeaderComponent={<h4 style={{color: "white"}}><b>Next Update In&nbsp;:&nbsp; <Countdown
+                                subHeaderComponent={<h5 style={{color: "white"}}><b>Next Update In&nbsp;:&nbsp; <Countdown
                                                      date={Date.now() + 900000}           
                                                      onComplete={this.fetchDataFromBackend}
                                                      ></Countdown>
                                                      </b>
-                                                     </h4>                  
+                                                     </h5>                  
                                                     }
                                 subHeaderAlign={'left'}
                                 
@@ -695,12 +695,6 @@ setSouthAmericaData(){
  
                     <div class="input-group mb-3">
                        
-                      {/* <div class="input-group-prepend">
-                         
-                           <span class="input-group-text" id="inputGroup-sizing-default"><b>Type Name Of The Country For Search</b></span>
-                       
-                 </div>*/}
-                        
                         <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" placeholder="Type here and press space after typing for search" onChange={this.change}></input>
  
                         
