@@ -1,9 +1,21 @@
 .showCountryWrapper .nav-item {
   margin: 8px;
+  width: 70%;
 }
 
 .showCountryWrapper .nav {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.showCountryWrapper .nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showCountryWrapper .nav-item a {
+  background-color: steelblue;
+  color: white;
 }

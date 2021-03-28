@@ -209,11 +209,11 @@ closeRegions(){
               
             b =(<div className="showRegions">
                  
-                 <button type="button" class="close" aria-label="Close" onClick={this.closeRegions}>
+                 <button type="button" class="close " aria-label="Close" onClick={this.closeRegions}>
                      <span aria-hidden="true">&times;</span>
                    </button>
                    
-                   
+                   {/*
                     <div className="showContinents">
                               
                                <h2 className="text-center"><b>Continents</b></h2>
@@ -235,22 +235,22 @@ closeRegions(){
                                </ul>    
 
 
-                    </div>
+                   </div>  */}
 
                     {/*/////////////////////////////////////////////////////////////////*/} 
 
                     <div className="showMostViewed">
 
-                              <h2 className="text-center"><b>Most Viewed</b></h2>
-
+                              <h2 className="text-center" style={{color: "white"}} ><b>Most Viewed</b></h2>
+                               <hr className="ruleThree"></hr>
                                 <ul class="nav nav-pills nav-stacked">
 
                                    <li class="nav-item">
-                                        <a class="nav-link active"><Link to={`/Country/USA/usa}`}>United States</Link></a>
-                                        <a class="nav-link active">Canada</a>
-                                        <a class="nav-link active">Australia</a>
-                                        <a class="nav-link active">United Kingdom</a>
-                                        <a class="nav-link active">India</a>
+                                        <a class="nav-link active" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/USA/usa`}><b>UNITED STATES</b></Link></a>
+                                        <a class="nav-link active" style={{color: "black",backgroundColor:'steelblue'}}><Link style={{color: "white"}} to={`/Country/CANADA/can`}><b>CANADA</b></Link></a>
+                                        <a class="nav-link active" style={{color: "black",backgroundColor:'steelblue'}}><Link style={{color: "white"}} to={`/Country/AUSTRALIA/aus`}><b>AUSTRALIA</b></Link></a>
+                                        <a class="nav-link active" style={{color: "black",backgroundColor:'steelblue'}}><Link style={{color: "white"}} to={`/Country/UK/gbr`}><b>UNITED KINGDOM</b></Link></a>
+                                        <a class="nav-link active" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/INDIA/ind`}><b>INDIA</b></Link></a>
         
                                    </li>
 
@@ -262,8 +262,8 @@ closeRegions(){
    
                    <div> 
                               
-                              <h2 className="text-center"><b>Countries</b></h2>
-                              
+                              <h2 className="text-center" style={{color: "white"}} ><b>Countries</b></h2>
+                              <hr className="ruleThree"></hr>
                                  { this.state.countries.map((cntry)=>
                 
                                      <ShowCountries
@@ -300,7 +300,7 @@ closeRegions(){
                          <div className="mostViewed">
 
                                  <h2 className="text-center" style={{color: "white"}}><b>Most Viewed</b></h2>
-                                 
+                                
                                      <ul class="nav nav-pills nav-stacked">
                       
                                         <li class="nav-item">
@@ -320,7 +320,7 @@ closeRegions(){
                          <div> 
                               
                                  <h2 className="text-center"style={{color: "white"}} ><b>Countries</b></h2>
-                                 
+                                
                                     { this.state.countries.map((cntry)=>
                    
                                         <Countries
@@ -386,7 +386,7 @@ closeRegions(){
                                 
                                 <div className="chooseButton">
                                 
-                                    <button type="button" className="btn btn-info" onClick={this.showRegions}>Choose Your Region</button>
+                                    <button type="button" className="btn btn-info" onClick={this.showRegions}>Click To Choose Your Region</button>
                                 
                                 </div>
  
@@ -396,7 +396,10 @@ closeRegions(){
 
                                 </div>
 
-                                
+                                <div className="continentBar">
+                                <h2 className="text-center">Choose Your Continent</h2>
+                                <hr className="rule"></hr>
+                                </div>
 
                             </div>
                         {/* ////////////////////////////////////////////////////////////////////////////////*/}    

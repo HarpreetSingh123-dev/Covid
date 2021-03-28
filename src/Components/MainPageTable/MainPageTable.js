@@ -12,7 +12,7 @@ import './MainPageTable.css'
 const R = require('ramda');
 const columns = [
     {
-      name: <h6 className="text-center">RANKING</h6>,
+      name: <h6 className="text-center"><b>RANKING</b></h6>,
       selector: 'number',
       center:true
      
@@ -648,7 +648,7 @@ setSouthAmericaData(){
 
                           <DataTable
               
-                                title={<h2><b>{this.state.continent}</b></h2>}
+                                title={<h3><b>{this.state.continent}</b></h3>}
                                 columns={columns}
                                 data={this.state.data}
                                 highlightOnHover={true}
@@ -658,11 +658,11 @@ setSouthAmericaData(){
                                 overflowY={true}
                                 subHeader={true}
                                 fixedHeaderScrollHeight={'800px'}
-                                subHeaderComponent={<h5 style={{color: "white"}}><b>Next Update In&nbsp;:&nbsp; <Countdown
+                                subHeaderComponent={<h5 style={{color: "white"}}>Next Update In&nbsp;:&nbsp; <Countdown
                                                      date={Date.now() + 900000}           
                                                      onComplete={this.fetchDataFromBackend}
                                                      ></Countdown>
-                                                     </b>
+                                                     
                                                      </h5>                  
                                                     }
                                 subHeaderAlign={'left'}

@@ -139,6 +139,10 @@
   background-color: rgb(66, 66, 66);
 }
 
+.MainPage .box .showRegions {
+  background-color: rgb(66, 66, 66);
+}
+
 /*///////////////////////////*/
 
 .MainPage .rule {
@@ -163,6 +167,33 @@
   );
   width: 80%;
 }
+
+.MainPage .ruleThree {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0)
+  );
+  width: 80%;
+}
+
+.MainPage .continentBar {
+  margin-top: 40px;
+}
+
+/*////////////////////////////*/
+
+.MainPage .showRegions .close {
+  position: absolute;
+  margin-left: 10px;
+  color: white;
+  font-size: xx-large;
+}
+
+/*/////////////////////////////*/
 
 .MainPage .footerSet {
   height: 60px;
