@@ -17,8 +17,9 @@ class SpecificCountry extends Component {
     
     this.state={
          loader:true,
+         dataLoader:true,
          countries:[],
-         specificCountryData:[]
+         specificCountryData:[],
 
     }
 
@@ -131,7 +132,33 @@ fetchDataFromBackend(){
  
 }
     
- setSpecificCountryData(){
+ setSpecificCountryData(data){
+
+    console.log("data below")
+    console.log(data)
+
+    var country= data.Country
+    var totalCases= data.TotalCases
+    var newCases=data.NewCases
+    var infectionRisk =data. Infection_Risk
+    var activeCases=data.ActiveCases
+    var seriousCritical=data.Serious_Critical 
+    var totalRecovered=data.TotalRecovered
+    var totalDeaths=data.TotalDeaths
+    var newDeaths=data.NewDeaths
+    var caseFatilityRate = data.Case_Fatality_Rate
+    var totalTests = data.TotalTests
+    var testPercentage = data.Test_Percentage
+    var recoveryProportion = data.Recovery_Proporation
+    
+    
+
+   const p =[{country,totalCases,totalDeaths,totalRecovered,activeCases,newCases,newDeaths,seriousCritical,infectionRisk, caseFatilityRate,totalTests,testPercentage,recoveryProportion}]
+
+   
+    this.setState({specificCountryData:p})
+    this.setState({dataLoader:false})
+    
 
  }   
  
@@ -208,6 +235,20 @@ fetchDataFromBackend(){
 
           
         }
+
+
+        var b = null
+
+        if(this.state.dataLoader){
+
+            b=(<Skeleton rows={80} height={20} color="lightgray"></Skeleton>)
+        }
+
+        else{
+
+             b=(<h1>{this.state.specificCountryData[0].country}</h1>)
+        }
+
         return (
             <div className="specificCountry">
                 
@@ -230,9 +271,19 @@ fetchDataFromBackend(){
                
                          <div className="col-lg-10 col-md-9">
 
-                              <h1>Second Column</h1>
+                              <div className="upperCountryContent">
+                              <div className="row">
+                              {b}
+                                {console.log(this.state)}
+                              </div>
+                              </div>
 
-                              <h1>Second Column</h1>
+                              <div className="tableCountryContent">
+                              <div className="row">
+
+
+                              </div>
+                              </div>
 
                
                          </div>
