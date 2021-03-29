@@ -4,6 +4,18 @@
   color: white;
 }
 
+.specificCountry .ruleTwo {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0)
+  );
+  width: 80%;
+}
+
 .specificCountry .footerStyle {
   left: 0;
   bottom: 0;
@@ -66,4 +78,87 @@
   justify-content: center;
   align-items: center;
   margin: 16px;
+}
+
+/*////////////////////////////////////////////////////////*/
+@media only screen and (max-width: 790px) {
+  .specificCountry .scrolling {
+    display: none;
+  }
+}
+
+@media (min-width: 791px) and (max-width: 2135px) {
+  .specificCountry .chooseRegion {
+    display: none;
+  }
+}
+
+/*///////////////////////////////////////////////////////*/
+
+.specificCountry .chooseRegion .chooseButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.specificCountry .chooseRegion .chooseButton .btn {
+  width: 90%;
+}
+
+/*///////////////////////////////////////////////////////*/
+
+.specificCountry .chooseRegion .showRegions {
+  border: 2px solid black;
+  background-color: lightgray;
+  height: 350px;
+  overflow: scroll;
+}
+
+.specificCountry .showRegions::-webkit-scrollbar {
+  display: none;
+}
+
+.specificCountry .showRegions .showMostViewed .nav-item {
+  margin: 8px;
+}
+
+.specificCountry .showRegions .showMostViewed .nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+.specificCountry .showRegions .showMostViewed .nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.specificCountry .chooseRegion .box {
+  position: relative;
+  top: -50px;
+}
+
+.specificCountry .box .showRegions {
+  background-color: rgb(66, 66, 66);
+}
+
+.specificCountry .ruleThree {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0)
+  );
+  width: 80%;
+}
+
+.specificCountry .showRegions .close {
+  position: absolute;
+  margin-left: 10px;
+  color: white;
+  font-size: xx-large;
 }

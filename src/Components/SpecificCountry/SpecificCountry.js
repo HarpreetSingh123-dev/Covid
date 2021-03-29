@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 
 import Navbar from '../Navbar/Navbar'
 import Countries from '../MainPage/Countries/Countries'
+import Regions from '../Regions/Regions'
 import Footer from '../Footer/Footer'
 
 class SpecificCountry extends Component {
@@ -20,12 +21,16 @@ class SpecificCountry extends Component {
          dataLoader:true,
          countries:[],
          specificCountryData:[],
+         showRegions: false
 
     }
 
     this.fetchDataFromBackend = this.fetchDataFromBackend.bind(this)
     this.setSpecificCountryData= this.setSpecificCountryData.bind(this)
     this.setCountries= this.setCountries.bind(this)
+
+    this.showRegions = this.showRegions.bind(this)
+    this.closeRegions = this.closeRegions.bind(this)
 
    
  }   
@@ -176,6 +181,17 @@ fetchDataFromBackend(){
     this.setState({countries:a})
     this.setState({loader:false})
  }
+
+
+ showRegions(){
+
+    this.setState({showRegions:true})
+ }
+
+ closeRegions(){
+
+    this.setState({showRegions:false})
+ }
     
     
     render() {
@@ -188,9 +204,11 @@ fetchDataFromBackend(){
         
         }
 
+        
+
         else{
 
-           a = ( <div>  
+           a = ( <div className="showRegions">  
                 
                   <div className="mostViewed">
 
@@ -233,6 +251,23 @@ fetchDataFromBackend(){
             
              ) 
 
+
+             var c = null
+            
+             if(this.state.showRegions){
+
+               c =( <div className="showRegions">
+               
+                     <Regions
+                
+                            clicked={this.closeRegions}
+                            countries={this.state.countries}
+                
+                     ></Regions>
+
+                    </div> )
+            }
+
           
         }
 
@@ -264,11 +299,26 @@ fetchDataFromBackend(){
                    
                            {a}
                   
-                        </div>  
-                
+                        </div> 
+
                         </div>
 
-               
+                        <div className="col-sm-12 chooseRegion">
+                         
+                            <div className="chooseButton">
+                                
+                                <button type="button" className="btn btn-info" onClick={this.showRegions}>Click To Choose Your Region</button>
+                            
+                            </div>
+
+                       
+
+                        <div className="box">
+
+                             {c}
+                        </div>
+
+                        </div>
                          <div className="col-lg-10 col-md-9">
 
                               <div className="upperCountryContent">

@@ -144,6 +144,15 @@ const columns = [
 
   ];
 
+  const customStyles = {
+
+    headCells: {
+      style: {
+        
+        backgroundColor: 'dimgrey'
+      },
+    },
+  }
 
 class MainPageTable extends Component {
     
@@ -666,6 +675,7 @@ setSouthAmericaData(){
                                                      </h5>                  
                                                     }
                                 subHeaderAlign={'left'}
+                                customStyles={customStyles}
                                 
                                
                                 /*conditionalRowStyles={conditionalRowStyles}*/
