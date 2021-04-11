@@ -16,7 +16,7 @@
 }
 
 .MainPage .countries .countryScroll {
-  height: 1175px;
+  height: 1280px;
   overflow: scroll;
 }
 
@@ -246,4 +246,10 @@
 
 .MainPage .glyp img {
   margin: 10px;
+}
+
+/*//////////////////////////////////////////////////////////*/
+
+.MainPage .MainPageChart .container-fluid {
+  width: 80%;
 }

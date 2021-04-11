@@ -5,6 +5,7 @@ import Navbar from '../Navbar/Navbar'
 import LiveCurrentTotals from './Totals/Totals'
 import Countries from './Countries/Countries'
 import ShowCountries from './Countries/ShowCountries'
+import MainPageChart from '../MainPageChart/MainPageChart'
 import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import Footer from '../Footer/Footer'
@@ -349,8 +350,12 @@ closeRegions(){
                             <div className="col-lg-10 col-md-9">
     
                                   <Table></Table>
-
-                                  
+                                
+                           {/*    <div className="row"> 
+                               <div className="col">
+                                <MainPageChart></MainPageChart>
+                                </div>
+        </div>*/}  
                               <div className="scientificTerms">
 
                                   <div className="container-fluid">
@@ -404,7 +409,22 @@ closeRegions(){
                     </div>
 
                </div>
-                
+
+               <div className="MainPageChart">
+               <div className="container-fluid">
+                             
+                      <div className="row"> 
+                              
+                                <div className="col-lg-12">
+                              
+                                <MainPageChart></MainPageChart>
+                              
+                                </div>
+               
+                      </div>  
+               
+               </div>
+               </div>
                
                <div className="footerSet">
  

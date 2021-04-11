@@ -162,3 +162,8 @@
   color: white;
   font-size: xx-large;
 }
+/* table styles below //////////////////////////////////////////*/
+
+.specificCountry .upperCountryContent .row {
+  border: 2px solid black;
+}
