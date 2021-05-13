@@ -82,50 +82,16 @@ componentDidMount(){
 
 setDataModel(data){
 
-    
-
-    var recData = data
-
-
    this.setState({data:data})
 
     
-  
- /* var k = "2020-02-21"
-    var length = data.elements 
-   
-    var finalObject =[]
-   
-    for(var i=1; i<= length; i++){
-
-        //var k = "2020-02-21"
-
-       
-
-        var c = new Date(k)
-
-        var f= c.toISOString()
-
-        var test  = f.toString().slice(0,10)
-
-        var p = recData.data[test].total_cases
-        console.log(recData.data[test].total_cases)
-        finalObject.push([k,p])
-        k= c.setDate(c.getDate()+1)
-
-        
-
-    }
-
-    this.setState({test2:finalObject})
-   */ 
 }
 
 
 setFinalData(){
 
     var recData = this.state.data
-    var k = "2020-02-21"
+    var k = "2020-02-20"
     var length = recData.elements 
     var lengthFinal = recData.data.length
 
@@ -133,10 +99,6 @@ setFinalData(){
     var finalObject =[['Year', 'Cases']]
    
     for(var i=1; i<= length; i++){
-
-        //var k = "2020-02-21"
-
-       
 
         var c = new Date(k)
 
@@ -148,7 +110,7 @@ setFinalData(){
         console.log(recData.data[test].total_cases,test,i,length,lengthFinal)
         finalObject.push([test,p])
 
-        if(i==405){
+        if(i==430){
             this.setState({test2:finalObject})
             //this.state.test2.push(finalObject)
             return
@@ -172,7 +134,7 @@ setFinalData(){
     
         return (
             <div>
-                <h1>Chart here</h1>
+                <h1>OVERALL TREND OF COVID CASES</h1>
                 <Chart
                    
                    width={'100%'}
@@ -188,8 +150,8 @@ setFinalData(){
                   options={{
                              // Material design options
                              chart: {
-                                      title: 'Company Performance',
-                                      subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                                      title: 'Covid cases across globe',
+                                      subtitle: 'Cases strating from : 2020-02-21',
                                     },
                           }}
                            
