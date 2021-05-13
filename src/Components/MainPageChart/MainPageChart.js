@@ -13,7 +13,7 @@ class MainPageChart extends Component {
 
         this.state={
             
-            test:[ ['Year', 'Cases'],
+           /* test:[ ['Year', 'Cases'],
                           
             ['2014', 76819],
             ['2015', 19237447],
@@ -33,7 +33,7 @@ class MainPageChart extends Component {
             ['2014', 1000],
             ['2015', 1170],
             ['2016', 660],
-           ],
+           ],*/
  
            test2:[ ],
            data:[]
@@ -110,7 +110,9 @@ setFinalData(){
         console.log(recData.data[test].total_cases,test,i,length,lengthFinal)
         finalObject.push([test,p])
 
-        if(i==430){
+        var steps = length - 30
+
+        if(i==steps){
             this.setState({test2:finalObject})
             //this.state.test2.push(finalObject)
             return
@@ -139,7 +141,7 @@ setFinalData(){
                    
                    width={'100%'}
                    height={'300px'}
-                   chartType="Bar"
+                   chartType="AreaChart"
                    loader={<div>Loading Chart</div>}
                    data={
                          
