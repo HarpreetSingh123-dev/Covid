@@ -410,20 +410,28 @@ closeRegions(){
 
                </div>
 
-               <div className="MainPageChart">
-               <div className="container-fluid">
-                             
-                      <div className="row"> 
-                              
-                                <div className="col-lg-12">
-                              
-                                <MainPageChart></MainPageChart>
-                              
-                                </div>
                
-                      </div>  
+               <div className="MainPageChart">
+               
+                    <div className="container-fluid">
+               
+                        <h2  className="text-center">Overall Trend Of Covid-19 Cases</h2>
+                
+                           <hr className="rule"></hr>
+                         
+                                 <div className="MainChartSet">
+                                    <MainPageChart></MainPageChart>
+                                 </div>
+                   </div>
                
                </div>
+
+               <div className="SecondChart">
+                 <h1>Chart No 2</h1>
+               </div>
+
+               <div className="ThirdChart">
+                 <h1>Chart No 3</h1>
                </div>
                
                <div className="footerSet">

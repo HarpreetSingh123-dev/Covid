@@ -249,7 +249,39 @@
 }
 
 /*//////////////////////////////////////////////////////////*/
-
+/*
 .MainPage .MainPageChart .container-fluid {
-  width: 80%;
+  width: 90%;
+}*/
+
+/*
+.MainPage .MainPageChart {
+  position: relative;
+  top: 30px;
+}
+*/
+
+/*
+.SecondChart {
+  position: relative;
+  border: 2px solid black;
+  top: 40px;
+}*/
+
+/*
+.ThirdChart {
+  position: relative;
+  border: 2px solid black;
+}*/
+
+.MainPage .MainPageChart {
+  position: relative;
+  top: 45px;
+}
+
+.MainPage .MainPageChart .MainChartSet {
+  position: relative;
+  top: 20px;
+  border: 2px solid black;
+  z-index: 10000;
 }

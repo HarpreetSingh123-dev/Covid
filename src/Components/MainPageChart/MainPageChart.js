@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './MainPageChart.css'
 import axios from 'axios'
 import { Chart } from "react-google-charts"
 
@@ -135,12 +136,16 @@ setFinalData(){
     
     
         return (
-            <div>
-                <h1>OVERALL TREND OF COVID CASES</h1>
+            <div className="MainChart">
+               
+                
+               
+               
+
                 <Chart
                    
                    width={'100%'}
-                   height={'300px'}
+                   height={'400px'}
                    chartType="AreaChart"
                    loader={<div>Loading Chart</div>}
                    data={
@@ -163,6 +168,8 @@ setFinalData(){
 
                          {console.log(this.state)}
             </div>
+
+            
         );
     }
 }
