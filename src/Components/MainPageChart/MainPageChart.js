@@ -13,35 +13,17 @@ class MainPageChart extends Component {
 
 
         this.state={
-            
-           /* test:[ ['Year', 'Cases'],
-                          
-            ['2014', 76819],
-            ['2015', 19237447],
-            ['2016', 88737839],
-            ['2017', 1030],
 
-            ['2014', 1000],
-            ['2015', 1170],
-            ['2016', 660],
-            ['2017', 1030],
-
-            ['2014', 1000],
-            ['2015', 1170],
-            ['2016', 660],
-            ['2017', 1030],
-
-            ['2014', 1000],
-            ['2015', 1170],
-            ['2016', 660],
-           ],*/
- 
-           test2:[ ],
+           totalCases:[],
+           activeCases:[],
+           criticalCases:[],
            data:[]
         }
 
         this.setDataModel= this.setDataModel.bind(this)
-        this.setFinalData = this.setFinalData.bind(this)
+        this.setTotalCasesData = this.setTotalCasesData.bind(this)
+        this.setActiveCasesData = this.setActiveCasesData.bind(this)
+        this.setCriticalCasesData = this.setCriticalCasesData.bind(this)
 
     }
     
@@ -70,34 +52,33 @@ componentDidMount(){
 
       }).then(this.setDataModel)
       
-         .then(this.setFinalData)
+         .then(this.setTotalCasesData)
+
+         .then(this.setActiveCasesData)
+
+         .then(this.setCriticalCasesData)
       
       .catch(function (error) {
           console.error(error);
       });
-
-
-
 
 }    
 
 setDataModel(data){
 
    this.setState({data:data})
-
-    
+   
 }
 
 
-setFinalData(){
+setTotalCasesData(){
+
 
     var recData = this.state.data
     var k = "2020-02-20"
     var length = recData.elements 
-    var lengthFinal = recData.data.length
 
-
-    var finalObject =[['Year', 'Cases']]
+    var finalObjectOne =[['Year', 'Reported Cases', 'Recovered Cases']]
    
     for(var i=1; i<= length; i++){
 
@@ -108,14 +89,17 @@ setFinalData(){
         var test  = f.toString().slice(0,10)
 
        var p = recData.data[test].total_cases
-        console.log(recData.data[test].total_cases,test,i,length,lengthFinal)
-        finalObject.push([test,p])
+
+       var r = recData.data[test].recovered
+        //console.log(recData.data[test].total_cases,test,i,length,lengthFinal)
+        finalObjectOne.push([test,p,r])
 
         var steps = length - 30
 
         if(i==steps){
-            this.setState({test2:finalObject})
+            this.setState({totalCases:finalObjectOne})
             //this.state.test2.push(finalObject)
+            //totalChart =finalObjectOne
             return
         }
 
@@ -125,12 +109,99 @@ setFinalData(){
         }
         
         
-    }
-
-    
-    
+    } 
 
 }
+
+setActiveCasesData(){
+    var recData = this.state.data
+    var k = "2020-02-20"
+    var length = recData.elements 
+
+
+    var finalObjectTwo =[['Year', 'Active Cases']]
+
+for(var i=1; i<= length; i++){
+
+    var c = new Date(k)
+
+    var f= c.toISOString()
+
+    var test  = f.toString().slice(0,10)
+
+   var p = recData.data[test].active_cases
+
+  
+  
+    
+    finalObjectTwo.push([test,p])
+
+    var steps = length - 30
+
+    if(i==steps){
+        this.setState({activeCases:finalObjectTwo})
+        //this.state.test2.push(finalObject)
+        return
+    }
+
+    else{
+        k= c.setDate(c.getDate()+1)
+
+    }
+    
+    
+
+
+
+}
+}
+
+setCriticalCasesData(){
+
+    var recData = this.state.data
+    var k = "2020-02-20"
+    var length = recData.elements 
+
+
+    var finalObjectThree =[['Year', 'Critical Cases' , 'Deaths']]
+
+    
+for(var i=1; i<= length; i++){
+
+    var c = new Date(k)
+
+    var f= c.toISOString()
+
+    var test  = f.toString().slice(0,10)
+
+   var p = recData.data[test].critical
+
+   var g = recData.data[test].deaths
+   
+    finalObjectThree.push([test,p,g])
+
+    var steps = length - 30
+
+    if(i==steps){
+        this.setState({criticalCases:finalObjectThree})
+        //this.state.test2.push(finalObject)
+        return
+    }
+
+    else{
+        k= c.setDate(c.getDate()+1)
+
+    }
+    
+    
+
+
+
+}
+
+
+}
+
 
     render() {
     
@@ -138,34 +209,61 @@ setFinalData(){
         return (
             <div className="MainChart">
                
+               <div>
                 
+                   <Chart
+                   
+                         width={'100%'}
+                         height={'450px'}
+                         chartType="AreaChart"
+                         loader={<div>Loading Chart</div>}
+                   
+                         data={this.state.totalCases}
+  
+                         options={{  title: 'Total Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                           
+                    />
                
-               
+               </div>          
 
-                <Chart
+               <div>
+
+               <Chart
                    
                    width={'100%'}
-                   height={'400px'}
+                   height={'450px'}
                    chartType="AreaChart"
                    loader={<div>Loading Chart</div>}
-                   data={
-                         
-                         this.state.test2
-                       
-                         }
-  
-                  options={{
-                             // Material design options
-                             chart: {
-                                      title: 'Covid cases across globe',
-                                      subtitle: 'Cases strating from : 2020-02-21',
-                                    },
-                          }}
-                           
-                          // For tests
-                          rootProps={{ 'data-testid': '2' }}
-                         />
+             
+                   data={this.state.activeCases}
 
+                   options={{  title: 'Active Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                     
+              />
+
+               </div>
+
+               <div>
+
+               <Chart
+                   
+                   width={'100%'}
+                   height={'450px'}
+                   chartType="AreaChart"
+                   loader={<div>Loading Chart</div>}
+             
+                   data={this.state.criticalCases}
+
+                   options={{  title: 'Critical Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                     
+              />
+
+
+
+
+               </div>
+                         
+                         
                          {console.log(this.state)}
             </div>
 

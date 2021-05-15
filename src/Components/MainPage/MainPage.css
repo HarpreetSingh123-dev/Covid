@@ -273,15 +273,15 @@
   position: relative;
   border: 2px solid black;
 }*/
-
+/*
 .MainPage .MainPageChart {
   position: relative;
   top: 45px;
 }
-
+*/
 .MainPage .MainPageChart .MainChartSet {
   position: relative;
   top: 20px;
-  border: 2px solid black;
-  z-index: 10000;
+  /*  border: 2px solid black;
+/*  z-index: 10000;*/
 }

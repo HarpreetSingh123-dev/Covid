@@ -426,13 +426,14 @@ closeRegions(){
                
                </div>
 
+               {/*
                <div className="SecondChart">
                  <h1>Chart No 2</h1>
                </div>
 
                <div className="ThirdChart">
                  <h1>Chart No 3</h1>
-               </div>
+               </div> */}
                
                <div className="footerSet">
  
