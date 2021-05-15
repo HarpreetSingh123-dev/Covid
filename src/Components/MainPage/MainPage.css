@@ -285,3 +285,7 @@
   /*  border: 2px solid black;
 /*  z-index: 10000;*/
 }
+
+.MainPage .MainPageChart {
+  margin-top: 50px;
+}

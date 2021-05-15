@@ -17,6 +17,7 @@ class MainPageChart extends Component {
            totalCases:[],
            activeCases:[],
            criticalCases:[],
+           ratio:[],
            data:[]
         }
 
@@ -24,6 +25,7 @@ class MainPageChart extends Component {
         this.setTotalCasesData = this.setTotalCasesData.bind(this)
         this.setActiveCasesData = this.setActiveCasesData.bind(this)
         this.setCriticalCasesData = this.setCriticalCasesData.bind(this)
+        this.setRatioComparison = this.setRatioComparison.bind(this)
 
     }
     
@@ -57,6 +59,8 @@ componentDidMount(){
          .then(this.setActiveCasesData)
 
          .then(this.setCriticalCasesData)
+
+         .then(this.setRatioComparison)
       
       .catch(function (error) {
           console.error(error);
@@ -121,39 +125,31 @@ setActiveCasesData(){
 
     var finalObjectTwo =[['Year', 'Active Cases']]
 
-for(var i=1; i<= length; i++){
+         for(var i=1; i<= length; i++){
 
-    var c = new Date(k)
+                  var c = new Date(k)
 
-    var f= c.toISOString()
+                  var f= c.toISOString()
 
-    var test  = f.toString().slice(0,10)
+                  var test  = f.toString().slice(0,10)
 
-   var p = recData.data[test].active_cases
+                  var p = recData.data[test].active_cases
 
-  
-  
-    
-    finalObjectTwo.push([test,p])
+                  finalObjectTwo.push([test,p])
 
-    var steps = length - 30
+                  var steps = length - 30
 
-    if(i==steps){
-        this.setState({activeCases:finalObjectTwo})
-        //this.state.test2.push(finalObject)
-        return
-    }
+                    if(i==steps){
+                       this.setState({activeCases:finalObjectTwo})
+                       //this.state.test2.push(finalObject)
+                       return
+                    }
 
-    else{
-        k= c.setDate(c.getDate()+1)
+                   else{
+                        k= c.setDate(c.getDate()+1)
 
-    }
-    
-    
-
-
-
-}
+                     }
+        }
 }
 
 setCriticalCasesData(){
@@ -203,13 +199,59 @@ for(var i=1; i<= length; i++){
 }
 
 
+setRatioComparison(){
+
+    
+    var recData = this.state.data
+    var k = "2020-02-20"
+    var length = recData.elements 
+
+
+    var finalObjectFour =[['Year', 'Recovery Ratio' , 'Death Ratio']]
+
+    for(var i=1; i<= length; i++){
+
+        var c = new Date(k)
+    
+        var f= c.toISOString()
+    
+        var test  = f.toString().slice(0,10)
+    
+       var p = recData.data[test].recovery_ratio
+    
+       var g = recData.data[test].death_ratio
+       
+        finalObjectFour.push([test,p,g])
+    
+        var steps = length - 30
+    
+        if(i==steps){
+            this.setState({ratio:finalObjectFour})
+            //this.state.test2.push(finalObject)
+            return
+        }
+    
+        else{
+            k= c.setDate(c.getDate()+1)
+    
+        }
+        
+        
+    
+    
+    
+    }
+
+}
+
+
     render() {
     
     
         return (
             <div className="MainChart">
                
-               <div>
+               <div className="Set shadow-lg rounded">
                 
                    <Chart
                    
@@ -226,7 +268,7 @@ for(var i=1; i<= length; i++){
                
                </div>          
 
-               <div>
+               <div className="Set shadow-lg rounded">
 
                <Chart
                    
@@ -243,7 +285,7 @@ for(var i=1; i<= length; i++){
 
                </div>
 
-               <div>
+               <div className="Set shadow-lg rounded">
 
                <Chart
                    
@@ -260,6 +302,23 @@ for(var i=1; i<= length; i++){
 
 
 
+
+               </div>
+
+               <div className="Set shadow-lg rounded">
+
+               <Chart
+                   
+                   width={'100%'}
+                   height={'450px'}
+                   chartType="AreaChart"
+                   loader={<div>Loading Chart</div>}
+             
+                   data={this.state.ratio}
+
+                   options={{  title: 'Recovery Ratio VS Death Ratio', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                     
+              />
 
                </div>
                          
