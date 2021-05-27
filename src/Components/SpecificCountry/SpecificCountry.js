@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './SpecificCountry.css'
 import axios from 'axios'
 import Skeleton from '@yisheng90/react-loading';
+import ReactCountryFlag from 'react-country-flag'
 import {Link} from 'react-router-dom'
 
 import Navbar from '../Navbar/Navbar'
@@ -21,7 +22,8 @@ class SpecificCountry extends Component {
          dataLoader:true,
          countries:[],
          specificCountryData:[],
-         showRegions: false
+         showRegions: false,
+         codeForFlag:''
 
     }
 
@@ -62,7 +64,7 @@ fetchDataFromBackend(){
     var country = this.props.match.params.id.toLowerCase()
     var countryCode = this.props.match.params.type
     var setCountry 
-    
+     
    if ( country === 'usa' || country === 'uk'){
   
             var b = country.toUpperCase()
@@ -106,6 +108,15 @@ fetchDataFromBackend(){
        'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
      }
    };
+
+   var options3 = {
+    method: 'GET',
+    url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/api-covid-data/reports/${countryCode}`,
+    headers: {
+      'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+      'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+    }
+  };
    
    //First axios request for specific country stats//
    axios.request(options1).then(function (response) {
@@ -137,6 +148,18 @@ fetchDataFromBackend(){
       });
  
   /////////////////////////////////////////////////////////////////////////////
+
+  //////////Third axios request for fetching sates of particular country///////
+
+  axios.request(options3).then(function (response) {
+  
+    console.log("specific country states below")
+    console.log(response.data);
+  
+  }).catch(function (error) {
+  
+    console.error(error);
+  });
  
 }
  
@@ -159,13 +182,14 @@ fetchDataFromBackend(){
     var totalTests = data.TotalTests
     var testPercentage = data.Test_Percentage
     var recoveryProportion = data.Recovery_Proporation
-    
+    var flagSymbol =data.TwoLetterSymbol
     
 
    const p =[{country,totalCases,totalDeaths,totalRecovered,activeCases,newCases,newDeaths,seriousCritical,infectionRisk, caseFatilityRate,totalTests,testPercentage,recoveryProportion}]
 
    
     this.setState({specificCountryData:p})
+    this.setState({codeForFlag:flagSymbol.toUpperCase()})
     this.setState({dataLoader:false})
     
 
@@ -289,7 +313,71 @@ fetchDataFromBackend(){
 
         else{
 
-             b=(<h1>{this.state.specificCountryData[0].country}</h1>)
+             b=(<div className="topCountryStats shadow p-3 mb-5  rounded">
+               
+                <div className="row">
+
+                <div className="col-lg-8 col-md-12 col-sm-12">
+                   <h1 style={{color: "white"}}><b>{this.state.specificCountryData[0].country.toUpperCase()}</b></h1>
+                  
+                   <div>
+
+                         <div className="row">
+
+                           <div className="col-lg-6">
+                                
+                                
+                                <ul>
+                                     <h5 style={{color: "white"}} ><b>Total Cases:</b>&nbsp;{this.state.specificCountryData[0].totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     <h5 style={{color: "white"}}><b>New Cases:&nbsp;</b>{this.state.specificCountryData[0].newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     <h5 style={{color: "white"}}><b>Infection Risk:&nbsp;</b>{this.state.specificCountryData[0].infectionRisk}</h5>
+                                     <h5 style={{color: "white"}}><b>Active Cases:&nbsp;</b>{this.state.specificCountryData[0].activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     <h5 style={{color: "white"}}><b>Serious Critical:&nbsp;</b>{this.state.specificCountryData[0].seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     <h5 style={{color: "white"}} ><b>Total Recovered:&nbsp;</b>{this.state.specificCountryData[0].totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                
+                                </ul>
+                           
+                           </div>
+
+                           <div className="col-lg-6">
+
+                                <ul>
+                                    <h5 style={{color: "white"}} ><b>Total Deaths:&nbsp;</b>{this.state.specificCountryData[0].totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                    <h5 style={{color: "white"}}><b>New Deaths:&nbsp;</b>{this.state.specificCountryData[0].newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                    <h5 style={{color: "white"}}><b>Case Fatility Rate:&nbsp;</b>{this.state.specificCountryData[0].caseFatilityRate}</h5>
+                                    <h5 style={{color: "white"}} ><b>Total Tests:&nbsp;</b>{this.state.specificCountryData[0].totalDeaths}</h5>
+                                    <h5 style={{color: "white"}} ><b>Test Percentage:&nbsp;</b>{this.state.specificCountryData[0].testPercentage}</h5>
+                                    <h5 style={{color: "white"}}><b>Recovery Proportion:&nbsp;</b>{this.state.specificCountryData[0].recoveryProportion}</h5>
+
+
+                                </ul>
+                           
+                           </div>
+
+
+                         </div>
+
+                   </div>
+
+
+                </div>
+                
+                <div className="col-lg-4 col-md-12 col-sm-12">
+                <ReactCountryFlag countryCode={this.state.codeForFlag} 
+                
+                svg
+                style={{
+                    width: 'auto',
+                    height: 'auto',
+                }}
+                
+                
+                />
+               </div>
+               </div>
+               </div>
+               
+               )
         }
 
         return (
@@ -301,7 +389,7 @@ fetchDataFromBackend(){
                
                      <div className="row">
                
-                         <div className="col-lg-2  col-md-3 scrolling">
+                         <div className="col-lg-2  col-md-3 scrolling shadow p-3 mb-5  rounded">
                 
                          <div>  
                    
@@ -330,10 +418,10 @@ fetchDataFromBackend(){
                          <div className="col-lg-10 col-md-9">
 
                               <div className="upperCountryContent">
-                              <div className="row">
+                              
                               {b}
                                 {console.log(this.state)}
-                              </div>
+                             
                               </div>
 
                               <div className="tableCountryContent">

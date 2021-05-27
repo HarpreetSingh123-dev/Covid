@@ -163,7 +163,15 @@
   font-size: xx-large;
 }
 /* table styles below //////////////////////////////////////////*/
-
+/*
 .specificCountry .upperCountryContent .row {
   border: 2px solid black;
+}*/
+
+.specificCountry .topCountryStats {
+  background-color: rgb(66, 66, 66);
+}
+
+.specificCountry .topCountryStats h1 {
+  margin-left: 35px;
 }
