@@ -120,6 +120,13 @@ setFinalMapData(){
    // console.log(countryData[i].Country, length)
    
     var country = countryData[i].Country
+
+    if(country==='USA'){
+
+      country = 'United States'
+
+    }
+
     var totalCases =  countryData[i].TotalCases
     var newCases = countryData[i].NewCases
 
