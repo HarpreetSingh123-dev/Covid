@@ -14,7 +14,8 @@ class Maps extends Component {
 
      
       countryData:[],
-      mapDataSet:''
+      mapDataSet:'',
+      
 
     }
 
@@ -25,6 +26,7 @@ class Maps extends Component {
     this.setFinalMapData=this.setFinalMapData.bind(this)
 
     //this.test = this.test.bind(this)
+
   }
 
 componentDidMount(){
@@ -47,10 +49,6 @@ fetchDataFromBackend(){
   };
   
 
-////////////////////////////////////////////////////////////////////////////////////////////
-/////////////Second axios request for fetching list of Countries///////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
-
   axios.request(options1).then(function (response) {
     
     const countries = response.data
@@ -66,37 +64,18 @@ fetchDataFromBackend(){
      });
 //////////////////////////////////////////////////////////////////////////////////////
 
-}
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+}
 
 
 setCountryStats(countries){
 
- //console.log(countries)
+
   this.setState({countryData:countries})
 
 }
-/*
-setCountries(country){
-
-      var a =[]  
-      var countrySet = country
-
-      countrySet.map((p)=>{
-               
-                  var b = p.Country
-
-                  //var c = b.charAt(0).toLowerCase() + b.slice(1);
-
-                  a.push(b)
-              })
-
-
-
-      this.setState({countries:a})
-
-
-}*/
 
 
 setFinalMapData(){
@@ -117,8 +96,6 @@ setFinalMapData(){
 
   for(var i=2 ; i<length ;i++){
 
-   // console.log(countryData[i].Country, length)
-   
     var country = countryData[i].Country
 
     if(country==='USA'){
@@ -152,7 +129,7 @@ setFinalMapData(){
           <h1>Map Component</h1>      
 
           <Chart
-                 width={'100%'}
+                 width={'98%'}
                  height={'90%'}
                  chartType="GeoChart"
                  data={
@@ -160,8 +137,12 @@ setFinalMapData(){
                       }
   // Note: you will need to get a mapsApiKey for your project.
   // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-               mapsApiKey="YOUR_KEY_HERE"
+               mapsApiKey="AIzaSyBhMvalaSIEsFtlV76QplAaPI614tpVb4k"
                rootProps={{ 'data-testid': '1' }} />
+
+          
+
+
             </div>
         );
     }
