@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { Chart } from "react-google-charts"
+import './Map.css'
+
+import Skeleton from '@yisheng90/react-loading'
+
+import Navbar from '../Navbar/Navbar'
+import Footer from '../Footer/Footer'
 
 import axios from 'axios'
 const R = require('ramda');
@@ -15,6 +21,7 @@ class Maps extends Component {
      
       countryData:[],
       mapDataSet:'',
+      loader:true
       
 
     }
@@ -114,6 +121,7 @@ setFinalMapData(){
   }
   this.setState({mapDataSet:finalSet})
   console.log(this.state.mapDataSet)
+  this.setState({loader:false})
 
 }
 
@@ -121,30 +129,45 @@ setFinalMapData(){
 
   render() {
  
+    var a = null
+
+    if(this.state.loader){
+   
+       a =(<Skeleton rows={30} color="lightgray"></Skeleton>)
+
+    }
+
+    else{
+
+      a =(<Chart
+        width={'98%'}
+        height={'92%'}
+        chartType="GeoChart"
+        data={
+         this.state.mapDataSet
+             }
+            // Note: you will need to get a mapsApiKey for your project.
+           // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        mapsApiKey=""
+        rootProps={{ 'data-testid': '1' }} />)
+    }
  
     return (
  
  
-       <div>
-          <h1>Map Component</h1>      
+       <div className="worldMap">
 
-          <Chart
-                 width={'98%'}
-                 height={'90%'}
-                 chartType="GeoChart"
-                 data={
-                  this.state.mapDataSet
-                      }
-  // Note: you will need to get a mapsApiKey for your project.
-  // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-               mapsApiKey=""
-               rootProps={{ 'data-testid': '1' }} />
+          <Navbar mapPage={true}></Navbar>   
+               
+          {a}
+                
+          <div className="footerSet">
+              <Footer></Footer>
+          </div>
 
-          
-
-
-            </div>
-        );
+      </div>
+      
+      );
     }
 }
 

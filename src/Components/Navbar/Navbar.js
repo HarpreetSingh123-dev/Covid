@@ -4,7 +4,22 @@ import {Link} from 'react-router-dom'
 import Image1 from '../../Images/symbol1.jpg'
 
 function Navbar(props) {
-    return (
+   
+  var a 
+
+  if(props.mapPage){
+             a = null
+          }
+
+  else {
+
+        a = (<li className="nav-item active">
+             <Link to={'/Map'}className="nav-link">Map</Link>
+             </li>
+            )
+      }
+      
+   return (
         <div className="navbarWrapper">
             
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,10 +52,8 @@ function Navbar(props) {
                          <Link to={'/Treatment'}className="nav-link">Treatment</Link>
                        </li>
 
-                       <li className="nav-item active">
-                         {/*<a className="nav-link">Map</a>*/}
-                         <Link to={'/Map'}className="nav-link">Map</Link>
-                       </li>
+{a}
+                       
 
                        <li className="nav-item active">
                          {/*<a className="nav-link">News</a>*/}
