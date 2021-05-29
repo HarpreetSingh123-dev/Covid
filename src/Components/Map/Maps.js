@@ -129,7 +129,7 @@ setFinalMapData(){
           <h1>Map Component</h1>      
 
           <Chart
-                 width={'98%'}
+                 width={'96%'}
                  height={'90%'}
                  chartType="GeoChart"
                  data={
