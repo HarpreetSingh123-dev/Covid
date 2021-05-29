@@ -129,7 +129,7 @@ setFinalMapData(){
           <h1>Map Component</h1>      
 
           <Chart
-                 width={'96%'}
+                 width={'98%'}
                  height={'90%'}
                  chartType="GeoChart"
                  data={
@@ -137,7 +137,7 @@ setFinalMapData(){
                       }
   // Note: you will need to get a mapsApiKey for your project.
   // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-               mapsApiKey="AIzaSyBhMvalaSIEsFtlV76QplAaPI614tpVb4k"
+               mapsApiKey=""
                rootProps={{ 'data-testid': '1' }} />
 
           
