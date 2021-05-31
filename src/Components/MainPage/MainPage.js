@@ -355,7 +355,8 @@ closeRegions(){
                                <div className="col">
                                 <MainPageChart></MainPageChart>
                                 </div>
-        </div>*/}  
+                                </div>*/}
+                                  
                               <div className="scientificTerms">
 
                                   <div className="container-fluid">

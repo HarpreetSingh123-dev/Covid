@@ -318,13 +318,14 @@ fetchDataFromBackend(){
                 <div className="row">
 
                 <div className="col-lg-8 col-md-12 col-sm-12">
-                   <h1 style={{color: "white"}}><b>{this.state.specificCountryData[0].country.toUpperCase()}</b></h1>
+                   <h1  className="text-center" style={{color: "white"}}><b>{this.state.specificCountryData[0].country.toUpperCase()}</b></h1>
                   
                    <div>
 
                          <div className="row">
 
-                           <div className="col-lg-6">
+                        
+                           <div className=" test col col-lg-6 col-sm-12">
                                 
                                 
                                 <ul>
@@ -339,7 +340,8 @@ fetchDataFromBackend(){
                            
                            </div>
 
-                           <div className="col-lg-6">
+                        
+                           <div className="test col col-lg-6 col-sm-12">
 
                                 <ul>
                                     <h5 style={{color: "white"}} ><b>Total Deaths:&nbsp;</b>{this.state.specificCountryData[0].totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
@@ -353,7 +355,7 @@ fetchDataFromBackend(){
                                 </ul>
                            
                            </div>
-
+                    
 
                          </div>
 

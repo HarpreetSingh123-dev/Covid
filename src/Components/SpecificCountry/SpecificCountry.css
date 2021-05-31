@@ -1,3 +1,8 @@
+.specificCountry {
+  position: relative;
+  top: 80px;
+}
+
 .specificCountry .footerSet {
   height: 60px;
   width: 100%;
@@ -172,6 +177,13 @@
   background-color: rgb(66, 66, 66);
 }
 
+/*
 .specificCountry .topCountryStats h1 {
   margin-left: 35px;
+}*/
+
+.specificCountry .test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

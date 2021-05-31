@@ -97,7 +97,7 @@ setFinalMapData(){
 
   var length = this.state.countryData.length
 
-  var finalSet =[['Country', 'Total Cases' , 'New Cases']]
+  var finalSet =[['Country', 'Total Cases' , 'Total Deaths']]
 
 
 
@@ -112,9 +112,9 @@ setFinalMapData(){
     }
 
     var totalCases =  countryData[i].TotalCases
-    var newCases = countryData[i].NewCases
-
-    var d = [country,totalCases,newCases]
+    var totalDeaths = countryData[i].TotalDeaths
+    
+    var d = [country,totalCases,totalDeaths]
 
     finalSet.push(d)
 

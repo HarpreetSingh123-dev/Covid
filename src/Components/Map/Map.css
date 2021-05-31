@@ -1,3 +1,8 @@
+.worldMap {
+  position: relative;
+  top: 80px;
+}
+
 .worldMap .footerSet {
   height: 60px;
   width: 100%;

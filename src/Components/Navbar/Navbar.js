@@ -6,9 +6,11 @@ import Image1 from '../../Images/symbol1.jpg'
 function Navbar(props) {
    
   var a 
+  var b = null
 
   if(props.mapPage){
              a = null
+             b =   "fixed-top"
           }
 
   else {
@@ -17,12 +19,13 @@ function Navbar(props) {
              <Link to={'/Map'}className="nav-link">Map</Link>
              </li>
             )
+            b =   "fixed-top"
       }
       
    return (
         <div className="navbarWrapper">
             
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className={`navbar navbar-expand-lg navbar-dark bg-dark ${b}`}>
   
                <a className="navbar-brand">
 
