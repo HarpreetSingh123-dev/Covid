@@ -34,14 +34,15 @@ class SpecificCountry extends Component {
     this.showRegions = this.showRegions.bind(this)
     this.closeRegions = this.closeRegions.bind(this)
 
-   
+    this.myRef = React.createRef()
  }   
 
 ////////////////////////////////////////////////////////////////////////////////// 
-componentDidMount(){
+componentDidMount(){  
 
     this.fetchDataFromBackend()
-   
+
+   this.myRef.current.scrollTo(0, 0);
 }    
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -327,22 +328,68 @@ fetchDataFromBackend(){
                         
                            <div className=" test col col-lg-6 col-sm-12">
                                 
-                                
+                                {/*
                                 <ul>
-                                     <h5 style={{color: "white"}} ><b>Total Cases:</b>&nbsp;{this.state.specificCountryData[0].totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     <h5 style={{color: "white"}}><b>New Cases:&nbsp;</b>{this.state.specificCountryData[0].newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     <h5 style={{color: "white"}}><b>Infection Risk:&nbsp;</b>{this.state.specificCountryData[0].infectionRisk}</h5>
-                                     <h5 style={{color: "white"}}><b>Active Cases:&nbsp;</b>{this.state.specificCountryData[0].activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     <h5 style={{color: "white"}}><b>Serious Critical:&nbsp;</b>{this.state.specificCountryData[0].seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     <h5 style={{color: "white"}} ><b>Total Recovered:&nbsp;</b>{this.state.specificCountryData[0].totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     <h5  style={{color: "white"}} ><b>Total Cases:</b>&nbsp;{this.state.specificCountryData[0].totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     
+                                     <h5  style={{color: "white"}}><b>New Cases:&nbsp;</b>{this.state.specificCountryData[0].newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     
+                                     <h5  style={{color: "white"}}><b>Infection Risk:&nbsp;</b>{this.state.specificCountryData[0].infectionRisk}</h5>
+                                     
+                                     <h5  style={{color: "white"}}><b>Active Cases:&nbsp;</b>{this.state.specificCountryData[0].activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     
+                                     <h5  style={{color: "white"}}><b>Serious Critical:&nbsp;</b>{this.state.specificCountryData[0].seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
+                                     
+                                     <h5  style={{color : "white"}} ><b>Total Recovered:&nbsp;</b>{this.state.specificCountryData[0].totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
                                 
-                                </ul>
+                                
+                                 </ul>
+                                */}
+
+                                <table className="test2">
+ 
+                                 <tr >
+                                    <td ><h5  style={{color: "white"}} ><b>Total Cases:</b>&nbsp;</h5></td>
+                                    <td className="test3"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+  
+                                 <tr>
+                                    <td><h5  style={{color: "white"}}><b>New Cases:&nbsp;</b></h5></td>
+                                    <td className="test3"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                     <td><h5  style={{color: "white"}}><b>Infection Risk:&nbsp;</b></h5></td>
+                                     <td className="test3"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].infectionRisk}%</h5></td>
+                                     
+                                 </tr>
+                                 
+                                 <tr>
+                                    <td><h5  style={{color: "white"}}><b>Active Cases:&nbsp;</b></h5></td>
+                                    <td className="test3"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td><h5  style={{color: "white"}}><b>Serious Critical:&nbsp;</b></h5></td>
+                                    <td className="test3"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td><h5  style={{color :"white"}} ><b>Total Recovered:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h5></td>
+                                    <td className="test3"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+
+
+                               </table>
+                            
+                                
                            
                            </div>
 
                         
                            <div className="test col col-lg-6 col-sm-12">
-
+  
+                              {/*
                                 <ul>
                                     <h5 style={{color: "white"}} ><b>Total Deaths:&nbsp;</b>{this.state.specificCountryData[0].totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
                                     <h5 style={{color: "white"}}><b>New Deaths:&nbsp;</b>{this.state.specificCountryData[0].newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
@@ -353,7 +400,44 @@ fetchDataFromBackend(){
 
 
                                 </ul>
-                           
+                              */}
+
+                               <table className="test2">
+
+                                 <tr>
+                                    <td><h5 style={{color: "white"}} ><b>Total Deaths:&nbsp;</b></h5></td>
+                                    <td className="test4"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+
+
+                                 <tr>
+                                     <td><h5 style={{color: "white"}}><b>New Deaths:&nbsp;</b></h5></td>
+                                     <td className="test4"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td><h5 style={{color: "white"}}><b>Case Fatility&nbsp;</b></h5></td>
+                                    <td className="test4"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].caseFatilityRate}</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td><h5 style={{color: "white"}} ><b>Total Tests:&nbsp;</b></h5></td>
+                                    <td className="test4"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].totalDeaths}</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td><h5 style={{color: "white"}} ><b>Test Percentage:&nbsp;</b></h5></td>
+                                    <td className="test4"><h5 style={{color: "white"}} >{this.state.specificCountryData[0].testPercentage}%</h5></td>
+                                 </tr>
+
+                                 <tr>
+                                    <td><h5 style={{color: "white"}}><b>Recovery Fraction:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></h5></td>
+                                    <td className="test4"><h5 style={{color: "white"}}>{this.state.specificCountryData[0].recoveryProportion}%</h5></td>
+                                 </tr>
+
+
+                               </table>
+
                            </div>
                     
 
@@ -383,7 +467,7 @@ fetchDataFromBackend(){
         }
 
         return (
-            <div className="specificCountry">
+            <div className="specificCountry" ref={this.myRef} >
                 
                 <Navbar></Navbar>
                

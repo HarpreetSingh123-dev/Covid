@@ -187,3 +187,22 @@
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 790px) {
+  .specificCountry .upperCountryContent {
+    margin-top: 45px;
+  }
+
+  .specificCountry .test2 {
+    width: 400px;
+  }
+
+  .specificCountry .test3 {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .specificCountry .test4 {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
