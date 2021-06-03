@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './MainPageChart.css'
 import axios from 'axios'
 import { Chart } from "react-google-charts"
-
+import Skeleton from '@yisheng90/react-loading';
+//import Loader from "react-loader-spinner";
+//import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 class MainPageChart extends Component {
     
@@ -18,7 +20,13 @@ class MainPageChart extends Component {
            activeCases:[],
            criticalCases:[],
            ratio:[],
-           data:[]
+           data:[],
+
+           totalCasesLoader:true,
+           activeCasesLoader:true,
+           criticalCasesLoader:true,
+           ratioLoader:true
+           
         }
 
         this.setDataModel= this.setDataModel.bind(this)
@@ -78,122 +86,106 @@ setDataModel(data){
 setTotalCasesData(){
 
 
-    var recData = this.state.data
-    var k = "2020-02-20"
-    var length = recData.elements 
+    var recData = this.state.data;
+    var k = "2020-02-20";
+    var length = recData.elements;
 
-    var finalObjectOne =[['Year', 'Reported Cases', 'Recovered Cases']]
-   
-    for(var i=1; i<= length; i++){
+    var finalObjectOne = [["Year", "Recovered Cases", "Reported Cases"]];
 
-        var c = new Date(k)
+    for (var i = 1; i <= length; i++) {
+      var c = new Date(k);
 
-        var f= c.toISOString()
+      var f = c.toISOString();
 
-        var test  = f.toString().slice(0,10)
+      var test = f.toString().slice(0, 10);
 
-       var p = recData.data[test].total_cases
+      var p = recData.data[test].total_cases;
 
-       var r = recData.data[test].recovered
-        //console.log(recData.data[test].total_cases,test,i,length,lengthFinal)
-        finalObjectOne.push([test,p,r])
+      var r = recData.data[test].recovered;
+      //console.log(recData.data[test].total_cases,test,i,length,lengthFinal)
+      finalObjectOne.push([test, r, p]);
 
-        var steps = length - 30
+      var steps = length - 30;
 
-        if(i==steps){
-            this.setState({totalCases:finalObjectOne})
-            //this.state.test2.push(finalObject)
-            //totalChart =finalObjectOne
-            return
-        }
+      if (i == steps) {
+        this.setState({ totalCases: finalObjectOne });
+        //this.state.test2.push(finalObject)
+        //totalChart =finalObjectOne
+        return;
+      } else {
+        k = c.setDate(c.getDate() + 1);
+      }
 
-        else{
-            k= c.setDate(c.getDate()+1)
-
-        }
-        
-        
+      this.setState({ totalCasesLoader: false });
     } 
 
 }
 
 setActiveCasesData(){
-    var recData = this.state.data
-    var k = "2020-02-20"
-    var length = recData.elements 
+    var recData = this.state.data;
+    var k = "2020-02-20";
+    var length = recData.elements;
 
+    var finalObjectTwo = [["Year", "Active Cases"]];
 
-    var finalObjectTwo =[['Year', 'Active Cases']]
+    for (var i = 1; i <= length; i++) {
+      var c = new Date(k);
 
-         for(var i=1; i<= length; i++){
+      var f = c.toISOString();
 
-                  var c = new Date(k)
+      var test = f.toString().slice(0, 10);
 
-                  var f= c.toISOString()
+      var p = recData.data[test].active_cases;
 
-                  var test  = f.toString().slice(0,10)
+      finalObjectTwo.push([test, p]);
 
-                  var p = recData.data[test].active_cases
+      var steps = length - 30;
 
-                  finalObjectTwo.push([test,p])
+      if (i == steps) {
+        this.setState({ activeCases: finalObjectTwo });
+        //this.state.test2.push(finalObject)
+        return;
+      } else {
+        k = c.setDate(c.getDate() + 1);
+      }
 
-                  var steps = length - 30
-
-                    if(i==steps){
-                       this.setState({activeCases:finalObjectTwo})
-                       //this.state.test2.push(finalObject)
-                       return
-                    }
-
-                   else{
-                        k= c.setDate(c.getDate()+1)
-
-                     }
-        }
+      this.setState({ activeCasesLoader: false });
+    }
 }
 
 setCriticalCasesData(){
 
-    var recData = this.state.data
-    var k = "2020-02-20"
-    var length = recData.elements 
+    var recData = this.state.data;
+    var k = "2020-02-20";
+    var length = recData.elements;
 
+    var finalObjectThree = [["Year", "Critical Cases", "Deaths"]];
 
-    var finalObjectThree =[['Year', 'Critical Cases' , 'Deaths']]
+    for (var i = 1; i <= length; i++) {
+      var c = new Date(k);
 
-    
-for(var i=1; i<= length; i++){
+      var f = c.toISOString();
 
-    var c = new Date(k)
+      var test = f.toString().slice(0, 10);
 
-    var f= c.toISOString()
+      var p = recData.data[test].critical;
 
-    var test  = f.toString().slice(0,10)
+      var g = recData.data[test].deaths;
 
-   var p = recData.data[test].critical
+      finalObjectThree.push([test, p, g]);
 
-   var g = recData.data[test].deaths
-   
-    finalObjectThree.push([test,p,g])
+      var steps = length - 30;
 
-    var steps = length - 30
-
-    if(i==steps){
-        this.setState({criticalCases:finalObjectThree})
+      if (i == steps) {
+        this.setState({ criticalCases: finalObjectThree });
         //this.state.test2.push(finalObject)
-        return
+        return;
+      } else {
+        k = c.setDate(c.getDate() + 1);
+      }
+
+      this.setState({ criticalCasesLoader: false });
     }
-
-    else{
-        k= c.setDate(c.getDate()+1)
-
-    }
-    
-    
-
-
-
-}
 
 
 }
@@ -202,129 +194,156 @@ for(var i=1; i<= length; i++){
 setRatioComparison(){
 
     
-    var recData = this.state.data
-    var k = "2020-02-20"
-    var length = recData.elements 
+    var recData = this.state.data;
+    var k = "2020-02-20";
+    var length = recData.elements;
 
+    var finalObjectFour = [["Year", "Recovery Ratio", "Death Ratio"]];
 
-    var finalObjectFour =[['Year', 'Recovery Ratio' , 'Death Ratio']]
+    for (var i = 1; i <= length; i++) {
+      var c = new Date(k);
 
-    for(var i=1; i<= length; i++){
+      var f = c.toISOString();
 
-        var c = new Date(k)
-    
-        var f= c.toISOString()
-    
-        var test  = f.toString().slice(0,10)
-    
-       var p = recData.data[test].recovery_ratio
-    
-       var g = recData.data[test].death_ratio
-       
-        finalObjectFour.push([test,p,g])
-    
-        var steps = length - 30
-    
-        if(i==steps){
-            this.setState({ratio:finalObjectFour})
-            //this.state.test2.push(finalObject)
-            return
-        }
-    
-        else{
-            k= c.setDate(c.getDate()+1)
-    
-        }
-        
-        
-    
-    
-    
+      var test = f.toString().slice(0, 10);
+
+      var p = recData.data[test].recovery_ratio;
+
+      var g = recData.data[test].death_ratio;
+
+      finalObjectFour.push([test, p, g]);
+
+      var steps = length - 30;
+
+      if (i == steps) {
+        this.setState({ ratio: finalObjectFour });
+        //this.state.test2.push(finalObject)
+        return;
+      } else {
+        k = c.setDate(c.getDate() + 1);
+      }
+
+      this.setState({ ratioLoader: false });
     }
 
 }
 
 
     render() {
+
+        var a = null
+
+           if(this.state.totalCasesLoader){
+              a =(<Skeleton rows={12} color="lightgray"></Skeleton>)
+              }
+              
+              else {
+                   a = (<Chart
+                   width={'100%'}
+                   height={'450px'}
+                   chartType="AreaChart"
+                   loader={<div>Loading Chart</div>}
+                   data={this.state.totalCases}
+                   options={{  title: 'Total Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                   
+                   />)
+                 }
     
-    
+        var b = null
+
+            if(this.state.activeCasesLoader){
+               b =(<Skeleton rows={12} color="lightgray"></Skeleton>)
+             }
+            
+            else {
+                 b = (<Chart
+                   
+                    width={'100%'}
+                    height={'450px'}
+                    chartType="AreaChart"
+                    loader={<div>Loading Chart</div>}
+              
+                    data={this.state.activeCases}
+ 
+                    options={{  title: 'Active Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                      
+               />)
+               }
+
+        var c = null
+            
+        if(this.state.criticalCasesLoader){
+            c=(<Skeleton rows={12} color="lightgray"></Skeleton>)
+          }
+         
+         else {
+              c= (<Chart
+                   
+                width={'100%'}
+                height={'450px'}
+                chartType="AreaChart"
+                loader={<div>Loading Chart</div>}
+          
+                data={this.state.criticalCases}
+
+                options={{  title: 'Critical Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                  
+           />)
+            }
+            
+        var d = null
+             
+        if(this.state.ratioLoader){
+            d=(<Skeleton rows={12} color="lightgray"></Skeleton>)
+          }
+         
+         else {
+              d= (<Chart
+                   
+                width={'100%'}
+                height={'450px'}
+                chartType="AreaChart"
+                loader={<div>Loading Chart</div>}
+          
+                data={this.state.ratio}
+
+                options={{  title: 'Recovery Ratio VS Death Ratio', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
+                  
+           />)
+            }
+         
         return (
             <div className="MainChart">
                
                <div className="Set shadow-lg rounded">
                 
-                   <Chart
-                   
-                         width={'100%'}
-                         height={'450px'}
-                         chartType="AreaChart"
-                         loader={<div>Loading Chart</div>}
-                   
-                         data={this.state.totalCases}
-  
-                         options={{  title: 'Total Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
-                           
-                    />
+                   {a}
                
                </div>          
 
                <div className="Set shadow-lg rounded">
 
-               <Chart
-                   
-                   width={'100%'}
-                   height={'450px'}
-                   chartType="AreaChart"
-                   loader={<div>Loading Chart</div>}
-             
-                   data={this.state.activeCases}
-
-                   options={{  title: 'Active Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
-                     
-              />
+                  {b}
 
                </div>
 
                <div className="Set shadow-lg rounded">
 
-               <Chart
-                   
-                   width={'100%'}
-                   height={'450px'}
-                   chartType="AreaChart"
-                   loader={<div>Loading Chart</div>}
-             
-                   data={this.state.criticalCases}
+               
 
-                   options={{  title: 'Critical Cases', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
-                     
-              />
-
-
+                  {c}
 
 
                </div>
 
                <div className="Set shadow-lg rounded">
 
-               <Chart
-                   
-                   width={'100%'}
-                   height={'450px'}
-                   chartType="AreaChart"
-                   loader={<div>Loading Chart</div>}
-             
-                   data={this.state.ratio}
-
-                   options={{  title: 'Recovery Ratio VS Death Ratio', hAxis: { title: 'Day', titleTextStyle: { color: '#333' } }, }}
-                     
-              />
+               {d}
 
                </div>
-                         
-                         
-                         {console.log(this.state)}
-            </div>
+              
+                        
+          </div>
 
             
         );
