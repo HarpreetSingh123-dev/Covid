@@ -31,6 +31,8 @@ class SpecificCountry extends Component {
     this.setSpecificCountryData= this.setSpecificCountryData.bind(this)
     this.setCountries= this.setCountries.bind(this)
 
+    this.setStatesData = this.setStatesData.bind(this)
+
     this.showRegions = this.showRegions.bind(this)
     this.closeRegions = this.closeRegions.bind(this)
 
@@ -55,12 +57,17 @@ componentDidUpdate(prevProps){
     if(this.props.match.params.id !== prevProps.match.params.id){
 
         this.fetchDataFromBackend()
+        
     }
+
+   
 }
 
 //////////////////////////////////////////////////////////////////////////////////   
 
 fetchDataFromBackend(){
+
+   this.setState({dataLoader:true})
 
     var country = this.props.match.params.id.toLowerCase()
     var countryCode = this.props.match.params.type
@@ -154,10 +161,15 @@ fetchDataFromBackend(){
 
   axios.request(options3).then(function (response) {
   
-    console.log("specific country states below")
-    console.log(response.data);
+    
+
+    const states = response.data
+
+    return states
   
-  }).catch(function (error) {
+  }).then(this.setStatesData)
+  
+    .catch(function (error) {
   
     console.error(error);
   });
@@ -211,6 +223,16 @@ fetchDataFromBackend(){
     this.setState({countries:a})
     this.setState({loader:false})
  }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+setStatesData(states){
+
+   console.log("specific country states below  in function")
+   console.log(states);
+}
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////// 
 
@@ -309,7 +331,7 @@ fetchDataFromBackend(){
 
         if(this.state.dataLoader){
 
-            b=(<Skeleton rows={80} height={20} color="lightgray"></Skeleton>)
+            b=(<Skeleton rows={15} height={19} color="lightgray"></Skeleton>)
         }
 
         else{
@@ -328,24 +350,7 @@ fetchDataFromBackend(){
                         
                            <div className=" test col col-lg-6 col-sm-12">
                                 
-                                {/*
-                                <ul>
-                                     <h5  style={{color: "white"}} ><b>Total Cases:</b>&nbsp;{this.state.specificCountryData[0].totalCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     
-                                     <h5  style={{color: "white"}}><b>New Cases:&nbsp;</b>{this.state.specificCountryData[0].newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     
-                                     <h5  style={{color: "white"}}><b>Infection Risk:&nbsp;</b>{this.state.specificCountryData[0].infectionRisk}</h5>
-                                     
-                                     <h5  style={{color: "white"}}><b>Active Cases:&nbsp;</b>{this.state.specificCountryData[0].activeCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     
-                                     <h5  style={{color: "white"}}><b>Serious Critical:&nbsp;</b>{this.state.specificCountryData[0].seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                     
-                                     <h5  style={{color : "white"}} ><b>Total Recovered:&nbsp;</b>{this.state.specificCountryData[0].totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                
-                                
-                                 </ul>
-                                */}
-
+                              
                                 <table className="test2">
  
                                  <tr >
@@ -389,19 +394,6 @@ fetchDataFromBackend(){
                         
                            <div className="test col col-lg-6 col-sm-12">
   
-                              {/*
-                                <ul>
-                                    <h5 style={{color: "white"}} ><b>Total Deaths:&nbsp;</b>{this.state.specificCountryData[0].totalDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                    <h5 style={{color: "white"}}><b>New Deaths:&nbsp;</b>{this.state.specificCountryData[0].newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</h5>
-                                    <h5 style={{color: "white"}}><b>Case Fatility Rate:&nbsp;</b>{this.state.specificCountryData[0].caseFatilityRate}</h5>
-                                    <h5 style={{color: "white"}} ><b>Total Tests:&nbsp;</b>{this.state.specificCountryData[0].totalDeaths}</h5>
-                                    <h5 style={{color: "white"}} ><b>Test Percentage:&nbsp;</b>{this.state.specificCountryData[0].testPercentage}</h5>
-                                    <h5 style={{color: "white"}}><b>Recovery Proportion:&nbsp;</b>{this.state.specificCountryData[0].recoveryProportion}</h5>
-
-
-                                </ul>
-                              */}
-
                                <table className="test2">
 
                                  <tr>
@@ -466,6 +458,9 @@ fetchDataFromBackend(){
                )
         }
 
+
+        var table = (<h1>Table here</h1>)
+
         return (
             <div className="specificCountry" ref={this.myRef} >
                 
@@ -508,6 +503,12 @@ fetchDataFromBackend(){
                               {b}
                                 {console.log(this.state)}
                              
+                              </div>
+
+                              <div className="lowerCountryContent">
+
+                               {table}
+
                               </div>
 
                               <div className="tableCountryContent">
