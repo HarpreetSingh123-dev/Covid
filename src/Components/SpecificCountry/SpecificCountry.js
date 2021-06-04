@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 
 import Navbar from '../Navbar/Navbar'
 import Countries from '../MainPage/Countries/Countries'
+import CountryChanges from '../SpecificCountry/CountryChanges'
 import Regions from '../Regions/Regions'
 import Footer from '../Footer/Footer'
 
@@ -22,8 +23,17 @@ class SpecificCountry extends Component {
          dataLoader:true,
          countries:[],
          specificCountryData:[],
+         changesSinceLastUpdate:[],
          showRegions: false,
-         codeForFlag:''
+         codeForFlag:'',
+
+         changeInTotalCases:'',
+         changeInActveCases:'',
+         changeInCriticalCases:'',
+         changeInRecoveredCases:'',
+         changeInDeaths:'',
+         ChangeInTested:''
+
 
     }
 
@@ -32,6 +42,8 @@ class SpecificCountry extends Component {
     this.setCountries= this.setCountries.bind(this)
 
     this.setStatesData = this.setStatesData.bind(this)
+
+    this.setChanges = this.setChanges.bind(this)
 
     this.showRegions = this.showRegions.bind(this)
     this.closeRegions = this.closeRegions.bind(this)
@@ -125,7 +137,20 @@ fetchDataFromBackend(){
       'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
     }
   };
-   
+  
+  var options4 = {
+   method: 'GET',
+   url: 'https://coronavirus-map.p.rapidapi.com/v1/summary/region',
+   params: {region: setCountry},
+   headers: {
+     'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+     'x-rapidapi-host': 'coronavirus-map.p.rapidapi.com'
+   }
+ };
+
+ 
+
+
    //First axios request for specific country stats//
    axios.request(options1).then(function (response) {
       
@@ -161,8 +186,6 @@ fetchDataFromBackend(){
 
   axios.request(options3).then(function (response) {
   
-    
-
     const states = response.data
 
     return states
@@ -173,37 +196,65 @@ fetchDataFromBackend(){
   
     console.error(error);
   });
+
+//////////////Fourth axios request for fetchinf changes since last update
+  axios.request(options4).then(function (response) {
+	
+   const changes = response.data
+   
+   return changes
+
+  }).then(this.setChanges)
+    
+    .catch(function (error) {
+    	console.error(error);
+
+   });
  
 }
  
 /////////////////////////////////////////////////////////////////////////////////////////////
  setSpecificCountryData(data){
 
-    console.log("data below")
-    console.log(data)
+    console.log("data below");
+    console.log(data);
 
-    var country= data.Country
-    var totalCases= data.TotalCases
-    var newCases=data.NewCases
-    var infectionRisk =data. Infection_Risk
-    var activeCases=data.ActiveCases
-    var seriousCritical=data.Serious_Critical 
-    var totalRecovered=data.TotalRecovered
-    var totalDeaths=data.TotalDeaths
-    var newDeaths=data.NewDeaths
-    var caseFatilityRate = data.Case_Fatality_Rate
-    var totalTests = data.TotalTests
-    var testPercentage = data.Test_Percentage
-    var recoveryProportion = data.Recovery_Proporation
-    var flagSymbol =data.TwoLetterSymbol
-    
+    var country = data.Country;
+    var totalCases = data.TotalCases;
+    var newCases = data.NewCases;
+    var infectionRisk = data.Infection_Risk;
+    var activeCases = data.ActiveCases;
+    var seriousCritical = data.Serious_Critical;
+    var totalRecovered = data.TotalRecovered;
+    var totalDeaths = data.TotalDeaths;
+    var newDeaths = data.NewDeaths;
+    var caseFatilityRate = data.Case_Fatality_Rate;
+    var totalTests = data.TotalTests;
+    var testPercentage = data.Test_Percentage;
+    var recoveryProportion = data.Recovery_Proporation;
+    var flagSymbol = data.TwoLetterSymbol;
 
-   const p =[{country,totalCases,totalDeaths,totalRecovered,activeCases,newCases,newDeaths,seriousCritical,infectionRisk, caseFatilityRate,totalTests,testPercentage,recoveryProportion}]
+    const p = [
+      {
+        country,
+        totalCases,
+        totalDeaths,
+        totalRecovered,
+        activeCases,
+        newCases,
+        newDeaths,
+        seriousCritical,
+        infectionRisk,
+        caseFatilityRate,
+        totalTests,
+        testPercentage,
+        recoveryProportion,
+      },
+    ];
 
-   
-    this.setState({specificCountryData:p})
-    this.setState({codeForFlag:flagSymbol.toUpperCase()})
-    this.setState({dataLoader:false})
+    this.setState({ specificCountryData: p });
+    this.setState({ codeForFlag: flagSymbol.toUpperCase() });
+    this.setState({ dataLoader: false });
     
 
  }   
@@ -211,17 +262,16 @@ fetchDataFromBackend(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
  setCountries(countries){
 
-    var a =[]
-  
-    for(var i=0; i<countries.length; i++){
+    var a = [];
 
-          var b = countries[i]
+    for (var i = 0; i < countries.length; i++) {
+      var b = countries[i];
 
-          a.push(b)
-      }
-  
-    this.setState({countries:a})
-    this.setState({loader:false})
+      a.push(b);
+    }
+
+    this.setState({ countries: a });
+    this.setState({ loader: false });
  }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,6 +282,55 @@ setStatesData(states){
    console.log(states);
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+setChanges(changes){
+
+   console.log("changes below")
+   console.log(changes.data.change)
+
+var dataSet = changes.data.change
+
+  function check(value) {
+    if (value > 0) {
+      var a = "+";
+
+      var k = a.concat(value);
+
+      return k;
+    } else {
+      return value;
+    }
+  }
+   
+  var totalCases= dataSet.total_cases
+  var activeCases= dataSet.active_cases
+  var criticalCases= dataSet.critical
+  var recoveredCases=dataSet.recovered
+  var newdeaths= dataSet.deaths
+  var newtested =dataSet.tested
+
+  var newCases = check(totalCases)
+  var newActiveCases =check(activeCases)
+  var newCriticalCases=check(criticalCases)
+  var newRecoveredCases=check(recoveredCases)
+  var newUpdatedDeaths=check(newdeaths)
+  var newUpdatedtested = check(newtested)
+
+  this.setState({
+
+   changeInTotalCases: newCases,
+   changeInActveCases: newActiveCases ,
+   changeInCriticalCases: newCriticalCases,
+   changeInRecoveredCases:newRecoveredCases ,
+   changeInDeaths:newUpdatedDeaths ,
+   ChangeInTested: newUpdatedtested
+
+
+  })
+  
+
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////// 
@@ -507,7 +606,17 @@ setStatesData(states){
 
                               <div className="lowerCountryContent">
 
-                               {table}
+                               <CountryChanges
+                               
+                                           totalCases={this.state.changeInTotalCases}
+                                           activeCases={this.state.changeInActveCases}
+                                           totalDeaths={this.state.changeInDeaths}
+
+                                           tested={this.state.ChangeInTested}
+                                           recovered={this.state.changeInRecoveredCases}
+                                           critical={this.state.changeInCriticalCases}  
+                               
+                               ></CountryChanges>
 
                               </div>
 

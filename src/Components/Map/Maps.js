@@ -148,7 +148,7 @@ setFinalMapData(){
              }
             // Note: you will need to get a mapsApiKey for your project.
            // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        mapsApiKey=""
+        mapsApiKey="AIzaSyBhMvalaSIEsFtlV76QplAaPI614tpVb4k"
         rootProps={{ 'data-testid': '1' }} />)
     }
  
@@ -160,6 +160,8 @@ setFinalMapData(){
           <Navbar mapPage={true}></Navbar>   
                
           {a}
+
+          
                 
           <div className="footerSet">
               <Footer></Footer>

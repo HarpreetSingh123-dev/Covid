@@ -1,0 +1,12 @@
+.TotalWrapper .row .set {
+  border: 1px solid black;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: lightcyan;
+  height: 80%;
+}
+
+.TotalWrapper .font {
+  font-size: 35px;
+}
