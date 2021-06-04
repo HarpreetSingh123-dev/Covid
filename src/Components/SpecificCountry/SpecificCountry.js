@@ -606,6 +606,8 @@ var dataSet = changes.data.change
 
                               <div className="lowerCountryContent">
 
+                               <h2 className="text-center"> Changes Since Last Update</h2>
+                               <hr className="rule"></hr>
                                <CountryChanges
                                
                                            totalCases={this.state.changeInTotalCases}

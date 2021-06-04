@@ -113,6 +113,7 @@ setFinalMapData(){
 
     var totalCases =  countryData[i].TotalCases
     var totalDeaths = countryData[i].TotalDeaths
+    //var activeCases = countryData[i].ActiveCases
     
     var d = [country,totalCases,totalDeaths]
 
