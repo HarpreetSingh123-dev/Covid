@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import Countries from '../MainPage/Countries/Countries'
 import CountryChanges from '../SpecificCountry/CountryChanges'
+import Table from '../SpecificCountry/SpecificCountryTable'
 import Regions from '../Regions/Regions'
 import Footer from '../Footer/Footer'
 
@@ -26,6 +27,7 @@ class SpecificCountry extends Component {
          changesSinceLastUpdate:[],
          showRegions: false,
          codeForFlag:'',
+         region:'',
 
          changeInTotalCases:'',
          changeInActveCases:'',
@@ -108,6 +110,8 @@ fetchDataFromBackend(){
  
     console.log(k)
     setCountry = k
+
+    this.setState({region:setCountry})
  
  }
     
@@ -623,10 +627,10 @@ var dataSet = changes.data.change
                               </div>
 
                               <div className="tableCountryContent">
-                              <div className="row">
-
-
-                              </div>
+                             <Table t={this.props.match.params.id}
+                             
+                             
+                             ></Table>
                               </div>
 
                

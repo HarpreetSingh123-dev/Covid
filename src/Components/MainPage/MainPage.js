@@ -291,7 +291,7 @@ closeRegions(){
            <div className="MainPage">
 
                 <Navbar></Navbar>
-
+            <marquee>Website still under development, some things may not work</marquee>
                 <Jumbotron></Jumbotron>
           {/*//////////////////////////////////////////////////////////////////*/ }    
                 <div className="total">
