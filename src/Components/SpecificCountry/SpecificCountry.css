@@ -188,7 +188,7 @@
   align-items: center;
 }
 
-.specificCountry .rule {
+.specificCountry .ruleSpecific {
   border: 0;
   height: 1px;
   background-image: linear-gradient(
