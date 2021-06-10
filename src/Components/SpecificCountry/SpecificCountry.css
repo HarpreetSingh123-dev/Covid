@@ -64,7 +64,7 @@
 }
 
 .specificCountry .scrolling {
-  height: 1175px;
+  height: 780px;
   overflow: scroll;
   background-color: rgb(66, 66, 66);
 }
@@ -217,3 +217,9 @@
     justify-content: flex-end;
   }
 }
+
+/*
+.specificCountry .countryCharts{
+  position: relative;
+  top: 60px;
+}*/

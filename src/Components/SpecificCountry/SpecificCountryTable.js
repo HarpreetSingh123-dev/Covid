@@ -78,7 +78,7 @@ class SpecificCountryTable extends Component {
   /////////////////////////////////////////////////
   componentDidUpdate(prevProps) {
     if (this.props.t != prevProps.t) {
-      console.log("change detected");
+      console.log("change detected in table ");
       this.fetchData();
     }
   }
@@ -120,8 +120,7 @@ class SpecificCountryTable extends Component {
   ///////////////////////////////////////////////////////////////////////////////////////
 
   setTable(data) {
-    console.log("fetch output below in set table function");
-    console.log(data)
+    
     var length = data.data.covid19Stats.length;
     var lastChecked = data.data.lastChecked
     var message = data.message
@@ -186,14 +185,14 @@ class SpecificCountryTable extends Component {
             <hr className="regionRule"></hr>
             <marquee>Last Updated On&nbsp;{this.state.lastChecked} </marquee>
                 <DataTable
-                        title={<h3><b>Regions</b></h3>}
+                        
                         highlightOnHover={true}
-                        pointerOnHover={true}
+                        
                         fixedHeader={true}
                         theme={"dark"}
-                        overflowY={true}
                         
-                        fixedHeaderScrollHeight={"800px"}
+                        
+                        fixedHeaderScrollHeight={"550px"}
                         columns={columns}
                         data={this.state.tableData}
                         customStyles={customStyles}
@@ -214,8 +213,7 @@ class SpecificCountryTable extends Component {
                 
                 {a} 
                 
-                {console.log(this.state)}
-                
+            
                 
            </div>
             
