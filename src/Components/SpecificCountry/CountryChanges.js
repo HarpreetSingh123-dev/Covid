@@ -1,10 +1,19 @@
 import React from 'react';
 import './CountryChanges.css'
-
+import Skeleton from '@yisheng90/react-loading';
 function Totals(props) {
-    return (
 
-      <div className="TotalWrapper">
+
+  var a = null 
+
+  if(props.loader){
+
+   a =( <Skeleton rows={8} height={14} color="lightgray"></Skeleton> )
+  }
+
+  else {
+
+    a =(<div>
            
            <div className="row">
 
@@ -63,6 +72,15 @@ function Totals(props) {
                   
            </div>
 
+       </div>)
+  }
+    
+  return (
+
+      <div className="TotalWrapper">
+           
+            {a}
+ 
       </div>
 
     );

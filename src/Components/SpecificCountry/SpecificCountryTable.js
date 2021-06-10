@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./SpecificCountryTable.css";
+import Skeleton from '@yisheng90/react-loading';
 import axios from "axios";
 import DataTable from "react-data-table-component";
 
@@ -61,7 +62,8 @@ class SpecificCountryTable extends Component {
       canTableBeMade: "",
       lastChecked:'',
       data: [],
-      tableData:[]
+      tableData:[],
+      loader:true
     };
 
     this.fetchData = this.fetchData.bind(this);
@@ -166,9 +168,11 @@ class SpecificCountryTable extends Component {
         setData.push(obj)
      }
      this.setState({tableData:setData})
+     this.setState({loader:false})
 
     } else {
         this.setState({tableData:[]})
+        this.setState({loader:false})
         console.log("no table made");
     }
   }
@@ -178,40 +182,57 @@ class SpecificCountryTable extends Component {
   render() {
     var a = null;
 
-    if (this.state.canTableBeMade) {
-      a = ( <div>
-            
-            <h2 className="text-center">Region-Wise Covid Update</h2>
-            <hr className="regionRule"></hr>
-            <marquee>Last Updated On&nbsp;{this.state.lastChecked} </marquee>
-                <DataTable
-                        
-                        highlightOnHover={true}
-                        
-                        fixedHeader={true}
-                        theme={"dark"}
-                        
-                        
-                        fixedHeaderScrollHeight={"550px"}
-                        columns={columns}
-                        data={this.state.tableData}
-                        customStyles={customStyles}
-                >
-              </DataTable>
+    var b = null
 
-        </div>
-      )
+    if(this.state.loader){
 
-    } else {
-      a = null;
+       b=(<Skeleton rows={30} height={20} color="lightgray"></Skeleton>)
     }
+
+    else {
+      if (this.state.canTableBeMade) {
+        a = ( <div>
+              
+              <h2 className="text-center">Region-Wise Covid Update</h2>
+              <hr className="regionRule"></hr>
+              <marquee>Last Updated On&nbsp;{this.state.lastChecked} </marquee>
+                  <DataTable
+                          
+                          highlightOnHover={true}
+                          
+                          fixedHeader={true}
+                          theme={"dark"}
+                          
+                          
+                          fixedHeaderScrollHeight={"550px"}
+                          columns={columns}
+                          data={this.state.tableData}
+                          customStyles={customStyles}
+                  >
+                </DataTable>
+  
+          </div>
+
+
+        )
+  
+       
+      }
+      else {
+        a = null;
+      }
+
+     b=a 
+    }
+
+   
 
     return (
     
             <div className="regionTable">
                 
                 
-                {a} 
+                {b} 
                 
             
                 

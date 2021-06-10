@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SpecificCountryChart.css'
 import axios from 'axios'
-
+import Skeleton from '@yisheng90/react-loading';
 import { Chart } from "react-google-charts"
 
 class SpecificCountryCharts extends Component {
@@ -17,7 +17,8 @@ class SpecificCountryCharts extends Component {
         newCasesChart:"",
         newDeathsChart:[],
         totalCasesChart:[],
-        totalDeathsChart:[]
+        totalDeathsChart:[],
+        loader:true
     }    
 
 this.fetchData=this.fetchData.bind(this)
@@ -184,7 +185,7 @@ setTotalDeathsChart(){
     set.push(p)
   })
   
-this.setState({totalDeathsChart:set})
+this.setState({totalDeathsChart:set, loader:false})
 
 
 }
@@ -192,9 +193,19 @@ this.setState({totalDeathsChart:set})
 
  render() {
         
-   return (
-             <div className="chartSet" >
-             <h2 className="text-center">Trends Of Covid Cases</h2>
+
+   var a = null
+
+   if(this.state.loader){
+
+     a=(<Skeleton rows={8} height={14} color="lightgray"></Skeleton>)
+   }
+
+   else{
+
+    a= (  <div>
+            
+            <h2 className="text-center">Trends Of Covid Cases</h2>
              <hr className="rule"></hr>
              <div className="row">
                {/* <h1>Charts Here{this.props.t.type}</h1>*/}
@@ -289,6 +300,17 @@ this.setState({totalDeathsChart:set})
             </div>
 
             </div>
+
+
+         </div>
+    )
+   }
+
+
+
+   return (
+             <div className="chartSet" >
+             {a}
             </div>
         );
     }

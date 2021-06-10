@@ -75,6 +75,7 @@ componentDidUpdate(prevProps){
     if(this.props.match.params.id !== prevProps.match.params.id){
 
         this.fetchDataFromBackend()
+        this.setState({changesLoader:true})
         
     }
 
@@ -563,35 +564,12 @@ var dataSet = changes.data.change
                )
 
 
-               var d = null
+               
 
-                if(this.state.changesLoader){
-
-                  d=(<Skeleton rows={8} height={14} color="lightgray"></Skeleton>)
-                }
-
-                else{
+               
  
-                   d=( 
-                     <div>
-                    
-                     <h2 className="text-center"> Changes Since Last Update</h2>
-                               <hr className="ruleSpecific"></hr>
                    
-                    <CountryChanges
-                               
-                     totalCases={this.state.changeInTotalCases}
-                     activeCases={this.state.changeInActveCases}
-                     totalDeaths={this.state.changeInDeaths}
-
-                     tested={this.state.ChangeInTested}
-                     recovered={this.state.changeInRecoveredCases}
-                     critical={this.state.changeInCriticalCases}  
-         
-                     ></CountryChanges>
-
-                    </div>)
-                 }
+                 
                
                var e = null
 
@@ -660,23 +638,28 @@ var dataSet = changes.data.change
 
                                
                               
-                               {d}
+                              <div>
+                    
+                               <h2 className="text-center"> Changes Since Last Update</h2>
+                                   <hr className="ruleSpecific"></hr>
+                  
+                                       <CountryChanges
+                                           loader={this.state.changesLoader}          
+                                           totalCases={this.state.changeInTotalCases}
+                                           activeCases={this.state.changeInActveCases}
+                                           totalDeaths={this.state.changeInDeaths}
+
+                                           tested={this.state.ChangeInTested}
+                                           recovered={this.state.changeInRecoveredCases}
+                                           critical={this.state.changeInCriticalCases}  
+        
+                                      ></CountryChanges>
 
                               </div>
 
-                             {/*
-                              <div className="tableCountryContent">
-                            
-
-                                {e}
                               </div>
 
-                              <div className="countryCharts"> 
-                                <CountryCharts t={this.props.match.params}></CountryCharts>
-
-                             </div>   */}
-
-                               
+                          
                
                          </div>
                 
