@@ -13,6 +13,8 @@ import CountryCharts from './SpecificCountryCharts'
 import Regions from '../Regions/Regions'
 import Footer from '../Footer/Footer'
 
+import USAtable from '../../Components/SpecificCountry/SpecificUSAtable'
+
 class SpecificCountry extends Component {
     
     
@@ -38,7 +40,9 @@ class SpecificCountry extends Component {
          ChangeInTested:'',
 
          changesLoader:true,
-         tableLoader:true
+         tableLoader:true,
+
+         isUSA:false
 
 
     }
@@ -71,6 +75,7 @@ componentDidUpdate(prevProps){
 
    // console.log("previous props below")
     //console.log(prevProps)
+    
 
     if(this.props.match.params.id !== prevProps.match.params.id){
 
@@ -85,7 +90,8 @@ componentDidUpdate(prevProps){
 //////////////////////////////////////////////////////////////////////////////////   
 
 fetchDataFromBackend(){
-
+  
+   this.setState({isUSA:false})
    this.setState({dataLoader:true})
 
     var country = this.props.match.params.id.toLowerCase()
@@ -118,6 +124,13 @@ fetchDataFromBackend(){
 
     this.setState({region:setCountry})
  
+ }
+
+ if(country === 'usa'){
+
+        this.setState({isUSA:true})
+
+        console.log("usa is true")
  }
     
   var options1 = {
@@ -580,10 +593,22 @@ var dataSet = changes.data.change
 
                else{
 
+                     if(this.state.isUSA){
+
+                      e=(<USAtable  t={this.props.match.params.id}
+                      
+                         ></USAtable>)
+
+                     }
+
+                     else {
+                  
                   e =( <Table t={this.props.match.params.id}
                              
                              
                      ></Table>)
+
+                  }
                }
 
         }

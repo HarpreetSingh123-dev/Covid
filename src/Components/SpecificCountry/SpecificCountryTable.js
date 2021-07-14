@@ -93,6 +93,9 @@ class SpecificCountryTable extends Component {
 
     var t = k.charAt(0).toUpperCase() + k.slice(1);
 
+    console.log("t below")
+    console.log(t)
+
     var options = {
       method: "GET",
       url: "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats",
@@ -128,12 +131,13 @@ class SpecificCountryTable extends Component {
     var message = data.message
     var resData = data.data.covid19Stats;
 
-    if (length > 1&& message==="OK") {
+    if (length > 1 && message==="OK") {
       this.setState({ canTableBeMade: true , lastChecked:lastChecked});
       console.log(data.data.covid19Stats);
       this.setState({ data: resData });
     } else {
       this.setState({ canTableBeMade: false });
+      console.log("table cant be made")
     }
   }
 

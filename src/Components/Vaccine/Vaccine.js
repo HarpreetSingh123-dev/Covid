@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
+import './Vaccine.css'
+import Navbar from '../Navbar/Navbar'
+
 
 class Vaccine extends Component {
     render() {
         return (
             <div>
-             <h1>Vaccine Page Component</h1>   
+             <Navbar></Navbar>   
+             <div className="row ll">
+
+                 <div className="col-lg-3">
+                   <h1>Categories here</h1>
+                 </div>
+
+                 <div className="col-lg-9">
+                   <h1>All other stuff here</h1>
+                 </div>
+
+
+             </div>
             </div>
         );
     }
 }
 
-export default Vaccine;<h1>Vaccine Page Component</h1>
+export default Vaccine;
