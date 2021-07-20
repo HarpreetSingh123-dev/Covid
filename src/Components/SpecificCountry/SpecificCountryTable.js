@@ -157,13 +157,18 @@ class SpecificCountryTable extends Component {
 
      for (var i =0;i<this.state.data.length;i++){
 
-       
+      var nullValue 
+
+      if(!value[i].recovered){  nullValue = 0 }
+
+      else{ nullValue = value[i].recovered }    // logic for tackling null values in recovered in canada dataset
         var obj = {
             number:i+1,
             province:value[i].province,
-            confirmed:value[i].confirmed,
-            recovered:value[i].recovered,
-            deaths:value[i].deaths,
+            confirmed:value[i].confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
+            //recovered:value[i].recovered,
+            recovered:nullValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
+            deaths:value[i].deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
             update:value[i].lastUpdate.slice(0, 10)
            
 

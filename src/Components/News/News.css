@@ -1,0 +1,25 @@
+.News .marginSet{
+
+    position: relative;
+    top: 80px;
+}
+
+.News .container-fluid{
+
+    width: 80%;
+}
+
+.test{
+    border: 2px solid black;
+}
+
+.News .sideButtons .btnSet{
+
+    margin-top: 10px;
+    margin-left: 50px;
+    width: 80%;
+}
+
+.btnSet:focus{
+    background-color:grey;
+}

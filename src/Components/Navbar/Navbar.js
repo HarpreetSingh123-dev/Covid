@@ -8,6 +8,9 @@ function Navbar(props) {
   var a 
   var b = null
 
+  var c
+  var d = null 
+
   if(props.mapPage){
              a = null
              b =   "fixed-top"
@@ -16,11 +19,26 @@ function Navbar(props) {
   else {
 
         a = (<li className="nav-item active">
-             <Link to={'/Map'}className="nav-link">Map</Link>
+                 <Link to={'/Map'}className="nav-link">Map</Link>
              </li>
             )
-            b =   "fixed-top"
+
+        b =   "fixed-top"
       }
+
+
+   if(props.newsPage){
+
+          c = null
+       }
+      
+     else {
+
+     c =( <li className="nav-item active">
+            <Link to={'/News'}className="nav-link">News</Link>
+         </li> )
+
+      }  
       
    return (
         <div className="navbarWrapper">
@@ -55,13 +73,10 @@ function Navbar(props) {
                          <Link to={'/Treatment'}className="nav-link">Treatment</Link>
                        </li>
 
-{a}
+                            {a}
                        
 
-                       <li className="nav-item active">
-                         {/*<a className="nav-link">News</a>*/}
-                         <Link to={'/News'}className="nav-link">News</Link>
-                       </li>
+                            {c}
 
                        
                        <li className="nav-item active">
