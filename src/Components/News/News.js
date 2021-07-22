@@ -166,6 +166,7 @@ if(healthComponent){
                        <button type="button" class="btn btn-info" onClick={ ()=>setPageNumber(prevState => prevState + 1)}>Next</button>
                        </div>
 
+                         <div className="setScroll">
                           {healthNews.map((news)=>{
 
                                  return <div class="card mb-3">
@@ -177,9 +178,10 @@ if(healthComponent){
                                         <p class="card-text"><small class="text-muted" >{news.pubDate}</small></p>
                                         </div>
                                        </div>
+                                       
          
                          })}
-
+                         </div>
                        
                       
                       </div>
@@ -207,6 +209,7 @@ if(covidComponent){
                           <button type="button" class="btn btn-info" style={{marginRight:'0'}} onClick={ ()=>setPageNumber(prevState => prevState + 1)}>Next</button>
                           </div>
 
+                          <div className="setScroll">
                            {covidNews.map((news)=>{
 
                                  return <div class="card mb-3">
@@ -221,7 +224,7 @@ if(covidComponent){
         
                             })}
 
-                          
+                          </div>
                           </div>
                         )
 
