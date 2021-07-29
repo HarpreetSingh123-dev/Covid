@@ -1,0 +1,9 @@
+.treatmentJumbotron{
+    width: 100%;
+     
+}
+
+.treatmentJumbotron .jumbotron{
+    background-color:rgb(66,66,66);
+    color: white;
+}

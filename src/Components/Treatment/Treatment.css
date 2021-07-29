@@ -1,0 +1,46 @@
+.Treatment .treatmentMarginSet{
+    position: relative;
+    top: 100px;
+}
+
+.Treatment .row{
+    border: 2px solid black;
+}
+
+.Treatment .testCol{
+    border: 1px solid black;
+}
+
+/*
+.Treatment .categoryScroll {
+    height: auto;
+    overflow: scroll;
+    background-color: rgb(66, 66, 66);
+  }*/
+
+.Treatment .categoryScroll .fullScreen{
+    height: auto;
+    overflow: scroll;
+    background-color: rgb(66, 66, 66);
+}
+
+
+
+.Treatment .categoryScroll .fullScreen::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 790px) {
+    .Treatment .categories .fullScreen {
+      display: none;
+    }
+  }
+
+@media (min-width: 791px) and (max-width: 2135px) {
+    .Treatment .categories .smallScreen {
+      display: none;
+    }
+  }
+
+
+

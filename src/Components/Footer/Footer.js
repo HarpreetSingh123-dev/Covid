@@ -112,9 +112,9 @@ function Footer() {
                            
                                  <hr className="ruleTwo"></hr>  
 
-                                   <p className="text-center">Vaccine News</p>
-                                   <p className="text-center">COVID-19 News</p>
-                                   <p className="text-center">Health News</p>
+                                   <p className="text-center"><Link style={{color: "white"}} to={'/News'}>Vaccine News</Link></p>
+                                   <p className="text-center"><Link style={{color: "white"}} to={'/News'}>COVID-19 News</Link></p>
+                                   <p className="text-center"><Link style={{color: "white"}} to={'/News'}>Health News</Link></p>
 
                              
                           </div> 

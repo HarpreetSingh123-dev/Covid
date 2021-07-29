@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
-import Region from './GlobalRegionReducer'
+import Treatment from './Reducers/TreatmentComponent/GlobalTreatmentReducer'
 
 export default combineReducers({
 
-region:Region
+treatment:Treatment
 
 
 })

@@ -1,0 +1,33 @@
+.upperNavigationLinks .setLinks{
+   display: flex;
+   overflow-x: scroll;
+}
+
+.upperNavigationLinks .btn:hover{
+    color: cyan;
+}
+
+.upperNavigationLinks .setLinks::-webkit-scrollbar{
+    height: 10px;
+    width: 10px;
+    background: transparent;
+    
+}
+
+.upperNavigationLinks .setLinks::-webkit-scrollbar-thumb{
+    background: whitesmoke;
+    width: 10px;
+    
+}
+
+.upperNavigationLinks .marginSet{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.upperNavigationLinks{
+    margin-top: 15px;
+    width: 100%;
+    
+}
+

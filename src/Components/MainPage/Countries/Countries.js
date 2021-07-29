@@ -15,7 +15,7 @@ function Countries(props) {
                         <li class="nav-item">
                        
                          
-                               <Link class="nav-link" to={`/Country/${props.country}/${props.threeDigitCode}`}  ><b>{props.country.toUpperCase()}</b></Link>
+                              <a class="nav-link"> <Link  to={`/Country/${props.country}/${props.threeDigitCode}`}  ><b>{props.country.toUpperCase()}</b></Link></a>
                           
                        
                        </li>

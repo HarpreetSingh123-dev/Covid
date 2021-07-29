@@ -23,6 +23,7 @@ const FinalAssembly = () => {
                 <Route exact path='/Treatment' component={Treatment}></Route>
                 <Route exact path='/Map' component={Maps}></Route>
                 <Route exact path='/News' component={News}></Route>
+               
                 <Route exact path='/About' component={About}></Route>
                 
             </Switch>

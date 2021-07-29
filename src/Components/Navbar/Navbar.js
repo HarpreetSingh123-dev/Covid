@@ -5,41 +5,54 @@ import Image1 from '../../Images/symbol1.jpg'
 
 function Navbar(props) {
    
-  var a 
+  var map 
   var b = null
 
-  var c
-  var d = null 
+  var news
+  
+  var treatment 
 
   if(props.mapPage){
-             a = null
+             map = null
              b =   "fixed-top"
           }
 
   else {
 
-        a = (<li className="nav-item active">
+        map = (<li className="nav-item active">
                  <Link to={'/Map'}className="nav-link">Map</Link>
-             </li>
-            )
+              </li>
+             )
 
-        b =   "fixed-top"
+       
+             b =   "fixed-top"
       }
 
 
    if(props.newsPage){
-
-          c = null
+               news = null
        }
       
      else {
 
-     c =( <li className="nav-item active">
-            <Link to={'/News'}className="nav-link">News</Link>
-         </li> )
-
-      }  
+      news =( <li className="nav-item active">
+                <Link to={'/News'}className="nav-link">News</Link>
+             </li> )
+          }  
       
+   if(props.treatmentPage){
+                 treatment = null
+      }
+
+   else {
+
+      treatment = ( <li className="nav-item active">
+                      <Link to={'/Treatment'}className="nav-link">Treatment</Link>
+                    </li>
+                  )
+
+   }
+
    return (
         <div className="navbarWrapper">
             
@@ -68,15 +81,13 @@ function Navbar(props) {
                         <Link to={'/Vaccine'}className="nav-link">Vaccine</Link>
                        </li>
       
-                       <li className="nav-item active">
-                        {/* <a className="nav-link">Treatment</a>*/}
-                         <Link to={'/Treatment'}className="nav-link">Treatment</Link>
-                       </li>
+                            {treatment}
 
-                            {a}
+                            
+                            {map}
                        
 
-                            {c}
+                            {news}
 
                        
                        <li className="nav-item active">

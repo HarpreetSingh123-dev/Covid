@@ -1,15 +1,17 @@
 import React from 'react';
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useRef} from 'react'
 import './News.css'
 import Skeleton from '@yisheng90/react-loading';
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
+import ErrorImage from '../../Images/covid.jpg'
 
 
 function News(props) {
 
- var display 
+ var display
+ 
 
  const [vaccineNews , setVaccineNews] = useState([])
 
@@ -31,16 +33,12 @@ function News(props) {
 
  const [healthButtonColor , setHealthButtonColor] = useState('')
 
- const [loader, setLoader] = useState()
-
-
  
 
-  
+
  useEffect(()=>{
 
-   
-     
+  
     var options1 = {
         method: 'GET',
         url: `https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/news/get-vaccine-news/${pageNumber}`,
@@ -97,13 +95,16 @@ function News(props) {
         console.error(error);
     }); 
 
-
-    
-
+     
+  
     },[pageNumber])
 
 
+function setErrorImage(ev){
 
+  ev.target.src= ErrorImage
+
+}
     
 
 if(vaccineComponent){
@@ -118,8 +119,8 @@ if(vaccineComponent){
              else{
                     previousButton =(<button type="button" class="btn btn-info" onClick={ ()=>setPageNumber(  prevState => prevState - 1)}>Previous</button>)
                  }
-
-  
+ 
+                
               display = ( <div> 
 
                            <div className="navigationButtonSet">
@@ -129,9 +130,9 @@ if(vaccineComponent){
 
                            <div className="setScroll">
                            {vaccineNews.map((news)=>{
-
+                                         
                                 return <div class="card mb-3">
-                                       <img class="card-img-top" src={news.urlToImage} alt="Card image cap"></img>
+                                       <img class="card-img-top" src={news.urlToImage} onError= {setErrorImage} ></img>
                                        <div class="card-body">
                                        <h5 class="card-title">{news.title}</h5>
                                        <p class="card-text">{news.content}</p>
@@ -141,9 +142,10 @@ if(vaccineComponent){
                                        </div>
                            })}
                           </div>
-                      </div> 
+                      </div>   
                      )}       
-          
+                     
+                   
 
 if(healthComponent){
 
@@ -170,7 +172,7 @@ if(healthComponent){
                           {healthNews.map((news)=>{
 
                                  return <div class="card mb-3">
-                                        <img class="card-img-top" src={news.urlToImage} alt="Card image cap"></img>
+                                        <img class="card-img-top" src={news.urlToImage} onError= {setErrorImage} alt="Card image cap"></img>
                                         <div class="card-body">
                                         <h5 class="card-title">{news.title}</h5>
                                         <p class="card-text">{news.content}</p>
@@ -213,7 +215,7 @@ if(covidComponent){
                            {covidNews.map((news)=>{
 
                                  return <div class="card mb-3">
-                                        <img class="card-img-top" src={news.urlToImage} alt="Card image cap"></img>
+                                        <img class="card-img-top" src={news.urlToImage} onError= {setErrorImage} alt="Card image cap"></img>
                                         <div class="card-body">
                                         <h5 class="card-title">{news.title}</h5>
                                         <p class="card-text">{news.content}</p>
@@ -285,8 +287,7 @@ if(covidComponent){
    
   }
 
- 
-
+  
 
     return (
         

@@ -16,10 +16,10 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import Countdown from 'react-countdown';
 
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+//import {connect} from 'react-redux'
+//import {bindActionCreators} from 'redux'
 
-import setRegionAction from '../../Redux/Actions/RegionAction'
+//import setRegionAction from '../../Redux/Actions/RegionAction'
 
 
 
@@ -175,7 +175,7 @@ closeRegions(){
          else{
 
 
-           a= (
+           a = (
                 <div>
                     <h2 className="text-center">Live Covid Status Of The World</h2>
 
@@ -249,7 +249,7 @@ closeRegions(){
                                      <ul class="nav nav-pills nav-stacked">
                       
                                         <li class="nav-item">
-                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/USA/usa`} ><b>UNITED STATES</b></Link></a>
+                                           <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}}  to={`/Country/USA/usa`} ><b>UNITED STATES</b></Link></a>
                                            <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}}><Link  style={{color: "white"}} to={`/Country/CANADA/can`} ><b>CANADA</b></Link></a>
                                            <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/AUSTRALIA/aus`} ><b>AUSTRALIA</b></Link></a>
                                            <a class="nav-link" style={{color: "black",backgroundColor:'steelblue'}} ><Link style={{color: "white"}} to={`/Country/UK/gbr`} ><b>UNITED KINGDOM</b></Link></a>
@@ -452,6 +452,7 @@ closeRegions(){
     }
 }
 
+/*
 const mapActionsToProps =(dispatch) =>{
 
    return bindActionCreators({
@@ -462,4 +463,6 @@ const mapActionsToProps =(dispatch) =>{
  
  }
 
-export default connect(null, mapActionsToProps) (MainPage);
+export default connect(null, mapActionsToProps) (MainPage);*/
+
+export default MainPage;

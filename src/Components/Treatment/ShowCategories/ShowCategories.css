@@ -1,0 +1,46 @@
+.smallScreenSideNavigationButtons .ruleTreatment{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgb(255, 255, 255),
+      rgba(255, 255, 255, 0)
+    );
+    width: 80%;
+}
+
+.smallScreenSideNavigationButtons {
+background-color: rgb(66, 66, 66);;
+height: 250px;
+overflow-y: scroll;
+scroll-behavior: smooth;
+}
+
+.smallScreenSideNavigationButtons::-webkit-scrollbar{
+    display: none;
+}
+.smallScreenSideNavigationButtons .innerWrapper .btn:hover{
+/* background-color:#0069D9 ;*/
+color: black;
+}
+
+.smallScreenSideNavigationButtons .outerWrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.smallScreenSideNavigationButtons .innerWrapper{
+width: 85%;
+}  
+
+
+.smallScreenSideNavigationButtons .btn {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 16px;
+width: 100%;
+
+}
