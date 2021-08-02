@@ -6,16 +6,16 @@ function UpperNavigationLinks(props) {
         <div className="upperNavigationLinks">
            <div className="container-fluid">
             <div className="setLinks">
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>All Treatment</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>FDA Approved</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>Remdesivir</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>Favipiravir</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} >HydroxyChloroquine</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} >Ivermectin</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>Tocillizumab</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>Anakinra</button>
-                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}}>Telmisartan</button>
-                <button type="button" className="marginSet btn btn-dark"style={{fontWeight:'bold'}} >Hyperimmune Immunoglobium(hIVIG)</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="AllTreatments">All Treatment</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="FdaApproved">FDA Approved</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="Remdesivir">Remdesivir</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="Favipiravir">Favipiravir</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="HydroxyChloroquine">HydroxyChloroquine</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="Ivermectin">Ivermectin</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="Tocillizumab">Tocillizumab</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="Anakinra">Anakinra</button>
+                <button type="button" className="marginSet btn btn-dark" style={{fontWeight:'bold'}} value="Telmisartan">Telmisartan</button>
+                <button type="button" className="marginSet btn btn-dark"style={{fontWeight:'bold'}}  value="HyperimmuneImmunoglobium">Hyperimmune Immunoglobium(hIVIG)</button>
 
             </div>
             </div>
