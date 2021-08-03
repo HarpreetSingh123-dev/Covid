@@ -17,7 +17,7 @@ const columns = [
     {
     name:  <h6 className="text-center"><b>TREATMENTS</b></h6>,
     selector: "treatments",
-   // allowOverflow: "True",
+    //allowOverflow: "True",
     center: true,
   },
 
@@ -65,6 +65,14 @@ const columns = [
 
 ];
 
+const customStyles = {
+    headCells: {
+      style: {
+        backgroundColor: "dimgrey",
+      },
+    },
+  };
+
 function TreatmentTable(props) {
     
     var table = null
@@ -98,7 +106,7 @@ function setData(data) {
             nextsteps:dataToSet[i].nextSteps,
             fdaindications:dataToSet[i].FDAApproved,
             funder:dataToSet[i].funder,
-            update:dataToSet[i].lastUpdated
+            update:dataToSet[i].lastUpdated.slice(0, 10)
         }
 
         finalObject.push(obj)
@@ -116,12 +124,23 @@ function setData(data) {
    else{
 
           table = <DataTable
+
+                           title={<h3><b>{props.title.heading}</b></h3>}
+
                            highlightOnHover={true}
+                           pointerOnHover={true}
+                           fixedHeader={true}
+                           highlightOnHover={true}
+                           
+                           subHeader={true}
                            fixedHeader={true}
                            theme={"dark"}
-                           fixedHeaderScrollHeight={"550px"}
+                           subHeaderAlign={"left"}
+                           fixedHeaderScrollHeight={"500px"}
                            columns={columns}
-                           data={finalTableData} >
+                           data={finalTableData} 
+                           customStyles={customStyles}
+                           >
 
                   </DataTable>
        }

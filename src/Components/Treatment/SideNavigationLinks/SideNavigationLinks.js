@@ -5,7 +5,7 @@ import './SideNavigationLinks.css'
 function SideNavigationLinks(props) {
     
     
-    const [ allTreatmentColour , setAllTreatmentColour ] = useState('red')
+    const [ allTreatmentColour , setAllTreatmentColour ] = useState('darkslateblue')
 
     const [ fdaColour , setFdaColour] = useState('steelblue')
 
@@ -28,7 +28,7 @@ function SideNavigationLinks(props) {
 
              case 'ALL TREATMENTS' :
 
-                     setAllTreatmentColour('red')
+                     setAllTreatmentColour('darkslateblue')
                      setFdaColour('steelblue')
                      setAntibodiesColour('steelblue')
                      setAntiviralColour('steelblue')

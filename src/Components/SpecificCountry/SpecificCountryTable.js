@@ -204,9 +204,9 @@ class SpecificCountryTable extends Component {
               
               <h2 className="text-center">Region-Wise Covid Update</h2>
               <hr className="regionRule"></hr>
-              <marquee>Last Updated On&nbsp;{this.state.lastChecked} </marquee>
+              <marquee>Last Updated On&nbsp;{this.state.lastChecked.slice(0, 10)} </marquee>
                   <DataTable
-                          
+                          title={<h3><b>Region Wise Status Of {this.props.t}</b></h3>}
                           highlightOnHover={true}
                           
                           fixedHeader={true}

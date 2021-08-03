@@ -3,6 +3,7 @@
     top: 100px;
 }
 
+/*
 .Treatment .row{
     border: 2px solid black;
 }
@@ -10,7 +11,7 @@
 .Treatment .testCol{
     border: 1px solid black;
 }
-
+*/
 /*
 .Treatment .categoryScroll {
     height: auto;
@@ -19,7 +20,7 @@
   }*/
 
 .Treatment .categoryScroll .fullScreen{
-    height: auto;
+    height: 110%;
     overflow: scroll;
     background-color: rgb(66, 66, 66);
 }
@@ -44,3 +45,56 @@
 
 
 
+/*Footer styles*/
+
+.Treatment .footerSet {
+  height: 60px;
+  width: 100%;
+  color: white;
+}
+
+
+.Treatment .ruleTwo {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0)
+  );
+  width: 80%;
+}
+
+.Treatment .footerSet .footerStyle {
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  margin-top: 120px;
+  background-color: #343a40;
+}
+
+.Treatment .footerSet .footerStyle .container-fluid {
+  width: 85%;
+}
+
+.Treatment .footerSet .footerStyle .container-fluid .col-lg-3 {
+  margin-top: 50px;
+}
+
+.Treatment .footerSet .live {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+.Treatment .glyp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Treatment .glyp img {
+  margin: 10px;
+}

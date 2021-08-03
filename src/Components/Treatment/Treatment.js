@@ -7,6 +7,8 @@ import './Treatment.css'
 
 import Skeleton from '@yisheng90/react-loading';
 
+import Footer from '../Footer/Footer'
+
 import SmallScreenCategories from './ShowCategories/ShowCategories'
 
 import SideNavigationLinks from './SideNavigationLinks/SideNavigationLinks'
@@ -351,6 +353,8 @@ function testClicked(e){
 
                     <div className="col-lg-10 col-md-10 col-sm-12 testCol">
 
+                        <div className="container-fluid">
+
                          <div className="row">
                           
                             <UpperNavigationLinks></UpperNavigationLinks>
@@ -365,12 +369,17 @@ function testClicked(e){
                      
                          <div className="row">
                            
-                           <div style={{width:'100%'}}>
-                               <Table data={allData} loaderState={loader}></Table>
-                           </div>
+                           
+                            <div style={{width:'100%'}}>
+                               <Table data={allData}  title={jumboHeading} loaderState={loader}></Table>
+                            </div>
+                         
                          </div>
                        
                              {console.log(allData)}
+
+                        </div>
+
                     </div>
 
 
@@ -378,6 +387,12 @@ function testClicked(e){
 
         
              </div>
+
+          <div className="footerSet">
+
+            <Footer></Footer>
+
+          </div>
 
         </div>
     );
