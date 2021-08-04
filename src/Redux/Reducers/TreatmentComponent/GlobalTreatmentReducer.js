@@ -1,40 +1,16 @@
-import axios from "axios";
+
+
 
 var allTreatments = []
 
 export default function region(state = allTreatments, action ={}) {
 
-   
-    switch (action.type) {
+     console.log(action.payload)
 
-        case "FETCH_All_TREATMENTS_DATA": {
+    if(action.type === "FETCH"){
 
-            var a = []
-
-
-
-
-        }
-
-        break;
-
-     case "CLEAR_ALL_DATA":{
-
-           allTreatments.length = 0
-
-           //console.log("whyyyyyyy")
-        }
-
-        break;
-
-        case "TEST":{
-
-            console.log("wtffff")
-        }
-
-        break;
-
-
+        console.log("in fetch")
+        allTreatments.push(action.payload)
     }
    
    

@@ -19,6 +19,8 @@ import Table from '../Treatment/TreatmentDataTable/TreatmentTable'
 
 import Navbar from '../Navbar/Navbar'
 
+import TreatmentAction from '../../Redux/Actions/TreatmentAction'
+
 
 function Treatment(props) {
 
@@ -40,9 +42,15 @@ const [jumboHeading , setJumboHeading] = useState()
 
 const [ loader , setLoader] = useState(true)
 
+const [ whichButtonClicked , setWhichButtonClicked ] = useState('')
+
 useEffect(()=>{
 
-    
+   
+ if(props.allTreatmentData.length === 0 ){ /* this condition is used to check if data is already in redux store or not*/ 
+                                           /* when component is mounted  */
+       
+    console.log("fetching data for treatment component")
 
     var options = {
         method: 'GET',
@@ -59,6 +67,7 @@ useEffect(()=>{
 
         setUniversalTreatmentData(response.data)
 
+        props.TreatmentAction(response.data) /* used to set data in treatment reducer on initial render */
 
              var heading = "ALL-TREATMENTS"
              var subHeading ="Here you can find all of the developing or approved treatments and drugs in every stage. You can sort the table based on each columns or search for a unique treatment name."
@@ -66,11 +75,33 @@ useEffect(()=>{
 
              setJumboHeading(jumbotronHeadingsData)
              setLoader(false)
+
+
        })
         .catch(function (error) {
         console.error(error);
     })
-    
+}
+
+
+else {   /* this logic is initialized if data is already in reducer and no fetching is required */
+
+    console.log("No Fetching required")
+
+    setAllData(props.allTreatmentData[0])
+
+    setUniversalTreatmentData(props.allTreatmentData[0])
+
+             var heading = "ALL-TREATMENTS"
+             var subHeading ="Here you can find all of the developing or approved treatments and drugs in every stage. You can sort the table based on each columns or search for a unique treatment name."
+             var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
+
+             setJumboHeading(jumbotronHeadingsData)
+             setLoader(false)
+            
+    }
+
+
     console.log("mounted")
 
     
@@ -80,10 +111,10 @@ useEffect(()=>{
 /* Below logic is used to set state of category box when screen is of small size (1)*/
 var categoryBox = null
 
-    var categoryBoxButton = null
+var categoryBoxButton = null
 
        if(showCategory){
-             categoryBox = (<SmallScreenCategories close={()=>setCategoryButtonState(false,true)}></SmallScreenCategories>)
+             categoryBox = (<SmallScreenCategories close={()=>setCategoryButtonState(false,true)} clicked ={testClicked} buttonClicked={whichButtonClicked}></SmallScreenCategories>)
          }
 
        if(showCategoryButton){
@@ -112,7 +143,7 @@ function testClicked(e){
         case "FDA APPROVED" :
             
              
-           var options = {
+            var options = {
             method: 'GET',
             url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-fda-approved-treatment',
             headers: {
@@ -131,6 +162,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("FDA APPROVED")
              setLoader(false)
 
             }).catch(function (error) {
@@ -144,7 +176,7 @@ function testClicked(e){
         case "ALL TREATMENTS":     
 
 
-            var options = {
+            /*var options = {
                method: 'GET',
                url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-treatment',
                 headers: {
@@ -167,7 +199,20 @@ function testClicked(e){
 
             }).catch(function (error) {
                 console.error(error);
-            });
+            });*/
+
+               var data = universalTreatmentData
+
+               setAllData(universalTreatmentData)
+
+               var heading = "ALL-TREATMENTS"
+               var subHeading ="Here you can find all of the developing or approved treatments and drugs in every stage. You can sort the table based on each columns or search for a unique treatment name."
+               var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
+
+               setJumboHeading(jumbotronHeadingsData)
+               setWhichButtonClicked("ALL TREATMENTS")
+               setLoader(false)
+
 
             break;
 
@@ -175,7 +220,7 @@ function testClicked(e){
 
         case "Antibodies" :
             
-          var data = universalTreatmentData
+            var data = universalTreatmentData
           
             var reqData = data.filter((value)=>{
 
@@ -190,6 +235,7 @@ function testClicked(e){
                 var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
    
                 setJumboHeading(jumbotronHeadingsData)
+                setWhichButtonClicked("Antibodies")
                 setLoader(false)
 
            break;
@@ -212,6 +258,7 @@ function testClicked(e){
             var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
             setJumboHeading(jumbotronHeadingsData)
+            setWhichButtonClicked("Antivirals")
             setLoader(false)
 
             
@@ -236,6 +283,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("Cell-based therapies")
              setLoader(false)
 
 
@@ -259,6 +307,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("RNA-based treatments")
              setLoader(false)
 
         break;
@@ -281,6 +330,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("Device")
              setLoader(false)
 
         break;
@@ -302,8 +352,54 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("Scanning compounds to repurpose")
              setLoader(false)
 
+
+        break;
+
+        case "CLINICAL" :
+
+            var data = universalTreatmentData
+
+            var reqData = data.filter((value)=>{
+ 
+                return value.phase === 'Clinical'
+ 
+             })
+
+
+             setAllData(reqData)
+ 
+             var heading = "CLINICAL"
+             var subHeading ="After preclinical research, tests and treatments go through a series of clinical trials. Clinical trials assess if tests or treatments are safe for and work in people."
+             var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
+ 
+             setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("CLINICAL")
+             setLoader(false)
+
+        break;
+
+        case "PRE CLINICAL" :
+
+            var data = universalTreatmentData
+
+            var reqData = data.filter((value)=>{
+ 
+                return value.phase === 'Pre-clinical'
+ 
+             })
+
+             setAllData(reqData)
+ 
+             var heading = "PRE-CLINICAL"
+             var subHeading ="The preclinical stage in drug development industry begins before clinical trials (testing in humans), and during which important feasibility, iterative testing and drug safety data are collected, typically in laboratory animals. The main goals of preclinical studies are to determine a starting, safe dose for first-in-human study and assess potential toxicity of the product."
+             var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
+ 
+             setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("PRE CLINICAL")
+             setLoader(false)
 
         break;
 
@@ -333,7 +429,7 @@ function testClicked(e){
                            <div className="categories"> 
 
                               <div className="fullScreen">
-                                <SideNavigationLinks clicked ={testClicked}></SideNavigationLinks>
+                                <SideNavigationLinks clicked ={testClicked} buttonClicked={whichButtonClicked}></SideNavigationLinks>
                               </div>
 
                               <div className="smallScreen">
@@ -393,12 +489,13 @@ function testClicked(e){
             <Footer></Footer>
 
           </div>
-
+                  {console.log("check below")}
+                  {console.log(props.allTreatmentData[0])}
         </div>
     );
 }
 
-/*const mapStateToProps = state =>{
+const mapStateToProps = (state) =>{
 
     return {
 
@@ -409,21 +506,15 @@ function testClicked(e){
 
 const mapActionsToProps = dispatch =>{
 
-    return {
+    return bindActionCreators ({
 
-           fetchAllTreatmentsData: () => dispatch({type:'FETCH_All_TREATMENTS_DATA'}),
+           TreatmentAction
 
-           clearAllData : () => dispatch({type:'CLEAR_ALL_DATA'}),
-
-           forTest : () => dispatch({type:"TEST"})
+    },dispatch)
 
 
+}
 
-    }
+export default connect(mapStateToProps,mapActionsToProps) (Treatment);
 
-
-}*/
-
-//export default connect(mapStateToProps,mapActionsToProps) (Treatment);
-
-export default Treatment
+//export default Treatment
