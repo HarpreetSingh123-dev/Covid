@@ -5,7 +5,7 @@ import './SideNavigationLinks.css'
 function SideNavigationLinks(props) {
     
     
-    const [ allTreatmentColour , setAllTreatmentColour ] = useState('darkslateblue')
+    const [ allTreatmentColour , setAllTreatmentColour ] = useState('paleturquoise')
 
     const [ fdaColour , setFdaColour] = useState('steelblue')
 
@@ -44,7 +44,7 @@ function SideNavigationLinks(props) {
 
              case 'ALL TREATMENTS' :
 
-                     setAllTreatmentColour('darkslateblue')
+                     setAllTreatmentColour('paleturquoise')
                      setFdaColour('steelblue')
                      setAntibodiesColour('steelblue')
                      setAntiviralColour('steelblue')
@@ -59,7 +59,7 @@ function SideNavigationLinks(props) {
              
              case 'FDA APPROVED' :
                    
-                setFdaColour('red')
+                setFdaColour('paleturquoise')
                 setAllTreatmentColour('steelblue')
                 setAntibodiesColour('steelblue')
                 setAntiviralColour('steelblue')
@@ -76,7 +76,7 @@ function SideNavigationLinks(props) {
 
                  setAllTreatmentColour('steelblue')
                  setFdaColour('steelblue')
-                 setAntibodiesColour('red')
+                 setAntibodiesColour('paleturquoise')
                  setAntiviralColour('steelblue')
                  setCellBasedColour('steelblue')
                  setRnaBasedColour('steelblue')
@@ -92,7 +92,7 @@ function SideNavigationLinks(props) {
                 setAllTreatmentColour('steelblue')
                 setFdaColour('steelblue')
                 setAntibodiesColour('steelblue')
-                setAntiviralColour('red')
+                setAntiviralColour('paleturquoise')
                 setCellBasedColour('steelblue')
                 setRnaBasedColour('steelblue')
                 setDeviceColour('steelblue')
@@ -109,7 +109,7 @@ function SideNavigationLinks(props) {
                  setFdaColour('steelblue')
                  setAntibodiesColour('steelblue')
                  setAntiviralColour('steelblue')
-                 setCellBasedColour('red')
+                 setCellBasedColour('paleturquoise')
                  setRnaBasedColour('steelblue')
                  setDeviceColour('steelblue')
                  setScanningColour('steelblue')
@@ -125,7 +125,7 @@ function SideNavigationLinks(props) {
                 setAntibodiesColour('steelblue')
                 setAntiviralColour('steelblue')
                 setCellBasedColour('steelblue')
-                setRnaBasedColour('red')
+                setRnaBasedColour('paleturquoise')
                 setDeviceColour('steelblue')
                 setScanningColour('steelblue')
                 setClinicalColour('steelblue')
@@ -141,7 +141,7 @@ function SideNavigationLinks(props) {
                 setAntiviralColour('steelblue')
                 setCellBasedColour('steelblue')
                 setRnaBasedColour('steelblue')
-                setDeviceColour('red')
+                setDeviceColour('paleturquoise')
                 setScanningColour('steelblue')
                 setClinicalColour('steelblue')
                 setPreClinicalColour('steelblue')
@@ -157,7 +157,7 @@ function SideNavigationLinks(props) {
                 setCellBasedColour('steelblue')
                 setRnaBasedColour('steelblue')
                 setDeviceColour('steelblue')
-                setScanningColour('red')
+                setScanningColour('paleturquoise')
                 setClinicalColour('steelblue')
                 setPreClinicalColour('steelblue')
 
@@ -173,7 +173,7 @@ function SideNavigationLinks(props) {
                 setRnaBasedColour('steelblue')
                 setDeviceColour('steelblue')
                 setScanningColour('steelblue')
-                setClinicalColour('red')
+                setClinicalColour('paleturquoise')
                 setPreClinicalColour('steelblue')
 
 
@@ -190,7 +190,7 @@ function SideNavigationLinks(props) {
                 setDeviceColour('steelblue')
                 setScanningColour('steelblue')
                 setClinicalColour('steelblue')
-                setPreClinicalColour('red')
+                setPreClinicalColour('paleturquoise')
 
 
              break;

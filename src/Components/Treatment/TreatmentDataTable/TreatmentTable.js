@@ -76,6 +76,8 @@ const customStyles = {
 function TreatmentTable(props) {
     
     var table = null
+
+    const [ universalFinalTableData , setUniversalFinalTableData] = useState()
  
     const [ finalTableData , setFinalTableData] = useState()
 
@@ -114,7 +116,49 @@ function setData(data) {
     }
 
     setFinalTableData(finalObject)
+
+    setUniversalFinalTableData(finalObject)
 }  
+
+function searchFind(value){
+
+  console.log(value)
+
+  if(value === ""){
+
+    console.log('no value')
+
+    setFinalTableData(universalFinalTableData)
+  }
+
+  else {
+  var a = finalTableData.filter((data)=>{
+
+      if ( value == ""){
+
+          return   data
+      }
+
+      else  if (data.treatments.props.children.toLowerCase().includes(value.toLowerCase()) ){
+
+          return data
+      }
+
+
+
+//console.log(data.treatments.props.children.toLowerCase().includes(value.toLowerCase()))
+     
+  })
+
+
+  setFinalTableData(a)
+
+  }
+}
+
+
+
+
 
 /* Below we are rendering table component based on props */
  if(props.loaderState){
@@ -148,6 +192,15 @@ function setData(data) {
     return (
       
             <div>
+
+                <div class="input-group input-group-sm mb-3">
+                      
+                       <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+                       </div>
+                      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onChange={ (event)=>{searchFind(event.target.value)} }></input>
+                              
+               </div>
             
                {table}
 

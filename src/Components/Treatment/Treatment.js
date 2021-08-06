@@ -44,6 +44,8 @@ const [ loader , setLoader] = useState(true)
 
 const [ whichButtonClicked , setWhichButtonClicked ] = useState('')
 
+const [ serachTerm , setSearchTerm ] = useState('')
+
 useEffect(()=>{
 
    
@@ -100,7 +102,6 @@ else {   /* this logic is initialized if data is already in reducer and no fetch
              setLoader(false)
             
     }
-
 
     console.log("mounted")
 
@@ -411,6 +412,8 @@ function testClicked(e){
        
 }
 
+
+
     return (
         
         <div className="Treatment">
@@ -462,6 +465,12 @@ function testClicked(e){
                             <TreatmentJumbotron  data={jumboHeading} loaderState={loader}></TreatmentJumbotron>
 
                          </div>
+
+                         <div className="row">
+
+                              
+
+                         </div>
                      
                          <div className="row">
                            
@@ -472,7 +481,7 @@ function testClicked(e){
                          
                          </div>
                        
-                             {console.log(allData)}
+                             {/*console.log(allData)*/}
 
                         </div>
 
@@ -489,8 +498,9 @@ function testClicked(e){
             <Footer></Footer>
 
           </div>
-                  {console.log("check below")}
+                  {/*console.log("check below")*/}
                   {console.log(props.allTreatmentData[0])}
+                  {console.log(serachTerm)}
         </div>
     );
 }
