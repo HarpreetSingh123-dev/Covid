@@ -12,6 +12,8 @@ const columns = [
     {   name:  <h6 className="text-center"><b>Sr No</b> </h6>,
         selector: "number",
         center: true,
+        compact:true
+
       },
   
     {
@@ -19,48 +21,65 @@ const columns = [
     selector: "treatments",
     //allowOverflow: "True",
     center: true,
+    
+  
   },
 
   {
     name: <h6 className="text-center">CATEGORY</h6>,
     selector: "category",
     center: true,
+    sortable:true
+    
+    
   },
 
   {
     name: <h6 className="text-center">STAGE</h6>,
     selector: "stage",
     center: true,
+    
+    
   },
 
   {
     name: <h6 className="text-center">COMPANIES</h6>,
     selector: "companies",
     center: true,
+   
+    
   },
 
   {
     name: <h6 className="text-center">ANTICIPATED NEXT STEPS</h6>,
     selector: "nextsteps",
     center: true,
+    
+    
   },
 
   {
     name: <h6 className="text-center">FDA APPROVED INDICATIONS</h6>,
     selector: "fdaindications",
     center: true,
+    
+    
   },
 
   {
     name: <h6 className="text-center">FUNDER</h6>,
     selector: "funder",
     center: true,
+    
+    
   },
 
   {
     name: <h6 className="text-center">LAST UPDATE</h6>,
     selector: "update",
     center: true,
+   
+    
   },
 
 ];
@@ -97,21 +116,34 @@ function setData(data) {
     var dataToSet = data
 
     for(var i = 0 ; i<dataToSet.length ; i++){
+
+        var fdaApproved 
  
-       var obj ={
+        var funder 
+      
+        if(dataToSet[i].FDAApproved === "undefined"){ fdaApproved = "No Data"}
+
+           else { fdaApproved = dataToSet[i].FDAApproved}
+
+
+        if(dataToSet[i].funder === "undefined"){funder = "No Data"}
+
+           else { funder = dataToSet[i].funder }
+  
+         var obj ={
 
             number : i+1,
-            treatments : <Link to={`/Treatment-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].description}</Link>,
+            treatments : <Link style={{color:'white'}} to={`/Treatment-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].description}</Link>,
             category: dataToSet[i].category,
             stage: dataToSet[i].phase,
-            companies:dataToSet[i].developerResearcher,
+            companies:<Link style={{color:'white'}} to={`/Treatment-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].developerResearcher}</Link>,
             nextsteps:dataToSet[i].nextSteps,
-            fdaindications:dataToSet[i].FDAApproved,
-            funder:dataToSet[i].funder,
+            fdaindications:fdaApproved,
+            funder:funder,
             update:dataToSet[i].lastUpdated.slice(0, 10)
-        }
+         }
 
-        finalObject.push(obj)
+         finalObject.push(obj)
 
     }
 
@@ -122,38 +154,29 @@ function setData(data) {
 
 function searchFind(value){
 
-  console.log(value)
+     console.log(value)
 
-  if(value === ""){
+       if(value === ""){
 
-    console.log('no value')
+                 console.log('no value')
 
-    setFinalTableData(universalFinalTableData)
-  }
+                setFinalTableData(universalFinalTableData)
+          }
 
   else {
-  var a = finalTableData.filter((data)=>{
+ 
+          var a = finalTableData.filter((data)=>{
 
-      if ( value == ""){
-
-          return   data
-      }
-
-      else  if (data.treatments.props.children.toLowerCase().includes(value.toLowerCase()) ){
-
-          return data
-      }
-
-
-
-//console.log(data.treatments.props.children.toLowerCase().includes(value.toLowerCase()))
+              if (data.treatments.props.children.toLowerCase().includes(value.toLowerCase()) ){
+                  console.log("triggered")
+                  return data
+                 }
+                 //console.log(data.treatments.props.children.toLowerCase().includes(value.toLowerCase()))
      
-  })
-
-
-  setFinalTableData(a)
-
-  }
+               })
+         
+               setFinalTableData(a)
+        }
 }
 
 
@@ -167,7 +190,14 @@ function searchFind(value){
 
    else{
 
-          table = <DataTable
+          table =  <div>
+
+                      <div class="input-group input-group-sm mb-3">
+                           <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search Based On Treatment Type" onChange={ (event)=>{searchFind(event.target.value)} }></input>
+                              
+                      </div>
+
+                    <DataTable
 
                            title={<h3><b>{props.title.heading}</b></h3>}
 
@@ -175,11 +205,13 @@ function searchFind(value){
                            pointerOnHover={true}
                            fixedHeader={true}
                            highlightOnHover={true}
-                           
+                           responsive={true}
+                           dense={true}
                            subHeader={true}
                            fixedHeader={true}
                            theme={"dark"}
                            subHeaderAlign={"left"}
+                           subHeaderComponent={<h6 style={{color:'white'}}>For more information, click on specific treatment</h6>}
                            fixedHeaderScrollHeight={"500px"}
                            columns={columns}
                            data={finalTableData} 
@@ -187,20 +219,15 @@ function searchFind(value){
                            >
 
                   </DataTable>
+
+                  </div>
        }
 
     return (
       
             <div>
 
-                <div class="input-group input-group-sm mb-3">
-                      
-                       <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-                       </div>
-                      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onChange={ (event)=>{searchFind(event.target.value)} }></input>
-                              
-               </div>
+                
             
                {table}
 

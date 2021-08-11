@@ -1,0 +1,95 @@
+.specificTreatment .specificTreatmentMarginSet{
+
+    position: relative;
+    top: 110px;
+    
+}
+
+
+.specificTreatment .upperContent{
+   /* margin-top: 30px;*/
+    background-color: rgb(66,66,66);
+}
+
+.specificTreatment .table td{
+    color: white;
+}
+
+.specificTreatment .table{
+    /*width: 80%;*/
+}
+
+.specificTreatment .test{
+   
+    border: 1px solid black;
+}
+
+.specificTreatment .lowerContent{
+    margin-top: 30px;
+}
+/*
+.specificTreatment .test{
+    border: 1px solid black;
+    margin-top: 10px;
+}
+*/
+.specificTreatment .breakWords{
+
+   /*word-wrap: break-word;*/
+   word-break: keep-all;
+}
+
+
+/* footer styles below*/
+
+
+.specificTreatment .footerSet {
+    height: 60px;
+    width: 100%;
+    color: white;
+  }
+
+
+.specificTreatment .ruleTwo {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0)
+    );
+    width: 80%;
+  }
+
+.specificTreatment .footerSet .footerStyle {
+    left: 0;
+    bottom: 0;
+  
+    width: 100%;
+    margin-top: 140px;
+    background-color: #343a40;
+  }
+
+.specificTreatment .footerSet .footerStyle .container-fluid {
+    width: 85%;
+  }
+  
+.specificTreatment .footerSet .footerStyle .container-fluid .col-lg-3 {
+    margin-top: 50px;
+  }
+  
+.specificTreatment .footerSet .live {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+.specificTreatment .glyp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.specificTreatment .glyp img {
+    margin: 10px;
+  }

@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import ChartAction from '../../Redux/Actions/MainPageChartAction'
 import './MainPageChart.css'
 import axios from 'axios'
 import { Chart } from "react-google-charts"
 import Skeleton from '@yisheng90/react-loading';
+import { props } from 'ramda';
 //import Loader from "react-loader-spinner";
 //import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 
 class MainPageChart extends Component {
     
@@ -25,7 +30,9 @@ class MainPageChart extends Component {
            totalCasesLoader:true,
            activeCasesLoader:true,
            criticalCasesLoader:true,
-           ratioLoader:true
+           ratioLoader:true,
+
+           dataFetchingRequired:true
            
         }
 
@@ -40,6 +47,7 @@ class MainPageChart extends Component {
 componentDidMount(){
 
 
+
     var options = {
         method: 'GET',
         url: 'https://coronavirus-map.p.rapidapi.com/v1/spots/summary',
@@ -50,17 +58,17 @@ componentDidMount(){
       };
       
       axios.request(options).then(function (response) {
-         
-      //  var k = "2020-01-21"
-       // console.log("bar data below")
+     
+
        
-       //console.log(response.data.data[k]);
 
        const data = response.data
 
        return data
 
-      }).then(this.setDataModel)
+      })
+      
+        .then(this.setDataModel)
       
          .then(this.setTotalCasesData)
 
@@ -69,16 +77,70 @@ componentDidMount(){
          .then(this.setCriticalCasesData)
 
          .then(this.setRatioComparison)
+
+         
+
+         
       
       .catch(function (error) {
           console.error(error);
       });
 
+  
+    /*
+     
+        console.log("chart data not fetched")
+         
+         /*this.setState({dataFetchingRequired:false})
+
+         this.setDataModel(this.props.allChartData[0])
+
+         this.setTotalCasesData()
+         this.setActiveCasesData()
+         this.setCriticalCasesData()
+         this.setRatioComparison() */
+      /*   var dataSet = this.props.allChartData
+        
+         let myPromise = new Promise(function(myResolve, myReject) {
+           
+          
+          if(dataSet.length>0){
+
+              myResolve(dataSet[0])
+          }
+
+          else{
+
+              myReject("data is not present")
+          }
+
+        });
+        
+        myPromise.then(this.setState({dataFetchingRequired:false}))
+                 .then(this.setDataModel)
+                 .then(this.setTotalCasesData)
+                 .then(this.setActiveCasesData)
+                 .then(this.setCriticalCasesData)
+                 .then(this.setRatioComparison)
+     
+
+
+        }
+
+
+        {console.log("test below")}
+        {console.log(this.state.data)}*/
 }    
 
 setDataModel(data){
 
+ /* if(this.state.dataFetchingRequired){
+
+    this.props.ChartAction(data)
+  }*/
+
    this.setState({data:data})
+    // Redux action called here with data send along with it
    
 }
 
@@ -350,4 +412,23 @@ setRatioComparison(){
     }
 }
 
-export default MainPageChart;
+const mapStateToProps = (state)=>{
+
+return {
+
+        allChartData:state.chartData
+   }
+}
+
+const mapActionsToProps = (dispatch) =>{
+
+return bindActionCreators({
+
+       ChartAction
+   
+},dispatch)
+
+
+}
+
+export default connect(mapStateToProps,mapActionsToProps)(MainPageChart)

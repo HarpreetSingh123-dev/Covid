@@ -2,6 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+import TimeAgo from 'javascript-time-ago'
+
+import en from 'javascript-time-ago/locale/en'
+import ru from 'javascript-time-ago/locale/ru'
+
+
+
 import reportWebVitals from './reportWebVitals';
 import FinalAssembly from './FinalAssembly'
 
@@ -9,7 +16,8 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 
 import Reducer from './Redux/CombineReducers'
-
+TimeAgo.addDefaultLocale(en)
+TimeAgo.addLocale(ru)
 const Store = createStore(Reducer)
 
 ReactDOM.render(

@@ -20,6 +20,7 @@ import Table from '../Treatment/TreatmentDataTable/TreatmentTable'
 import Navbar from '../Navbar/Navbar'
 
 import TreatmentAction from '../../Redux/Actions/TreatmentAction'
+import { isEmpty } from 'ramda';
 
 
 function Treatment(props) {
@@ -44,14 +45,18 @@ const [ loader , setLoader] = useState(true)
 
 const [ whichButtonClicked , setWhichButtonClicked ] = useState('')
 
-const [ serachTerm , setSearchTerm ] = useState('')
+
 
 useEffect(()=>{
 
    
  if(props.allTreatmentData.length === 0 ){ /* this condition is used to check if data is already in redux store or not*/ 
                                            /* when component is mounted  */
-       
+       if( isEmpty(props.match.params)){
+        console.log("no params")
+        //console.log(props.match.params)
+       }
+
     console.log("fetching data for treatment component")
 
     var options = {
@@ -500,7 +505,7 @@ function testClicked(e){
           </div>
                   {/*console.log("check below")*/}
                   {console.log(props.allTreatmentData[0])}
-                  {console.log(serachTerm)}
+                  
         </div>
     );
 }

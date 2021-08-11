@@ -1,9 +1,13 @@
-.upperNavigationLinks .setLinks{
+ .upperNavigationLinks .setLinks{
    display: flex;
    overflow-x: scroll;
 }
 
-.upperNavigationLinks .btn:hover{
+.upperNavigationLinks .setLinkColor{
+    color: white;
+}
+
+.upperNavigationLinks .setLinkColor:hover{
     color: cyan;
 }
 

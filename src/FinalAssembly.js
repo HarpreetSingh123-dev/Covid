@@ -10,12 +10,15 @@ import Maps from './Components/Map/Maps'
 import News from './Components/News/News'
 import About from './Components/About/About'
 
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+
 
 const FinalAssembly = () => {
     return (
 
         <Router>
-        <div>
+            <ScrollToTop> {/* this component solves problem of rendering of page from bottom */}
+            <div>
             <Switch>
 
                 <Route exact path='/' component={App}></Route>
@@ -28,7 +31,8 @@ const FinalAssembly = () => {
                 <Route exact path='/About' component={About}></Route>
                 
             </Switch>
-        </div>
+            </div>
+           </ScrollToTop>
         </Router>
     );
 };
