@@ -4,7 +4,7 @@ import axios from 'axios'
 import Skeleton from '@yisheng90/react-loading';
 import ReactCountryFlag from 'react-country-flag'
 import {Link} from 'react-router-dom'
-
+import ReactTimeAgo from 'react-time-ago'
 import Navbar from '../Navbar/Navbar'
 import Countries from '../MainPage/Countries/Countries'
 import CountryChanges from '../SpecificCountry/CountryChanges'

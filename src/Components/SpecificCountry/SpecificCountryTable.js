@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./SpecificCountryTable.css";
 import Skeleton from '@yisheng90/react-loading';
+import ReactTimeAgo from 'react-time-ago'
 import axios from "axios";
 import DataTable from "react-data-table-component";
 
@@ -169,7 +170,7 @@ class SpecificCountryTable extends Component {
             //recovered:value[i].recovered,
             recovered:nullValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
             deaths:value[i].deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
-            update:value[i].lastUpdate.slice(0, 10)
+            update:<ReactTimeAgo date={value[i].lastUpdate} locale="en-US"></ReactTimeAgo>
            
 
         }

@@ -2,6 +2,7 @@ import React from 'react';
 import {useState,useEffect,useRef} from 'react'
 import './News.css'
 import Skeleton from '@yisheng90/react-loading';
+import ReactTimeAgo from 'react-time-ago'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
@@ -137,7 +138,7 @@ if(vaccineComponent){
                                        <h5 class="card-title">{news.title}</h5>
                                        <p class="card-text">{news.content}</p>
                                        <p class="card-text"><a href={news.link} target="_blank">Click Here for more</a></p>
-                                       <p class="card-text"><small class="text-muted" >{news.pubDate}</small></p>
+                                       <p class="card-text"><small class="text-muted" ><ReactTimeAgo date={news.pubDate} locale="en-US"></ReactTimeAgo></small></p>
                                        </div>
                                        </div>
                            })}
@@ -177,7 +178,7 @@ if(healthComponent){
                                         <h5 class="card-title">{news.title}</h5>
                                         <p class="card-text">{news.content}</p>
                                         <p class="card-text"><a href={news.link} target="_blank">Click Here for more</a></p>
-                                        <p class="card-text"><small class="text-muted" >{news.pubDate}</small></p>
+                                        <p class="card-text"><small class="text-muted" ><ReactTimeAgo date={news.pubDate} locale="en-US"></ReactTimeAgo></small></p>
                                         </div>
                                        </div>
                                        
@@ -220,7 +221,7 @@ if(covidComponent){
                                         <h5 class="card-title">{news.title}</h5>
                                         <p class="card-text">{news.content}</p>
                                         <p class="card-text"><a href={news.link} target="_blank">Click Here for more</a></p>
-                                        <p class="card-text"><small class="text-muted" >{news.pubDate}</small></p>
+                                        <p class="card-text"><small class="text-muted" ><ReactTimeAgo date={news.pubDate} locale="en-US"></ReactTimeAgo></small></p>
                                         </div>
                                         </div>
         
