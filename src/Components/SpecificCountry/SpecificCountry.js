@@ -40,7 +40,7 @@ class SpecificCountry extends Component {
          ChangeInTested:'',
 
          changesLoader:true,
-         tableLoader:true,
+         tableLoader:false, // false temporarily as api is down
 
          isUSA:false
 

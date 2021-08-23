@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Chart } from "react-google-charts"
+//import DatamapsIndia from 'react-datamaps-india'
+//import ReactDatamaps from "react-india-states-map";
 import './Map.css'
 
+import IndiaMap from './IndiaMap'
 import Skeleton from '@yisheng90/react-loading'
 
 import Navbar from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
 
 import axios from 'axios'
-const R = require('ramda');
+
 
 class Maps extends Component {
 
@@ -21,8 +24,15 @@ class Maps extends Component {
      
       countryData:[],
       mapDataSet:'',
-      loader:true
-      
+      loader:true,
+
+      fetchedIndiaData:'',
+      indiaMapData:'',
+
+      showWorldMap:true,
+      showIndiaMap:false
+
+
 
     }
 
@@ -31,8 +41,15 @@ class Maps extends Component {
     this.setCountryStats=this.setCountryStats.bind(this)
    // this.setCountries=this.setCountries.bind(this)
     this.setFinalMapData=this.setFinalMapData.bind(this)
+    this.showIndiaMap = this.showIndiaMap.bind(this)
+    this.showWorldMap = this.showWorldMap.bind(this)
 
     //this.test = this.test.bind(this)
+
+    this.setIndiaMapData = this.setIndiaMapData.bind(this)
+    this.setFinalIndiaMapData = this.setFinalIndiaMapData.bind(this)
+
+    //this.objectMaker = this.objectMaker.bind(this)
 
   }
 
@@ -44,7 +61,7 @@ componentDidMount(){
 
 fetchDataFromBackend(){
 
-//////////////First axios request for fetching latest country stats/////////////////////////  
+//////////////First axios request for fetching latest country stats of world map/////////////////////////  
  
   var options1 = {
     method: 'GET',
@@ -69,18 +86,42 @@ fetchDataFromBackend(){
     .catch(function (error) {
                console.error(error);
      });
-//////////////////////////////////////////////////////////////////////////////////////
+/////////Second axios request for fetching india map data/////////////////////////
 
+  var options2 = {
+        method: 'GET',
+        url: 'https://corona-virus-world-and-india-data.p.rapidapi.com/api_india',
+        headers: {
+              'x-rapidapi-host': 'corona-virus-world-and-india-data.p.rapidapi.com',
+              'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36'
+               }
+       };
+
+  axios.request(options2).then(function (response) {
+       console.log("in india map")  
+      //console.log(response.data.state_wise['Maharashtra']);
+         //setFetchedData(response.data.state_wise)
+         return response.data.state_wise
+        //console.log(response.data.state_wise['Maharashtra']);
+ })
+
+   .then(this.setIndiaMapData) 
+
+   .then(this.setFinalIndiaMapData)
+
+  
+  .catch(function (error) {
+    console.error(error);
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////////
 }
 
-
+/* below functions are for world map*/
 setCountryStats(countries){
 
-
-  this.setState({countryData:countries})
+       this.setState({countryData:countries})
 
 }
 
@@ -125,8 +166,72 @@ setFinalMapData(){
   this.setState({loader:false})
 
 }
+/*///////////////////////////////////////////////////////////////////////*/
+
+/* Below functions are for setting india map*/
+setIndiaMapData(data){
+
+  this.setState({fetchedIndiaData:data})
+
+}
+
+ 
+
+setFinalIndiaMapData(){
+
+ 
+  function objectMaker(statee , activeCases){
+
+    return {
+  
+         [statee]:{
+  
+            value: activeCases
+         }
+    }
+  }
 
 
+    var finalSetData = {}
+
+    var data = this.state.fetchedIndiaData
+
+
+    Object.entries(data).map(([type, d])=>{
+
+      //  console.log(type,d.active)
+
+       var d = objectMaker(type , d.active)
+
+       Object.assign(finalSetData,d)
+
+      // finalSetData.push(d)
+    })
+
+    console.log("finnnn")
+
+    console.log(finalSetData)
+
+    this.setState({indiaMapData:finalSetData})
+
+
+}
+/* //////////////////////////////////////////////////// */
+
+/* Below functions are for button logic showing maps*/
+showWorldMap(){
+
+  this.setState({showWorldMap:true,showIndiaMap:false})
+}
+
+
+showIndiaMap(){
+
+this.setState({showWorldMap:false,showIndiaMap:true})
+
+}
+
+/*///////////////////////////////////////////////////////*/
 
   render() {
  
@@ -140,36 +245,89 @@ setFinalMapData(){
 
     else{
 
-      a =(<Chart
-        width={'98%'}
-        height={'92%'}
-        chartType="GeoChart"
-        data={
-         this.state.mapDataSet
-             }
-            // Note: you will need to get a mapsApiKey for your project.
-           // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-        //mapsApiKey="AIzaSyBhMvalaSIEsFtlV76QplAaPI614tpVb4k"
-        //rootProps={{ 'data-testid': '1' }} 
-        />)
+        if(this.state.showWorldMap){
+
+                  a =(
+                  
+                       <div className="worldMap">
+
+                        <Chart
+                             width={'98%'}
+                             height={'92%'}
+                             chartType="GeoChart"
+                             data={this.state.mapDataSet}
+                            // Note: you will need to get a mapsApiKey for your project.
+                            // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                            //mapsApiKey="AIzaSyBhMvalaSIEsFtlV76QplAaPI614tpVb4k"
+                            //rootProps={{ 'data-testid': '1' }} 
+                     />
+
+                        <div className="footerSet">
+           
+                          <Footer></Footer>
+   
+                        </div>
+
+                     </div>
+                     )
+                     
+                     }
+
+       if(this.state.showIndiaMap){
+
+               a = (
+
+                     <div className="container-fluid">
+                    
+                        <div style={{position:'relative', top:'80px', width:'100%'}}>
+               
+                                  <div className="container">  
+                                      <IndiaMap update={this.state.indiaMapData}></IndiaMap>
+                                  </div>
+                          
+                                  <div className="indiaMapFooterSet">
+                          
+                                  <div className="footerSet">
+                                       <Footer></Footer>
+                                  </div>
+                          
+                                  </div>
+                 
+                       </div>
+
+                     
+                     </div>
+                    
+               )
+
+       }              
     }
  
     return (
  
+      <div className="mapSet">
  
-       <div className="worldMap">
+           <Navbar mapPage={true}></Navbar>   
+            
+                  <div className="mapButtonsSet">
 
-          <Navbar mapPage={true}></Navbar>   
-               
-          {a}
-
-          
+                         <button onClick={this.showIndiaMap}>India Map</button>
+                         <button onClick={this.showWorldMap}>World Map</button>
                 
-          <div className="footerSet">
-              <Footer></Footer>
-          </div>
+                  </div>
+         
+                  <div>
+                   {a}
+                  </div>
+          
+          
 
-      </div>
+           
+        
+
+        
+ 
+    </div>
       
       );
     }
