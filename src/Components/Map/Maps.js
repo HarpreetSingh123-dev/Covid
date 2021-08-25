@@ -30,7 +30,10 @@ class Maps extends Component {
       indiaMapData:'',
 
       showWorldMap:true,
-      showIndiaMap:false
+      showIndiaMap:false,
+
+      indiaButtonColor:'',
+      worldButtonColor:'black'
 
 
 
@@ -180,13 +183,17 @@ setIndiaMapData(data){
 setFinalIndiaMapData(){
 
  
-  function objectMaker(statee , activeCases){
+  function objectMaker(statee , activeCases , deaths , deltaCases , deltaDeaths , recovered){
 
     return {
   
          [statee]:{
   
-            value: activeCases
+            value: activeCases,
+            deaths:deaths,
+            delta: deltaCases,
+            deltaDeaths: deltaDeaths,
+            recovered:recovered
          }
     }
   }
@@ -195,13 +202,14 @@ setFinalIndiaMapData(){
     var finalSetData = {}
 
     var data = this.state.fetchedIndiaData
-
+    console.log("data below")
+    console.log(data)
 
     Object.entries(data).map(([type, d])=>{
 
       //  console.log(type,d.active)
 
-       var d = objectMaker(type , d.active)
+       var d = objectMaker(type , d.active, d.deaths , d.deltaconfirmed , d.deltadeaths , d.recovered)
 
        Object.assign(finalSetData,d)
 
@@ -221,13 +229,13 @@ setFinalIndiaMapData(){
 /* Below functions are for button logic showing maps*/
 showWorldMap(){
 
-  this.setState({showWorldMap:true,showIndiaMap:false})
+  this.setState({showWorldMap:true,showIndiaMap:false, worldButtonColor:'black', indiaButtonColor:'#6C757D'})
 }
 
 
 showIndiaMap(){
 
-this.setState({showWorldMap:false,showIndiaMap:true})
+this.setState({showWorldMap:false,showIndiaMap:true , worldButtonColor:'#6C757D' , indiaButtonColor:'black'})
 
 }
 
@@ -239,8 +247,9 @@ this.setState({showWorldMap:false,showIndiaMap:true})
 
     if(this.state.loader){
    
-       a =(<Skeleton rows={30} color="lightgray"></Skeleton>)
-
+       a =(  <div style={{position:'relative' , top:'100px'}}>
+             <Skeleton rows={30}  color="lightgray"></Skeleton>)
+             </div>  )
     }
 
     else{
@@ -279,7 +288,7 @@ this.setState({showWorldMap:false,showIndiaMap:true})
 
                      <div className="container-fluid">
                     
-                        <div style={{position:'relative', top:'80px', width:'100%'}}>
+                        <div style={{position:'relative', top:'90px', width:'100%'}}>
                
                                   <div className="container">  
                                       <IndiaMap update={this.state.indiaMapData}></IndiaMap>
@@ -310,10 +319,10 @@ this.setState({showWorldMap:false,showIndiaMap:true})
            <Navbar mapPage={true}></Navbar>   
             
                   <div className="mapButtonsSet">
-
-                         <button onClick={this.showIndiaMap}>India Map</button>
-                         <button onClick={this.showWorldMap}>World Map</button>
-                
+                         
+                         <button   type="button" className="btn btn-secondary" style={{backgroundColor:this.state.worldButtonColor}} onClick={this.showWorldMap}>World Map</button>
+                         <button   type="button" className="btn btn-secondary" style={{backgroundColor:this.state.indiaButtonColor}} onClick={this.showIndiaMap}>India Map</button>
+                         
                   </div>
          
                   <div>

@@ -9,7 +9,10 @@
 .mapSet .mapButtonsSet{
 
   position: relative;
-  top: 80px;
+  top: 100px;
+  /*border: 2px solid black;*/
+ display: flex;
+ justify-content:space-around;
 }
 
 .indiaMapFooterSet{
