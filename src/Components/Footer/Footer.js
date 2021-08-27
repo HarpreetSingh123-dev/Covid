@@ -46,12 +46,12 @@ function Footer() {
                                 <hr className="ruleTwo"></hr>
 
                            
-                                   <p className="text-center">All Treatments</p>
-                                   <p className="text-center">Remdesivir</p>
-                                   <p className="text-center">Favilavir</p>
-                                   <p className="text-center">Chloroquine</p>
-                                   <p className="text-center">Ivermectin</p>
-                                   <p className="text-center">Tocilizumab</p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color: "white"}} to={'/Treatment'}>All Treatments</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color: "white"}} to={'/Treatment-Information/antivirals/gilead-world-health-organization-solidarity-trial-national-institute-of-allergy-and-infectious-diseases-(niaid)s-adaptive-covid-19-treatment-trial-feinstein-institutes-i-spy-covid'}>Remdesivir</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color: "white"}} to={'/Treatment-Information/antivirals/fujifilm-toyama-chemical-zhejiang-hisun-pharmaceuticals-numerous-trials-with-global-research-sponsors-brigham-and-womens-hospital-massachusetts-general-hospital,-and-the-university-of-massachusetts-medical-school-glenmark-pharmaceuticals'}>Favipiravir</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color: "white"}} to={'/Treatment-Information/other/numerous-trials-with-global-research-sponsors-including-world-health-organization-solidarity-trial-orchid-trial-with-national-heart-lung,-and-blood-institute-(nhlbi)-remap-cap-global-trial-novartis-principle-trial'}>Chloroquine</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color: "white"}} to={'/Treatment-Information/other/medincell-university-of-utah-surgisphere-corp-university-of-baghdad-tanta-university-other-global-research-sponsors'}>Ivermectin</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color: "white"}} to={'/Treatment-Information/antibodies/numerous-trials-with-global-research-sponsors-roche-remap-cap-recovery'}>Tocillizumab</Link></p>
 
                          
 

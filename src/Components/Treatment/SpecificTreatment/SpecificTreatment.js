@@ -37,6 +37,8 @@ useEffect(()=>{
       axios.request(options).then(function (response) {
         console.log("data in specific treatment")  
         console.log(response.data);
+
+
         setFetchedData(response.data[0])
         setLinks(response.data[0].publishedResults)
       })
@@ -139,8 +141,18 @@ var display = null
                                           <td><h4><b>PUBLISHED RESULTS :</b></h4></td>
                                           <td className="breakWords">{links.map((value,index)=>{
                                                    
-                                                   var i = 1
-                                                   return <a href={value}>Link{i+index} &nbsp;</a>
+                                                   if(value === 'undefined'){
+                                                     
+                                                     return <h6>No Published Results</h6> 
+                                                   }
+
+                                                   else{
+
+                                                       var i = 1
+                                                       return <a href={value}>Link{i+index} &nbsp;</a>
+                                                   }
+
+                                                   
 
                                           })}</td>
 
@@ -168,7 +180,7 @@ var display = null
 
                                       </tr>
 
-                                      <tr>
+                                      <tr> 
 
                                           <td><h4><b>CLINICAL TRIALS FOR OTHER DISEASES :</b></h4></td>
                                           <td><h6>{fetchedData.clinicalTrialsForOtherDiseases}</h6></td>

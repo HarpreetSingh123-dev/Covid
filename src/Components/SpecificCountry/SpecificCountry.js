@@ -667,16 +667,16 @@ var dataSet = changes.data.change
                     
                                <h2 className="text-center"> Changes Since Last Update</h2>
                                    <hr className="ruleSpecific"></hr>
-                  
-                                       <CountryChanges
-                                           loader={this.state.changesLoader}          
-                                           totalCases={this.state.changeInTotalCases}
-                                           activeCases={this.state.changeInActveCases}
-                                           totalDeaths={this.state.changeInDeaths}
+                                       <marquee>Values Overidden as Api Is Down</marquee>
+                                       <CountryChanges /* values overidden as api is down  */
+                                           loader={/*this.state.changesLoader*/false}          
+                                           totalCases={/*this.state.changeInTotalCases*/ 0}
+                                           activeCases={/*this.state.changeInActveCases*/0}
+                                           totalDeaths={/*this.state.changeInDeaths*/0}
 
-                                           tested={this.state.ChangeInTested}
-                                           recovered={this.state.changeInRecoveredCases}
-                                           critical={this.state.changeInCriticalCases}  
+                                           tested={/*this.state.ChangeInTested*/0}
+                                           recovered={/*this.state.changeInRecoveredCases*/0}
+                                           critical={/*this.state.changeInCriticalCases*/0}  
         
                                       ></CountryChanges>
 
