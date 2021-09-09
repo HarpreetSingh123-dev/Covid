@@ -84,7 +84,7 @@ useEffect(()=>{
              setLoader(false)
 
 
-       })
+       }) 
         .catch(function (error) {
         console.error(error);
     })
@@ -127,8 +127,9 @@ var categoryBoxButton = null
             categoryBoxButton =  (<button type="button" className="btn btn-info" style={{width:'100%'}} onClick={()=> setCategoryButtonState(true,false)}>Click To Choose Category </button>)
         } 
         
-        function setCategoryButtonState(a,b){
-
+        
+function setCategoryButtonState(a,b){
+                
                 setShowCategory(a)
                 setShowCategoryButton(b) 
             }

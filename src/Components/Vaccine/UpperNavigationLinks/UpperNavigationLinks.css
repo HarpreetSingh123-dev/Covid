@@ -1,0 +1,38 @@
+.vaccineUpperNavigationLinks .setLinks{
+    display: flex;
+    overflow-x: scroll;
+ }
+ 
+ .vaccineUpperNavigationLinks .setLinkColor{
+     color: white;
+ }
+ 
+ .vaccineUpperNavigationLinks .setLinkColor:hover{
+     color: cyan;
+ }
+ 
+ .vaccineUpperNavigationLinks .setLinks::-webkit-scrollbar{
+     height: 10px;
+     width: 10px;
+     background: transparent;
+     
+ }
+ 
+ .vaccineUpperNavigationLinks .setLinks::-webkit-scrollbar-thumb{
+     background: whitesmoke;
+     width: 10px;
+     
+ }
+ 
+ .vaccineUpperNavigationLinks .marginSet{
+     margin-left: 10px;
+     margin-right: 10px;
+ }
+ 
+ .vaccineUpperNavigationLinks{
+     margin-top: 15px;
+     width: 100%;
+     
+ }
+ 
+ 

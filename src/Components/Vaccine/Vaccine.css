@@ -1,5 +1,34 @@
-.ll {
-    border: 2px solid black;
+.Vaccine .mainContent {
+   
     position: relative;
     top: 85px;
 }
+
+.Vaccine .mainContent .row{
+    border: 2px solid black;
+}
+
+.Vaccine .vaccineCategoryScroll .fullScreen{
+    height: 110%;
+    overflow: scroll;
+    background-color: rgb(66, 66, 66);
+}
+
+
+
+.Vaccine .vaccineCategoryScroll .fullScreen::-webkit-scrollbar {
+    display: none;
+} 
+
+
+@media only screen and (max-width: 790px) {
+    .Vaccine .vaccineCategories .fullScreen {
+      display: none;
+    }
+  }
+
+@media (min-width: 791px) and (max-width: 2135px) {
+    .Vaccine .vaccineCategories .smallScreen {
+      display: none;
+    }
+  }

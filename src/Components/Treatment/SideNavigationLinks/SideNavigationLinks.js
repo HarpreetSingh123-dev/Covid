@@ -222,13 +222,13 @@ function SideNavigationLinks(props) {
                            <button  type="button" class="btn btn-primary"    style={{backgroundColor:cellBasedColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Cell-based therapies") ; onClickHandler("Cell-based therapies")}} >CELL-BASED THERAPIES</button>
                            <button  type="button" class="btn btn-primary"    style={{backgroundColor:rnaBasedColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("RNA-based treatments") ; onClickHandler("RNA-based treatments")}} >RNA BASED</button>
                            <button  type="button" class="btn btn-primary"    style={{backgroundColor:deviceColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Device") ; onClickHandler("Device")}} >DEVICE</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:scanningColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Scanning compounds to repurpose") ; onClickHandler("Scanning compounds to repurpose")}}>SCANNING COMPOUND TO REPURPOSE</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:scanningColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Scanning compounds to repurpose") ; onClickHandler("Scanning compounds to repurpose")}}>SCANNING-COMPOUND TO REPURPOSE</button>
                            <button  type="button" class="btn btn-primary"    style={{backgroundColor:clinicalColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("CLINICAL") ; onClickHandler("CLINICAL")}} >CLINICAL</button>
                            <button  type="button" class="btn btn-primary"    style={{backgroundColor:preClinicalColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("PRE CLINICAL") ; onClickHandler("PRE CLINICAL")}} >PRE CLINICAL</button>
            
                      </div>
                 </div>
-                    {console.log('just test')}
+                    
          </div>
     );
 }
