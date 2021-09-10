@@ -9,7 +9,7 @@ import DataTable from "react-data-table-component";
 
 const columns = [
   
-    {   name:  <h6 className="text-center"><b>Sr No</b> </h6>,
+    {   name:  <h5 className="text-center"><b>Sr No</b> </h5>,
         selector: "number",
         center: true,
         compact:true
@@ -17,7 +17,7 @@ const columns = [
       },
   
     {
-    name:  <h6 className="text-center"><b>TREATMENTS</b></h6>,
+    name:  <h5 className="text-center"><b>TREATMENTS</b></h5>,
     selector: "treatments",
     //allowOverflow: "True",
     center: true,
@@ -26,7 +26,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">CATEGORY</h6>,
+    name: <h5 className="text-center">CATEGORY</h5>,
     selector: "category",
     center: true,
     sortable:true
@@ -35,7 +35,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">STAGE</h6>,
+    name: <h5 className="text-center">STAGE</h5>,
     selector: "stage",
     center: true,
     
@@ -43,7 +43,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">COMPANIES</h6>,
+    name: <h5 className="text-center">COMPANIES</h5>,
     selector: "companies",
     center: true,
    
@@ -51,7 +51,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">ANTICIPATED NEXT STEPS</h6>,
+    name: <h5 className="text-center">ANTICIPATED NEXT STEPS</h5>,
     selector: "nextsteps",
     center: true,
     
@@ -59,7 +59,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">FDA APPROVED INDICATIONS</h6>,
+    name: <h5 className="text-center">FDA APPROVED INDICATIONS</h5>,
     selector: "fdaindications",
     center: true,
     
@@ -67,7 +67,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">FUNDER</h6>,
+    name: <h5 className="text-center">FUNDER</h5>,
     selector: "funder",
     center: true,
     
@@ -75,7 +75,7 @@ const columns = [
   },
 
   {
-    name: <h6 className="text-center">LAST UPDATE</h6>,
+    name: <h5 className="text-center">LAST UPDATE</h5>,
     selector: "update",
     center: true,
    
@@ -88,6 +88,7 @@ const customStyles = {
     headCells: {
       style: {
         backgroundColor: "dimgrey",
+        borderLeft:"3px solid white"
       },
     },
   };

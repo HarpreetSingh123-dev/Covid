@@ -148,7 +148,7 @@ function testClicked(e){
     switch(type){
 
         case "FDA APPROVED" :
-            
+            setWhichButtonClicked("FDA APPROVED")
              
             var options = {
             method: 'GET',
@@ -162,14 +162,14 @@ function testClicked(e){
           axios.request(options).then(function (response) {
             
             setAllData(response.data)
-
+            
              var heading = "FDA-APPROVED"
              var subHeading ="it means that the U.S. Food and Drug Administration has determined that the benefits of the product outweigh the known risks for the intended use."
 
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("FDA APPROVED")
+             
              setLoader(false)
 
             }).catch(function (error) {
@@ -182,7 +182,7 @@ function testClicked(e){
 
         case "ALL TREATMENTS":     
 
-
+        setWhichButtonClicked("ALL TREATMENTS")
             /*var options = {
                method: 'GET',
                url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-treatment',
@@ -217,7 +217,7 @@ function testClicked(e){
                var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
                setJumboHeading(jumbotronHeadingsData)
-               setWhichButtonClicked("ALL TREATMENTS")
+               
                setLoader(false)
 
 
@@ -226,7 +226,7 @@ function testClicked(e){
 
 
         case "Antibodies" :
-            
+            setWhichButtonClicked("Antibodies")
             var data = universalTreatmentData
           
             var reqData = data.filter((value)=>{
@@ -242,14 +242,15 @@ function testClicked(e){
                 var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
    
                 setJumboHeading(jumbotronHeadingsData)
-                setWhichButtonClicked("Antibodies")
+                
                 setLoader(false)
 
            break;
 
 
         case "Antivirals" :
-
+          
+           setWhichButtonClicked("Antivirals")
            var data = universalTreatmentData
 
            var reqData = data.filter((value)=>{
@@ -265,7 +266,7 @@ function testClicked(e){
             var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
             setJumboHeading(jumbotronHeadingsData)
-            setWhichButtonClicked("Antivirals")
+            
             setLoader(false)
 
             
@@ -275,6 +276,7 @@ function testClicked(e){
 
         case "Cell-based therapies":
 
+            setWhichButtonClicked("Cell-based therapies")
             var data = universalTreatmentData
 
             var reqData = data.filter((value)=>{
@@ -290,7 +292,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("Cell-based therapies")
+            
              setLoader(false)
 
 
@@ -299,6 +301,7 @@ function testClicked(e){
 
         case "RNA-based treatments":
 
+            setWhichButtonClicked("RNA-based treatments")
             var data = universalTreatmentData
 
             var reqData = data.filter((value)=>{
@@ -314,7 +317,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("RNA-based treatments")
+             
              setLoader(false)
 
         break;
@@ -322,6 +325,7 @@ function testClicked(e){
 
         case "Device":
 
+            setWhichButtonClicked("Device")
             var data = universalTreatmentData
 
             var reqData = data.filter((value)=>{
@@ -337,13 +341,14 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("Device")
+             
              setLoader(false)
 
         break;
 
         case "Scanning compounds to repurpose" :
 
+            setWhichButtonClicked("Scanning compounds to repurpose")
             var data = universalTreatmentData
 
             var reqData = data.filter((value)=>{
@@ -359,7 +364,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("Scanning compounds to repurpose")
+             
              setLoader(false)
 
 
@@ -367,6 +372,7 @@ function testClicked(e){
 
         case "CLINICAL" :
 
+            setWhichButtonClicked("CLINICAL")
             var data = universalTreatmentData
 
             var reqData = data.filter((value)=>{
@@ -383,13 +389,14 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("CLINICAL")
+             
              setLoader(false)
 
         break;
 
         case "PRE CLINICAL" :
 
+            setWhichButtonClicked("PRE CLINICAL")
             var data = universalTreatmentData
 
             var reqData = data.filter((value)=>{
@@ -405,7 +412,7 @@ function testClicked(e){
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
  
              setJumboHeading(jumbotronHeadingsData)
-             setWhichButtonClicked("PRE CLINICAL")
+             
              setLoader(false)
 
         break;
@@ -462,7 +469,7 @@ function testClicked(e){
 
                          <div className="row">
                           
-                            <UpperNavigationLinks></UpperNavigationLinks>
+                            <UpperNavigationLinks buttonClicked={whichButtonClicked} clicked ={testClicked}></UpperNavigationLinks>
                       
                          </div>
 

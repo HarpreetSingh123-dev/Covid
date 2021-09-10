@@ -1,3 +1,4 @@
+import { values } from 'ramda';
 import React,{useState, useEffect} from 'react';
 
 import './SideNavigationLinks.css'
@@ -5,7 +6,7 @@ import './SideNavigationLinks.css'
 function SideNavigationLinks(props) {
     
     
-    const [ allTreatmentColour , setAllTreatmentColour ] = useState('dodgerblue')
+    const [ allTreatmentColour , setAllTreatmentColour ] = useState('floralwhite')
 
     const [ fdaColour , setFdaColour] = useState('steelblue')
 
@@ -25,11 +26,34 @@ function SideNavigationLinks(props) {
 
     const [ preClinicalColour , setPreClinicalColour] = useState('steelblue')
 
+   //below states for font color after click
+
+    const [ allTreatmentFontColor , setAllTreatmentFontColor ] = useState('black')
+
+    const [ fdaFontColor , setFdaFontColor ] = useState('white')
+
+    const [ antibodiesFontColor , setAntibodiesFontColor ] = useState('white')
+
+    const [ antiviralFontColor , setAntiviralFontColor ] = useState('white')
+
+    const [ cellBasedFontColor , setCellBasedFontColor ] = useState('white')
+
+    const [ rnaFontColor , setRnaFontColor ] = useState('white')
+
+    const [ deviceFontColor , setDeviceFontColor ] = useState('white')
+
+    const [ scanningFontColor , setScanningFontColor ] = useState('white')
+
+    const [ clinicalFontColor , setClinicalFontColor ] = useState('white')
+
+    const [ preClinicalFontColor , setPreClinicalFontColor ] = useState('white')
+
 
     useEffect(()=>{
         
        
         onClickHandler(props.buttonClicked)
+        colorHandler(props.buttonClicked)
         //console.log("triggered in side navigation")
     
 
@@ -44,7 +68,7 @@ function SideNavigationLinks(props) {
 
              case 'ALL TREATMENTS' :
 
-                     setAllTreatmentColour('dodgerblue')
+                     setAllTreatmentColour('floralwhite')
                      setFdaColour('steelblue')
                      setAntibodiesColour('steelblue')
                      setAntiviralColour('steelblue')
@@ -54,12 +78,14 @@ function SideNavigationLinks(props) {
                      setScanningColour('steelblue')
                      setClinicalColour('steelblue')
                      setPreClinicalColour('steelblue')
+
+                     
              
              break;
              
              case 'FDA APPROVED' :
                    
-                setFdaColour('dodgerblue')
+                setFdaColour('floralwhite')
                 setAllTreatmentColour('steelblue')
                 setAntibodiesColour('steelblue')
                 setAntiviralColour('steelblue')
@@ -70,13 +96,15 @@ function SideNavigationLinks(props) {
                 setClinicalColour('steelblue')
                 setPreClinicalColour('steelblue')
 
+               
+
              break;
              
              case 'Antibodies':
 
                  setAllTreatmentColour('steelblue')
                  setFdaColour('steelblue')
-                 setAntibodiesColour('dodgerblue')
+                 setAntibodiesColour('floralwhite')
                  setAntiviralColour('steelblue')
                  setCellBasedColour('steelblue')
                  setRnaBasedColour('steelblue')
@@ -92,7 +120,7 @@ function SideNavigationLinks(props) {
                 setAllTreatmentColour('steelblue')
                 setFdaColour('steelblue')
                 setAntibodiesColour('steelblue')
-                setAntiviralColour('dodgerblue')
+                setAntiviralColour('floralwhite')
                 setCellBasedColour('steelblue')
                 setRnaBasedColour('steelblue')
                 setDeviceColour('steelblue')
@@ -109,7 +137,7 @@ function SideNavigationLinks(props) {
                  setFdaColour('steelblue')
                  setAntibodiesColour('steelblue')
                  setAntiviralColour('steelblue')
-                 setCellBasedColour('dodgerblue')
+                 setCellBasedColour('floralwhite')
                  setRnaBasedColour('steelblue')
                  setDeviceColour('steelblue')
                  setScanningColour('steelblue')
@@ -125,7 +153,7 @@ function SideNavigationLinks(props) {
                 setAntibodiesColour('steelblue')
                 setAntiviralColour('steelblue')
                 setCellBasedColour('steelblue')
-                setRnaBasedColour('dodgerblue')
+                setRnaBasedColour('floralwhite')
                 setDeviceColour('steelblue')
                 setScanningColour('steelblue')
                 setClinicalColour('steelblue')
@@ -141,7 +169,7 @@ function SideNavigationLinks(props) {
                 setAntiviralColour('steelblue')
                 setCellBasedColour('steelblue')
                 setRnaBasedColour('steelblue')
-                setDeviceColour('dodgerblue')
+                setDeviceColour('floralwhite')
                 setScanningColour('steelblue')
                 setClinicalColour('steelblue')
                 setPreClinicalColour('steelblue')
@@ -157,7 +185,7 @@ function SideNavigationLinks(props) {
                 setCellBasedColour('steelblue')
                 setRnaBasedColour('steelblue')
                 setDeviceColour('steelblue')
-                setScanningColour('dodgerblue')
+                setScanningColour('floralwhite')
                 setClinicalColour('steelblue')
                 setPreClinicalColour('steelblue')
 
@@ -173,7 +201,7 @@ function SideNavigationLinks(props) {
                 setRnaBasedColour('steelblue')
                 setDeviceColour('steelblue')
                 setScanningColour('steelblue')
-                setClinicalColour('dodgerblue')
+                setClinicalColour('floralwhite')
                 setPreClinicalColour('steelblue')
 
 
@@ -190,7 +218,7 @@ function SideNavigationLinks(props) {
                 setDeviceColour('steelblue')
                 setScanningColour('steelblue')
                 setClinicalColour('steelblue')
-                setPreClinicalColour('dodgerblue')
+                setPreClinicalColour('floralwhite')
 
 
              break;
@@ -199,6 +227,157 @@ function SideNavigationLinks(props) {
 
     }
     
+    function colorHandler(value){
+
+       switch(value){
+
+             case 'ALL TREATMENTS':
+               setAllTreatmentFontColor('black')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'FDA APPROVED':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('black')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+               
+
+             break;
+
+             case 'Antibodies':
+
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('black')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'Antivirals':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('black')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'Cell-based therapies':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('black')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'RNA-based treatments':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('black')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'Device':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('black')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'Scanning compounds to repurpose':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('black')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'CLINICAL':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('black')
+               setPreClinicalFontColor('white')
+
+             break;
+
+             case 'PRE CLINICAL':
+               setAllTreatmentFontColor('white')
+               setFdaFontColor('white')
+               setAntibodiesFontColor('white')
+               setAntiviralFontColor('white')
+               setCellBasedFontColor('white')
+               setRnaFontColor('white')
+               setDeviceFontColor('white')
+               setScanningFontColor('white')
+               setClinicalFontColor('white')
+               setPreClinicalFontColor('black')
+
+             break
+
+             
+
+       }
+
+    }
 
     
     return (
@@ -215,16 +394,16 @@ function SideNavigationLinks(props) {
                       <div className="innerWrapper">
                            
                            
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:allTreatmentColour,fontWeight:'bold'}} onClick={()=>{props.clicked("ALL TREATMENTS") ; onClickHandler("ALL TREATMENTS")  }}>ALL TREATMENTS</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:fdaColour,fontWeight:'bold'}}          onClick={()=>{props.clicked("FDA APPROVED");    onClickHandler("FDA APPROVED") }} >FDA APPROVED</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:antibodiesColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Antibodies") ;     onClickHandler("Antibodies")}} >ANTIBODIES</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:antiviralColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Antivirals") ;     onClickHandler("Antivirals")}} >ANTIVIRALS</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:cellBasedColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Cell-based therapies") ; onClickHandler("Cell-based therapies")}} >CELL-BASED THERAPIES</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:rnaBasedColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("RNA-based treatments") ; onClickHandler("RNA-based treatments")}} >RNA BASED</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:deviceColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Device") ; onClickHandler("Device")}} >DEVICE</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:scanningColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("Scanning compounds to repurpose") ; onClickHandler("Scanning compounds to repurpose")}}>SCANNING-COMPOUND TO REPURPOSE</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:clinicalColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("CLINICAL") ; onClickHandler("CLINICAL")}} >CLINICAL</button>
-                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:preClinicalColour,fontWeight:'bold'}}        onClick={()=>{props.clicked("PRE CLINICAL") ; onClickHandler("PRE CLINICAL")}} >PRE CLINICAL</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:allTreatmentColour,fontWeight:'bold', color:allTreatmentFontColor}} onClick={()=>{props.clicked("ALL TREATMENTS") ; onClickHandler("ALL TREATMENTS") ; colorHandler("ALL TREATMENTS")  }}>ALL TREATMENTS</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:fdaColour,fontWeight:'bold', color:fdaFontColor}}          onClick={()=>{props.clicked("FDA APPROVED");    onClickHandler("FDA APPROVED") }} >FDA APPROVED</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:antibodiesColour,fontWeight:'bold', color:antibodiesFontColor}}        onClick={()=>{props.clicked("Antibodies") ;     onClickHandler("Antibodies")}} >ANTIBODIES</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:antiviralColour,fontWeight:'bold', color:antiviralFontColor}}        onClick={()=>{props.clicked("Antivirals") ;     onClickHandler("Antivirals")}} >ANTIVIRALS</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:cellBasedColour,fontWeight:'bold', color:cellBasedFontColor}}        onClick={()=>{props.clicked("Cell-based therapies") ; onClickHandler("Cell-based therapies")}} >CELL-BASED THERAPIES</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:rnaBasedColour,fontWeight:'bold', color:rnaFontColor}}        onClick={()=>{props.clicked("RNA-based treatments") ; onClickHandler("RNA-based treatments")}} >RNA BASED</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:deviceColour,fontWeight:'bold', color:deviceFontColor}}        onClick={()=>{props.clicked("Device") ; onClickHandler("Device")}} >DEVICE</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:scanningColour,fontWeight:'bold', color:scanningFontColor}}        onClick={()=>{props.clicked("Scanning compounds to repurpose") ; onClickHandler("Scanning compounds to repurpose")}}>SCANNING-COMPOUND TO REPURPOSE</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:clinicalColour,fontWeight:'bold', color:clinicalFontColor}}        onClick={()=>{props.clicked("CLINICAL") ; onClickHandler("CLINICAL")}} >CLINICAL</button>
+                           <button  type="button" class="btn btn-primary"    style={{backgroundColor:preClinicalColour,fontWeight:'bold', color:preClinicalFontColor}}        onClick={()=>{props.clicked("PRE CLINICAL") ; onClickHandler("PRE CLINICAL")}} >PRE CLINICAL</button>
            
                      </div>
                 </div>

@@ -24,16 +24,17 @@ function ShowCategories(props) {
                         
                       <div className="innerWrapper">
               
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>ALL TREATMENTS</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>FDA APPROVED</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>ANTIBODIES</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>ANTIVIRALS</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>CELL-BASED THERAPIES</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>RNA BASED</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>DEVICE</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>SCANNING COMPOUND TO REPURPOSE</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>CLINICAL</button>
-                           <button  type="button" class="btn btn-primary"  style={{fontWeight:'bold'}}>PRE CLINICAL</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("ALL VACCINES")}} >All VACCINES</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("FDA APPROVED")}}>FDA APPROVED</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("RNA BASED")}}>RNA BASED</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("DNA BASED")}} >DNA BASED</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("INACTIVATED VIRUS")}}>INACTIVATED VIRUS</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("LIVE ATTENUATED VIRUS")}}>LIVE ATTENUATED VIRUS</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("REPLICATING VIRAL VECTOR")}}>REPLICATING VIRAL VECTOR</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("NON-REPLICATING VIRAL VECTOR")}}>NON-REPLICATING VIRAL VECTOR</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("PROTIEN SUBUNIT")}}>PROTIEN SUBUNIT</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("REPLICATING BACTERIAL VECTOR")}}>REPLICATING BACTERIAL VECTOR</button>
+                           <button  type="button" class="btn btn-primary" onClick={()=>{props.clicked("VIRUS-LIKE PARTICLE")}}>VIRUS-LIKE PARTICLE</button>
            
                      </div>
                 </div>

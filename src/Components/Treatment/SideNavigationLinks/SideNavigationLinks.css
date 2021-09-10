@@ -12,7 +12,7 @@
 
 .sideNavigationButtons .innerWrapper .btn:hover{
    /* background-color:#0069D9 ;*/
-   color: black;
+  /* border: 1px solid black;*/
 }
 
 .sideNavigationButtons .outerWrapper{
@@ -37,6 +37,7 @@
 
     background-color: steelblue;
     font-weight: bold;
+    border: 1px solid black;
     
   }
 
