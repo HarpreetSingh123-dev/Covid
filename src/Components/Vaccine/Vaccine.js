@@ -9,6 +9,8 @@ import VaccineSmallScreenCategories from './ShowCatrgories/ShowCategories'
 import VaccineJumbotron from './VaccineJumbotron/VaccineJumbotron'
 
 import VaccineTable from './VaccineTable/VaccineTable'
+
+import Footer from '../Footer/Footer'
 import { values } from 'ramda';
 
 
@@ -44,6 +46,7 @@ useEffect(()=>{
        axios.request(options).then(function (response) {
            console.log(response.data);
      
+           setWhichButtonClicked('ALL VACCINES')
            setAllVaccineData(response.data)
            setUniversalVaccineData(response.data)
            setLoader(false)
@@ -94,7 +97,8 @@ function changeCategory(e){
   switch(e){
 
          case 'ALL VACCINES':
-
+               
+               setWhichButtonClicked('ALL VACCINES')
                var data = universalVaccineData
 
                setAllVaccineData(data)
@@ -103,7 +107,7 @@ function changeCategory(e){
                var subHeading = "Here you can find all of the developing or approved vaccines in every phase. You can sort the table based on each columns or search for a unique vaccine name." 
                var jumbotronHeadingData = {heading:heading, subHeading:subHeading}
                setJumboHeading(jumbotronHeadingData)
-               setWhichButtonClicked('ALL VACCINES')
+               
                setLoader(false)
 
          break;
@@ -126,19 +130,21 @@ function changeCategory(e){
                       console.error(error);
                     });       
 
-             
+             setWhichButtonClicked('FDA APPROVED')
              var heading = "FDA-APPROVED"
              var subHeading = "It means that the U.S. Food and Drug Administration has determined that the benefits of the product outweigh the known risks for the intended use."
              var jumbotronHeadingData = {heading:heading, subHeading:subHeading}
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('FDA APPROVED')
+             
              setLoader(false)
         
              break;
 
          case 'RNA BASED':
-
-              var data = universalVaccineData
+         
+             setWhichButtonClicked('RNA BASED')
+             
+             var data = universalVaccineData
 
               var reqData = data.filter((value)=>{
 
@@ -152,12 +158,13 @@ function changeCategory(e){
               var jumbotronHeadingData={heading:heading , subHeading:subHeading}
 
               setJumboHeading(jumbotronHeadingData)
-              setWhichButtonClicked('RNA BASED')
+              
               setLoader(false)
          break;
 
          case 'DNA BASED':
 
+             setWhichButtonClicked('DNA BASED')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -172,13 +179,15 @@ function changeCategory(e){
              var jumbotronHeadingData = {heading:heading , subHeading:subHeading}
 
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('DNA BASED')
+             
              setLoader(false)
 
          break;
 
          case 'INACTIVATED VIRUS':
 
+
+             setWhichButtonClicked('INACTIVATED VIRUS')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -193,7 +202,7 @@ function changeCategory(e){
              var jumbotronHeadingData = {heading:heading, subHeading:subHeading}
 
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('INACTIVATED VIRUS')
+             
              setLoader(false)
 
 
@@ -201,6 +210,7 @@ function changeCategory(e){
 
          case 'LIVE ATTENUATED VIRUS':
 
+             setWhichButtonClicked('LIVE ATTENUATED VIRUS')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -216,13 +226,14 @@ function changeCategory(e){
              var jumbotronHeadingData ={heading:heading, subHeading:subHeading}
 
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('LIVE ATTENUATED VIRUS')
+             
              setLoader(false)
 
          break;
 
          case 'REPLICATING VIRAL VECTOR':
 
+             setWhichButtonClicked('REPLICATING VIRAL VECTOR')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -238,7 +249,7 @@ function changeCategory(e){
              var jumbotronHeadingData = {heading:heading, subHeading:subHeading}
 
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('REPLICATING VIRAL VECTOR')
+             
              setLoader(false)
 
 
@@ -246,6 +257,7 @@ function changeCategory(e){
 
          case 'NON-REPLICATING VIRAL VECTOR':
 
+             setWhichButtonClicked('NON-REPLICATING VIRAL VECTOR')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -261,13 +273,14 @@ function changeCategory(e){
               var jumbotronHeadingData = {heading:heading, subHeading:subHeading}
 
               setJumboHeading(jumbotronHeadingData)
-              setWhichButtonClicked('NON-REPLICATING VIRAL VECTOR')
+              
               setLoader(false)
 
          break;
 
          case 'PROTIEN SUBUNIT':
 
+            setWhichButtonClicked('PROTIEN SUBUNIT')
             var data = universalVaccineData
 
             var reqData = data.filter((value)=>{
@@ -283,7 +296,7 @@ function changeCategory(e){
             var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
 
             setJumboHeading(jumbotronHeadingData)
-            setWhichButtonClicked('PROTIEN SUBUNIT')
+            
             setLoader(false)
 
 
@@ -291,6 +304,7 @@ function changeCategory(e){
 
          case 'REPLICATING BACTERIAL VECTOR':
 
+             setWhichButtonClicked('REPLICATING BACTERIAL VECTOR')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -306,7 +320,7 @@ function changeCategory(e){
              var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
 
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('REPLICATING BACTERIAL VECTOR')
+             
              setLoader(false)
 
 
@@ -315,6 +329,7 @@ function changeCategory(e){
 
          case 'VIRUS-LIKE PARTICLE':
 
+             setWhichButtonClicked('VIRUS-LIKE PARTICLE')
              var data = universalVaccineData
 
              var reqData = data.filter((value)=>{
@@ -330,10 +345,161 @@ function changeCategory(e){
              var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
 
              setJumboHeading(jumbotronHeadingData)
-             setWhichButtonClicked('VIRUS-LIKE PARTICLE')
+             
              setLoader(false)
 
              break;
+
+          case 'PRE CLINICAL':
+
+            setWhichButtonClicked('PRE CLINICAL')
+
+             var data = universalVaccineData
+
+             var reqData = data.filter((value)=>{
+
+              return value.phase === "Pre-clinical"
+
+           })
+
+            setAllVaccineData(reqData)
+
+            var heading = "PRE-CLINICAL"
+            var subHeading = "According to WHO, Vaccine is tested in animal studies for efficacy and safety, including challenge studies"
+            var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
+ 
+            setJumboHeading(jumbotronHeadingData)
+             
+            setLoader(false)
+
+          break;
+
+          case 'PHASE_1':
+
+            setWhichButtonClicked('PHASE_1')
+
+             var options = {
+                method: 'GET',
+                url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-vaccines-phase-i',
+                headers: {
+                 'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
+                 'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36'
+                   }
+                };
+
+                axios.request(options).then(function (response) {
+                  
+                  setAllVaccineData(response.data)
+
+                  var heading = "PHASE-ONE"
+                  var subHeading="Small groups of healthy adult volunteers receive the vaccine to test for safety.The subject who receives the vaccine is observed until several half- lives of the vaccine have passed.During this phase, the researchers assess the safety(pharmacovigilance), tolerability, pharmacokinetics, and pharmacodynamics of a vaccine.In addition, Phase I clinical trials normally include dose - ranging, also called dose escalation studies, so that the best and safest dose can be found and the safety window of the vaccine can be estimated."
+                  var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
+                  
+                  setJumboHeading(jumbotronHeadingData)
+
+                  setLoader(false)
+
+                }).catch(function (error) {
+                  console.error(error);
+                });
+
+          break;
+
+          case 'PHASE_2':
+
+               setWhichButtonClicked('PHASE_2')
+
+               var options = {
+                 method: 'GET',
+                 url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-vaccines-phase-ii',
+                 headers: {
+                       'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
+                       'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36'
+                    }
+              };
+
+
+              axios.request(options).then(function (response) {
+                
+                setAllVaccineData(response.data)
+
+                var heading = "PHASE-TWO"
+                var subHeading="Vaccine is given to people who have characteristics (such as age and physical health) similar to those for whom the new vaccine is intended.In Phase II the goal is to test whether the drug has any biological activity or effect.About 50-300 volunteers are assigned to participate.This phase includes 2 steps; first determining clinical efficacy or biological activity('proof of concept' studies) and second determine the optimal dose at which the drug shows biological activity with minimal side- effects(‘definite dose - finding’ studies)"
+                var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
+
+                setJumboHeading(jumbotronHeadingData)
+
+                setLoader(false)
+
+
+              }).catch(function (error) {
+                console.error(error);
+              })
+
+          break;
+
+          case'PHASE_3':
+
+              setWhichButtonClicked('PHASE_3')
+
+              var options = {
+                 method: 'GET',
+                 url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-vaccines-phase-iii',
+                 headers: {
+                       'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
+                       'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36'
+                  }
+                };
+              
+                axios.request(options).then(function (response) {
+                 
+                   setAllVaccineData(response.data)
+
+                   var heading = "PHASE-THREE"
+                   var subHeading="Vaccine is given to thousands of people and tested for efficacy and safety. Phase III studies are randomized controlled multicenter trials during which, the vaccine is given to a number of 300-3000 healthy people to investigate the definite efficacy and effectiveness. It is also called the 'pre-marketing phase' because it actually measures consumer response to the vaccine."
+                   var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
+   
+                   setJumboHeading(jumbotronHeadingData)
+   
+                   setLoader(false)
+
+                }).catch(function (error) {
+                  console.error(error);
+                }); 
+
+          break;
+
+          case'PHASE_4':
+
+               setWhichButtonClicked('PHASE_4')
+
+               var options = {
+                     method: 'GET',
+                     url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/vaccines/get-all-vaccines-phase-iv',
+                     headers: {
+                         'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
+                         'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36'
+                       }
+                   };
+
+               axios.request(options).then(function (response) {
+               
+                  setAllVaccineData(response.data)
+
+                  var heading = "PHASE-FOUR"
+                  var subHeading="This phase is also called post marketing surveillance. Ongoing studies after the vaccine is approved and licensed, to monitor adverse events and to study long-term effects of the vaccine in the population"
+                  var jumbotronHeadingData = {heading:heading,subHeading:subHeading}
+  
+                  setJumboHeading(jumbotronHeadingData)
+  
+                  setLoader(false)
+
+                  }).catch(function (error) {
+                    console.error(error);
+                  });   
+          
+
+          break
 
 
 
@@ -387,7 +553,7 @@ function changeCategory(e){
                            
                                   <div className="row">
 
-                                      <VaccineUpperNavigationLinks ></VaccineUpperNavigationLinks>
+                                      <VaccineUpperNavigationLinks  clicked={changeCategory} buttonClicked={whichButtonClicked} ></VaccineUpperNavigationLinks>
                    
                                   </div>
 
@@ -410,13 +576,19 @@ function changeCategory(e){
 
                             </div>
 
-                      </div>
+                       </div>
                 
-                 </div>
+                   </div>
+
+                </div>
+             
+              </div>
+
+               <div className="footerSet">
+
+                <Footer></Footer>
 
               </div>
-             
-             </div>
 
          </div>
   );

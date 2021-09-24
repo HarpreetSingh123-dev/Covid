@@ -1,11 +1,11 @@
 .Vaccine .mainContent {
    
     position: relative;
-    top: 85px;
+    top: 100px;
 }
 
 .Vaccine .mainContent .row{
-    border: 2px solid black;
+   /* border: 2px solid black;*/
 }
 
 .Vaccine .vaccineCategoryScroll .fullScreen{
@@ -32,3 +32,57 @@
       display: none;
     }
   }
+
+/* footer styles*/  
+
+.Vaccine .footerSet {
+  height: 60px;
+  width: 100%;
+  color: white;
+}
+
+
+.Vaccine .ruleTwo {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0)
+  );
+  width: 80%;
+}
+
+.Vaccine .footerSet .footerStyle {
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  margin-top: 120px;
+  background-color: #343a40;
+}
+
+.Vaccine .footerSet .footerStyle .container-fluid {
+  width: 85%;
+}
+
+.Vaccine .footerSet .footerStyle .container-fluid .col-lg-3 {
+  margin-top: 50px;
+}
+
+.Vaccine .footerSet .live {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
+.Vaccine .glyp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Vaccine .glyp img {
+  margin: 10px;
+}

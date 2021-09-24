@@ -15,9 +15,6 @@ export default function region(state = allTreatments, action ={}) {
    
    
    
-   
-    
-
     return state
     
 }

@@ -155,7 +155,7 @@ function setData(data) {
 
 function searchFind(value){
 
-     console.log(value)
+     //console.log(value)
 
        if(value === ""){
 

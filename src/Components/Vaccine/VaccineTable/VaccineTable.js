@@ -90,6 +90,17 @@ const customStyles = {
         backgroundColor: "dimgrey",
       },
     },
+
+    /*rows:{
+
+       style:{
+           backgroundColor:'red',
+           display:'flex',
+           justifyContent:'flex-start'
+
+       }
+
+    }*/
   };
 
 function TreatmentTable(props) {
@@ -134,11 +145,39 @@ function setData(data) {
 
     }
 
+    
     setFinalTableData(finalObject)
 
-    //setUniversalFinalTableData(finalObject)
+    setUniversalFinalTableData(finalObject)
 }  
 
+
+
+function searchFind(value){
+
+      if(value === ""){
+              //console.log('no value')
+            setFinalTableData(universalFinalTableData)
+          }
+
+          else {
+ 
+            var a = finalTableData.filter((data)=>{
+  
+                if (data.company.props.children.toLowerCase().includes(value.toLowerCase()) ){
+                    console.log("triggered")
+                    return data
+                   }
+                   //console.log(data.treatments.props.children.toLowerCase().includes(value.toLowerCase()))
+       
+                 })
+           
+                 setFinalTableData(a)
+          }  
+
+
+
+}
 
 
 /* Below we are rendering table component based on props */
@@ -149,6 +188,10 @@ function setData(data) {
    else{
 
           table =  <div>
+
+                         <div class="input-group input-group-sm mb-3">
+                            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search Based On Company" onChange={ (event)=>{searchFind(event.target.value)} }></input>
+                         </div>
 
                     <DataTable
 
@@ -184,6 +227,7 @@ function setData(data) {
             
                {table}
 
+              
            </div>
     );
 }

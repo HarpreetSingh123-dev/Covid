@@ -69,178 +69,194 @@ function SideNavigationLinks(props) {
             case 'ALL VACCINES':
 
                 setAllVaccinesColor('floralwhite')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'FDA APPROVED':
 
-                setAllVaccinesColor('white')
+                setAllVaccinesColor('steelblue')
                 setFdaApprovedColor('floralwhite')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'RNA BASED':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
                 setRnaBasedColor('floralwhite')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'DNA BASED':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
                 setDnaBasedColor('floralwhite')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'INACTIVATED VIRUS':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
                 setInactivatedColor('floralwhite')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'LIVE ATTENUATED VIRUS':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
                 setAttenuatedColor('floralwhite')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'REPLICATING VIRAL VECTOR':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
                 setReplicatingColor('floralwhite')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'NON-REPLICATING VIRAL VECTOR':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
                 setNonReplicatingColor('floralwhite')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'PROTIEN SUBUNIT':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
                 setSubunitColor('floralwhite')
-                setRepBacterialColor('white')
-                setVirusLikeColor('white')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'REPLICATING BACTERIAL VECTOR':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
                 setRepBacterialColor('floralwhite')
-                setVirusLikeColor('white')
+                setVirusLikeColor('steelblue')
 
             break;
 
             case 'VIRUS-LIKE PARTICLE':
 
-                setAllVaccinesColor('white')
-                setFdaApprovedColor('white')
-                setRnaBasedColor('white')
-                setDnaBasedColor('white')
-                setInactivatedColor('white')
-                setAttenuatedColor('white')
-                setReplicatingColor('white')
-                setNonReplicatingColor('white')
-                setSubunitColor('white')
-                setRepBacterialColor('white')
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
                 setVirusLikeColor('floralwhite')
 
             break;
+
+            default:
+
+                setAllVaccinesColor('steelblue')
+                setFdaApprovedColor('steelblue')
+                setRnaBasedColor('steelblue')
+                setDnaBasedColor('steelblue')
+                setInactivatedColor('steelblue')
+                setAttenuatedColor('steelblue')
+                setReplicatingColor('steelblue')
+                setNonReplicatingColor('steelblue')
+                setSubunitColor('steelblue')
+                setRepBacterialColor('steelblue')
+                setVirusLikeColor('steelblue')
+
+               
              
 
        }
@@ -270,7 +286,7 @@ function SideNavigationLinks(props) {
 
             case 'FDA APPROVED':
 
-                 setVirusLikeFontColor('white')
+                 setAllVaccinesFontColor('white')
                  setFdaApprovedFontColor('black')
                  setRnaBasedFontColor('white')
                  setDnaBasedFontColor('white')
@@ -286,7 +302,7 @@ function SideNavigationLinks(props) {
 
             case 'RNA BASED':
 
-                setVirusLikeFontColor('white')
+                setAllVaccinesFontColor('white')
                 setFdaApprovedFontColor('white')
                 setRnaBasedFontColor('black')
                 setDnaBasedFontColor('white')
@@ -302,7 +318,7 @@ function SideNavigationLinks(props) {
 
             case 'DNA BASED':
 
-                setVirusLikeFontColor('white')
+                setAllVaccinesFontColor('white')
                  setFdaApprovedFontColor('white')
                  setRnaBasedFontColor('white')
                  setDnaBasedFontColor('black')
@@ -318,7 +334,7 @@ function SideNavigationLinks(props) {
 
             case 'INACTIVATED VIRUS':
 
-                setVirusLikeFontColor('white')
+                setAllVaccinesFontColor('white')
                 setFdaApprovedFontColor('white')
                 setRnaBasedFontColor('white')
                 setDnaBasedFontColor('white')
@@ -334,7 +350,7 @@ function SideNavigationLinks(props) {
 
             case 'LIVE ATTENUATED VIRUS':
 
-                 setVirusLikeFontColor('white')
+                 setAllVaccinesFontColor('white')
                  setFdaApprovedFontColor('white')
                  setRnaBasedFontColor('white')
                  setDnaBasedFontColor('white')
@@ -350,7 +366,7 @@ function SideNavigationLinks(props) {
 
             case 'REPLICATING VIRAL VECTOR':
 
-                setVirusLikeFontColor('white')
+                setAllVaccinesFontColor('white')
                 setFdaApprovedFontColor('white')
                 setRnaBasedFontColor('white')
                 setDnaBasedFontColor('white')
@@ -362,11 +378,12 @@ function SideNavigationLinks(props) {
                 setRepBacterialFontColor('white')
                 setVirusLikeFontColor('white')
 
+                
             break;
 
             case 'NON-REPLICATING VIRAL VECTOR':
 
-                setVirusLikeFontColor('white')
+                 setAllVaccinesFontColor('white')
                  setFdaApprovedFontColor('white')
                  setRnaBasedFontColor('white')
                  setDnaBasedFontColor('white')
@@ -382,23 +399,7 @@ function SideNavigationLinks(props) {
 
             case 'PROTIEN SUBUNIT':
 
-                 setVirusLikeFontColor('white')
-                 setFdaApprovedFontColor('white')
-                 setRnaBasedFontColor('white')
-                 setDnaBasedFontColor('white')
-                 setInactivatedFontColor('white')
-                 setAttenuatedFontColor('white')
-                 setReplicatingFontColor('white')
-                 setNonReplicatingFontColor('white')
-                 setSubunitFontColor('black')
-                 setRepBacterialFontColor('white')
-                 setVirusLikeFontColor('white')
-
-            break;
-
-            case 'REPLICATING BACTERIAL VECTOR':
-
-                setVirusLikeFontColor('white')
+                setAllVaccinesFontColor('white')
                 setFdaApprovedFontColor('white')
                 setRnaBasedFontColor('white')
                 setDnaBasedFontColor('white')
@@ -406,15 +407,15 @@ function SideNavigationLinks(props) {
                 setAttenuatedFontColor('white')
                 setReplicatingFontColor('white')
                 setNonReplicatingFontColor('white')
-                setSubunitFontColor('white')
-                setRepBacterialFontColor('black')
+                setSubunitFontColor('black')
+                setRepBacterialFontColor('white')
                 setVirusLikeFontColor('white')
 
             break;
 
-            case 'VIRUS-LIKE PARTICLE':
+            case 'REPLICATING BACTERIAL VECTOR':
 
-                 setVirusLikeFontColor('white')
+                setAllVaccinesFontColor('white')
                  setFdaApprovedFontColor('white')
                  setRnaBasedFontColor('white')
                  setDnaBasedFontColor('white')
@@ -423,10 +424,40 @@ function SideNavigationLinks(props) {
                  setReplicatingFontColor('white')
                  setNonReplicatingFontColor('white')
                  setSubunitFontColor('white')
-                 setRepBacterialFontColor('white')
-                 setVirusLikeFontColor('black')
+                 setRepBacterialFontColor('black')
+                 setVirusLikeFontColor('white')
 
             break;
+
+            case 'VIRUS-LIKE PARTICLE':
+
+                setAllVaccinesFontColor('white')
+                setFdaApprovedFontColor('white')
+                setRnaBasedFontColor('white')
+                setDnaBasedFontColor('white')
+                setInactivatedFontColor('white')
+                setAttenuatedFontColor('white')
+                setReplicatingFontColor('white')
+                setNonReplicatingFontColor('white')
+                setSubunitFontColor('white')
+                setRepBacterialFontColor('white')
+                setVirusLikeFontColor('black')
+
+            break;
+
+            default: 
+
+                setAllVaccinesFontColor('white')
+                setFdaApprovedFontColor('white')
+                setRnaBasedFontColor('white')
+                setDnaBasedFontColor('white')
+                setInactivatedFontColor('white')
+                setAttenuatedFontColor('white')
+                setReplicatingFontColor('white')
+                setNonReplicatingFontColor('white')
+                setSubunitFontColor('white')
+                setRepBacterialFontColor('white')
+                setVirusLikeFontColor('white')
 
 
 
@@ -452,7 +483,7 @@ function SideNavigationLinks(props) {
                            <button  type="button" class="btn btn-primary"  style={{backgroundColor:allVaccinesColor,color:allVaccinesFontColor}}  onClick={()=>{props.clicked("ALL VACCINES") ; onClickHandler("ALL VACCINES") ; colorHandler("ALL VACCINES") }} >All VACCINES</button>
                            <button  type="button" class="btn btn-primary"  style={{backgroundColor:fdaApprovedColor,color:fdaApprovedFontColor}} onClick={()=>{props.clicked("FDA APPROVED")   ; onClickHandler("FDA APPROVED") ; colorHandler("FDA APPROVED")}}>FDA APPROVED</button>
                            <button  type="button" class="btn btn-primary"  style={{backgroundColor:rnaBasedColor,color:rnaBasedFontColor}} onClick={()=>{props.clicked("RNA BASED")     ; onClickHandler("RNA BASED") ; colorHandler("RNA BASED") }}>RNA BASED</button>
-                           <button  type="button" class="btn btn-primary"  style={{backgroundColor:setDnaBasedColor,color:dnaBasedFontColor}}  onClick={()=>{props.clicked("DNA BASED")     ; onClickHandler("DNA BASED") ; colorHandler("DNA BASED")}} >DNA BASED</button>
+                           <button  type="button" class="btn btn-primary"  style={{backgroundColor:dnaBasedColor,color:dnaBasedFontColor}}  onClick={()=>{props.clicked("DNA BASED")     ; onClickHandler("DNA BASED") ; colorHandler("DNA BASED")}} >DNA BASED</button>
                            <button  type="button" class="btn btn-primary"  style={{backgroundColor:inactivatedColor,color:inactivatedFontColor}} onClick={()=>{props.clicked("INACTIVATED VIRUS"); onClickHandler("INACTIVATED VIRUS") ; colorHandler("INACTIVATED VIRUS") }}>INACTIVATED VIRUS</button>
                            <button  type="button" class="btn btn-primary"  style={{backgroundColor:attenuatedColor,color:attenuatedFontColor}} onClick={()=>{props.clicked("LIVE ATTENUATED VIRUS") ; onClickHandler("LIVE ATTENUATED VIRUS") ; colorHandler("LIVE ATTENUATED VIRUS")}}>LIVE ATTENUATED VIRUS</button>
                            <button  type="button" class="btn btn-primary"  style={{backgroundColor:replicatingColor,color:replicatingFontColor}}onClick={()=>{props.clicked("REPLICATING VIRAL VECTOR") ; onClickHandler("REPLICATING VIRAL VECTOR") ; colorHandler("REPLICATING VIRAL VECTOR")}}>REPLICATING VIRAL VECTOR</button>

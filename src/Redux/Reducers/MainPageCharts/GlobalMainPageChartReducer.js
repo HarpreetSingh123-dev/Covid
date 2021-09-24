@@ -12,10 +12,6 @@ export default function chart(state = allChartData, action ={}) {
     }
    
    
-   
-   
-    
-
     return state
     
 }
