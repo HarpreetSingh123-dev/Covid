@@ -316,7 +316,7 @@ this.setState({showWorldMap:false,showIndiaMap:true , worldButtonColor:'#6C757D'
  
       <div className="mapSet">
  
-           <Navbar mapPage={true}></Navbar>   
+           <Navbar page={"Map"}></Navbar>   
             
                   <div className="mapButtonsSet">
                          

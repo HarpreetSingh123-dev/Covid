@@ -431,7 +431,7 @@ function testClicked(e){
         
         <div className="Treatment">
 
-            <Navbar treatmentPage={true}></Navbar>
+            <Navbar page={"Treatment"}></Navbar>
            
               <div className="treatmentMarginSet container-fluid">
                

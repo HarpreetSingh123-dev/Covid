@@ -1,15 +1,36 @@
 .navbarWrapper .nav-item .nav-link:hover {
-  border-bottom: 2px solid white;
-  font-size: larger;
-  font-weight: 500;
+  
+  /*border-left: 2px solid white;
+  border-right: 2px solid white;*/
+  /*font-size: larger;
+  font-weight: 500;*/
   color: antiquewhite;
   cursor: pointer;
+ /* background-color: lightslategrey;*/
+  
+}
+
+.navbarWrapper .nav-item .nav-link{
+
+  padding-bottom: 28px;
+  padding-top: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .navbarWrapper .navbar {
-  height: 80px;
+  height: 75px;
 }
 
+.navbarWrapper .nav-item{
+  /*border: 2px solid black;*/
+}
+
+
+.navbarWrapper .navbar{
+
+  border-bottom: 5px solid lightslategrey;
+}
 .navbarWrapper .nav-item {
   margin: 10px;
 }

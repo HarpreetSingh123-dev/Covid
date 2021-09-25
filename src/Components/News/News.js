@@ -296,7 +296,7 @@ if(covidComponent){
           
          <div className="News"> 
 
-            <Navbar newsPage={true}></Navbar>
+            <Navbar page={"News"}></Navbar>
 
             <div className="marginSet container-fluid">
 

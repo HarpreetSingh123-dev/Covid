@@ -513,7 +513,7 @@ function changeCategory(e){
 
          <div className="Vaccine">
 
-           <Navbar></Navbar>
+           <Navbar page={"Vaccine"}></Navbar>
 
               <div className="mainContent">
 
