@@ -199,11 +199,7 @@ class MainPageTable extends Component {
       table: [],
       data: [],
       loader: true,
-      searchValue: "",
-
-      searchData: [],
-
-      search: false,
+      
 
       selectedRowCountry: "",
 
@@ -213,7 +209,11 @@ class MainPageTable extends Component {
 
       active: "active",
 
-      noResult: false,
+      search :'false',
+
+      currentDisplayTableData:[],
+
+
 
 
       worldBackgroundColor:'gray',
@@ -235,7 +235,7 @@ class MainPageTable extends Component {
     this.setTable = this.setTable.bind(this);
     this.pushingValues = this.pushingValues.bind(this);
     // this.selectedCountry=this.selectedCountry.bind(this)
-    this.change = this.change.bind(this);
+    this.searchHandler = this.searchHandler.bind(this)
 
     this.setAsiaData = this.setAsiaData.bind(this);
     this.setWorldData = this.setWorldData.bind(this);
@@ -369,59 +369,52 @@ class MainPageTable extends Component {
     }
 
     this.setState({ data: data });
-    this.setState({ loader: false });
+    this.setState({ loader: false , currentDisplayTableData:data});
   }
 
   /*///////////////////////////////////////////////////////////////////////////////////////////*/
-  change(event) {
-    this.setState({ search: true });
-    var d = [];
+  searchHandler(event) {
 
-    if (event.target.value.length > 0) {
-      this.setState({ searchValue: event.target.value.toUpperCase() });
+     console.log(event.target.value)
 
-      var state = this.state.data;
+       var searchTerm = event.target.value
 
-      var searchVal = this.state.searchValue;
+       var currentContinentTableData = this.state.currentDisplayTableData
 
-      var k = R.find(R.propEq("searchcountry", searchVal))(state);
+       if(searchTerm === ""){
 
-      /* let myPromise = new Promise(function(myResolve, myReject){
+           this.setState({search:false , data:currentContinentTableData})
 
-                    var k = R.find(R.propEq('searchcountry',searchVal))(state)
+           
 
-                    if(k===undefined){
-                      myReject("no result found")
-                    }
-                    else{
-                    myResolve(k); // when successful
-                    }
-                  })
+       }
 
-                  myPromise.then(
-                    function(value) { d.push(value)
-                                      this.setState({searchData:d})
-                                      this.setState({search:true}) 
-                                      this.se
-                                     },
-                    function(error) {return}
-                  );*/
+       else{
 
-      if (k == undefined) {
-        this.setState({ noResult: true });
-        return;
-      } else {
-        d.push(k);
-        this.setState({ noResult: false });
-        this.setState({ searchData: d });
-      }
-    } else {
-      this.setState({ search: false });
-      return;
-    }
+            this.setState({search:true})
+         
+            var dataToBeFiltered = this.state.data
+
+            var a =  dataToBeFiltered.filter((data)=>{
+
+                      var cntry = data.country.props.children      
+
+                         console.log(data)
+
+                         if(cntry.toLowerCase().includes(searchTerm.toLowerCase())){
+
+                               return data
+                   
+                             }
+               })
+
+            this.setState({data:a})   
+             
+          }
+
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /*////////////////////////////////////////////////////////////////////////////////////////////*/
   setWorldData() {
     this.setState({ loader: true });
 
@@ -708,9 +701,12 @@ class MainPageTable extends Component {
     var a = null;
 
     if (this.state.loader) {
-      a = <Skeleton rows={38} color="lightgray"></Skeleton>;
-    } else {
-      if (this.state.search === false) {
+                a = <Skeleton rows={38} color="lightgray"></Skeleton>;
+     } 
+    
+      else {
+        
+       
         a = (
           <div className="tableSet">
             <div className="searchInput">
@@ -720,8 +716,8 @@ class MainPageTable extends Component {
                   class="form-control"
                   aria-label="Default"
                   aria-describedby="inputGroup-sizing-default"
-                  placeholder="Type here and press space after typing for search"
-                  onChange={this.change}
+                  placeholder="Search based on country"
+                  onChange={this.searchHandler}
                 ></input>
               </div>
             </div>
@@ -753,89 +749,15 @@ class MainPageTable extends Component {
               subHeaderAlign={"left"}
               customStyles={customStyles}
 
-              /*conditionalRowStyles={conditionalRowStyles}*/
-              //onRowClicked={ (row) => this.selectedCountry(row) }
-              //expandableRows={true}
-              //expandOnRowClicked={true}
-              //expandableRowsHideExpander={true}
-              //expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}>KK</Link>}
-              //onRowExpandToggled={(s,p) => this.test(s)}
-            ></DataTable>
+              ></DataTable>
           </div>
         );
-      } else {
-        a = (
-          <div className="tableSet">
-            <div className="searchInput">
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  aria-describedby="inputGroup-sizing-default"
-                  placeholder="Type here and press space after typing for search"
-                  onChange={this.change}
-                ></input>
-              </div>
-            </div>
-
-            <h4>Following Result Found</h4>
-            <DataTable
-              title={<h2>{this.state.continent}</h2>}
-              columns={columns}
-              data={this.state.searchData}
-              highlightOnHover={true}
-              pointerOnHover={true}
-              fixedHeader={true}
-              theme={"dark"}
-              subHeader={true}
-              noDataComponent={<h1>hhhhhhh</h1>}
-              subHeaderComponent={
-                <h4 style={{ color: "white" }}>
-                  <b>
-                    Next Update In&nbsp;:&nbsp;{" "}
-                    <Countdown
-                      date={Date.now() + 600000}
-                      onComplete={this.fetchDataFromBackend}
-                    ></Countdown>
-                  </b>
-                </h4>
-              }
-              subHeaderAlign={"left"}
-
-              //conditionalRowStyles={conditionalRowStyles}
-              //onRowClicked={(row) => this.selectedCountry(row)}
-              //expandableRowsHideExpander={true}
-              //expandableRows={true}
-              //expandOnRowClicked={true}
-              //expandableRowsComponent={<Link to={`/Country/${this.state.selectedRowCountry }/${this.state.threeLetterCode}`}><h1>{this.state.selectedRowCountry}</h1></Link>}
-            ></DataTable>
-          </div>
-        );
-
-        if (this.state.noResult) {
-          a = (
-            <div className="tableSet">
-              <div className="searchInput">
-                <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    aria-describedby="inputGroup-sizing-default"
-                    placeholder="Type here and press space after typing for search"
-                    onChange={this.change}
-                  ></input>
-                </div>
-              </div>
-
-              <DataTable noDataComponent={<h1>No Result Found</h1>}></DataTable>
-            </div>
-          );
-        }
-      }
+       
     }
 
     return (
-      <div className="mainTable">
+      
+       <div className="mainTable">
         <div className="continentBar">
           <nav class="nav nav-pills  nav-fill">
             <li class="nav-item">
