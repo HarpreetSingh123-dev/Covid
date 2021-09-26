@@ -21,6 +21,24 @@
   width: 80%;
 }
 
+.specificCountry .terms{
+
+  margin-top: 20px;
+  background-color: #343a40;
+}
+
+.specificCountry .terms p{
+
+  font-size: larger;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.specificCountry .terms .text{
+
+  font-size: medium;
+}
+
 .specificCountry .footerStyle {
   left: 0;
   bottom: 0;
