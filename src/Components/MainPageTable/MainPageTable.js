@@ -214,6 +214,22 @@ class MainPageTable extends Component {
       active: "active",
 
       noResult: false,
+
+
+      worldBackgroundColor:'gray',
+
+      asiaBackgroundColor:'',
+
+      africaBackgroundColor:'',
+
+      australiaBackgroundColor:'',
+
+      europeBackgroundColor:'',
+
+      northAmericaBackgroundColor:'',
+
+      southAmericaBackgroundColor:''
+
     };
 
     this.setTable = this.setTable.bind(this);
@@ -410,11 +426,34 @@ class MainPageTable extends Component {
     this.setState({ loader: true });
 
     this.componentDidMount();
+
+    this.setState({
+
+      worldBackgroundColor:'gray',
+      asiaBackgroundColor:'',
+      africaBackgroundColor:'',
+      australiaBackgroundColor:'',
+      europeBackgroundColor:'',
+      northAmericaBackgroundColor:'',
+      southAmericaBackgroundColor:''
+    })
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   setAsiaData() {
+
+    this.setState({
+
+      worldBackgroundColor:'',
+      asiaBackgroundColor:'gray',
+      africaBackgroundColor:'',
+      australiaBackgroundColor:'',
+      europeBackgroundColor:'',
+      northAmericaBackgroundColor:'',
+      southAmericaBackgroundColor:''
+    })
+
     this.setState({ loader: true });
     this.setState({ continent: "Asia -Live Update" });
     const options = {
@@ -445,6 +484,18 @@ class MainPageTable extends Component {
   ////////////////////////////////////////////////////////////////////////////////////////////////////
 
   setAfricaData() {
+
+    this.setState({
+
+      worldBackgroundColor:'',
+      asiaBackgroundColor:'',
+      africaBackgroundColor:'gray',
+      australiaBackgroundColor:'',
+      europeBackgroundColor:'',
+      northAmericaBackgroundColor:'',
+      southAmericaBackgroundColor:''
+    })
+
     this.setState({ loader: true });
     this.setState({ continent: "Africa -Live Update" });
 
@@ -478,6 +529,18 @@ class MainPageTable extends Component {
   /*////////////////////////////////////////////////////////////////////////////////////////*/
 
   setAustraliaData() {
+
+    this.setState({
+
+      worldBackgroundColor:'',
+      asiaBackgroundColor:'',
+      africaBackgroundColor:'',
+      australiaBackgroundColor:'gray',
+      europeBackgroundColor:'',
+      northAmericaBackgroundColor:'',
+      southAmericaBackgroundColor:''
+    })
+
     this.setState({ loader: true });
     this.setState({ continent: "Australia -Live Update" });
 
@@ -510,6 +573,18 @@ class MainPageTable extends Component {
   /////////////////////////////////////////////////////////////////////////////////////////////
 
   setEuropeData() {
+
+    this.setState({
+
+      worldBackgroundColor:'',
+      asiaBackgroundColor:'',
+      africaBackgroundColor:'',
+      australiaBackgroundColor:'',
+      europeBackgroundColor:'gray',
+      northAmericaBackgroundColor:'',
+      southAmericaBackgroundColor:''
+    })
+
     this.setState({ loader: true });
     this.setState({ continent: "Europe -Live Update" });
 
@@ -542,6 +617,18 @@ class MainPageTable extends Component {
   /////////////////////////////////////////////////////////////////////////////////////////////
 
   setNorthAmericaData() {
+
+    this.setState({
+
+      worldBackgroundColor:'',
+      asiaBackgroundColor:'',
+      africaBackgroundColor:'',
+      australiaBackgroundColor:'',
+      europeBackgroundColor:'',
+      northAmericaBackgroundColor:'gray',
+      southAmericaBackgroundColor:''
+    })
+
     this.setState({ loader: true });
     this.setState({ continent: "North America -Live Update" });
 
@@ -574,6 +661,18 @@ class MainPageTable extends Component {
   ////////////////////////////////////////////////////////////////////////////////////////////
 
   setSouthAmericaData() {
+
+    this.setState({
+
+      worldBackgroundColor:'',
+      asiaBackgroundColor:'',
+      africaBackgroundColor:'',
+      australiaBackgroundColor:'',
+      europeBackgroundColor:'',
+      northAmericaBackgroundColor:'',
+      southAmericaBackgroundColor:'gray'
+    })
+
     this.setState({ loader: true });
     this.setState({ continent: "South America -Live Update" });
 
@@ -743,6 +842,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setWorldData}
+                style={{backgroundColor:this.state.worldBackgroundColor}}
               >
                 <b>WORLD</b>
               </a>
@@ -754,6 +854,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setAsiaData}
+                style={{backgroundColor:this.state.asiaBackgroundColor}}
               >
                 <b>ASIA</b>
               </a>
@@ -764,6 +865,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setAfricaData}
+                style={{backgroundColor:this.state.africaBackgroundColor}}
               >
                 <b>AFRICA</b>
               </a>
@@ -774,6 +876,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setAustraliaData}
+                style={{backgroundColor:this.state.australiaBackgroundColor}}
               >
                 <b>AUSTRALIA</b>
               </a>
@@ -784,6 +887,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setEuropeData}
+                style={{backgroundColor:this.state.europeBackgroundColor}}
               >
                 <b>EUROPE</b>
               </a>
@@ -794,6 +898,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setNorthAmericaData}
+                style={{backgroundColor:this.state.northAmericaBackgroundColor}}
               >
                 <b>NORTH AMERICA</b>
               </a>
@@ -804,6 +909,7 @@ class MainPageTable extends Component {
               <a
                 class="flex-sm-fill text-sm-center nav-link"
                 onClick={this.setSouthAmericaData}
+                style={{backgroundColor:this.state.southAmericaBackgroundColor}}
               >
                 <b>SOUTH AMERICA</b>
               </a>

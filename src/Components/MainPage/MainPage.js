@@ -290,7 +290,7 @@ closeRegions(){
            
            <div className="MainPage">
 
-                <Navbar  page={"Covid_Live"}></Navbar>
+                <Navbar  page={"Covid_Live"} countries={this.state.countries} ></Navbar>
             <marquee>Website still under development, some things may not work</marquee>
                 <Jumbotron></Jumbotron>
           {/*//////////////////////////////////////////////////////////////////*/ }    

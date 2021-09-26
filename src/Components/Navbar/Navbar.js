@@ -1,6 +1,8 @@
 import React,{useEffect, useState} from 'react';
 import './Navbar.css'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
+import SearchBar from './NavbarSearch'
 import Image1 from '../../Images/symbol1.jpg'
 
 function Navbar(props) {
@@ -18,12 +20,59 @@ function Navbar(props) {
 
    const [ aboutBackground , setAboutBackground ] = useState()
 
+   /* */
+
+   const [ countriesForSearchBar , setCountriesForSearchBar ] = useState([])
+
    
    useEffect(()=>{
 
        changeBackgroundOfClicked(props.page)
 
+
+       var options2 = {
+         method: 'GET',
+         url: 'https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/countries-name-ordered',
+         headers: {
+           'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36',
+           'x-rapidapi-host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com'
+         }
+       };
+
+
+       axios.request(options2).then(function (response) {
+   
+         const countries = response.data
+         return countries 
+    
+        }).then(setFetchedCountries)
+        
+        
+        .catch(function (error) {
+              console.error(error);
+            });
+
    },[props.page])
+
+
+   function setFetchedCountries(countries){
+
+      var a =[]
+  
+      for(var i=0; i<countries.length; i++){
+  
+            var b = countries[i]
+  
+            a.push(b)
+        }
+    
+      setCountriesForSearchBar(a)
+
+
+
+
+   } 
+
 
   
   function changeBackgroundOfClicked(value){
@@ -150,10 +199,10 @@ function Navbar(props) {
     
                 </ul>
 
-                <form className="form-inline my-2 my-lg-0">
-                   <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                   <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                 </form>
+                 <SearchBar countries={countriesForSearchBar}></SearchBar>
+
+                 {console.log("in navv")}
+                 {console.log(props.countries)}
  
             </div>
 

@@ -1,0 +1,17 @@
+.searchShow{
+
+    position: absolute;
+    height: auto;
+    background-color: white;
+    width: 10.5%;
+    border: 1px solid black;
+    /*overflow-y: scroll;*/
+}
+
+.searchShow  ul{
+
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -30px;
+    
+}

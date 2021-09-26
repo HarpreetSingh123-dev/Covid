@@ -88,7 +88,7 @@ const customStyles = {
     headCells: {
       style: {
         backgroundColor: "dimgrey",
-        borderLeft:"3px solid white"
+        
       },
     },
   };
