@@ -1,0 +1,95 @@
+.specificVaccine .specificVaccineMarginSet{
+
+    position: relative;
+    top: 110px;
+    
+}
+
+
+.specificVaccine .upperContent{
+   /* margin-top: 30px;*/
+    background-color: rgb(66,66,66);
+}
+
+.specificVaccine .table td{
+    color: white;
+}
+
+.specificVaccine .table{
+    /*width: 80%;*/
+}
+
+.specificVaccine .test{
+   
+    border: 1px solid black;
+}
+
+.specificVaccine .lowerContent{
+    margin-top: 30px;
+}
+/*
+.specificTreatment .test{
+    border: 1px solid black;
+    margin-top: 10px;
+}
+*/
+.specificVaccine .breakWords{
+
+   /*word-wrap: break-word;*/
+   word-break: keep-all;
+}
+
+
+/* footer styles below*/
+
+
+.specificVaccine .footerSet {
+    height: 60px;
+    width: 100%;
+    color: white;
+  }
+
+
+.specificVaccine .ruleTwo {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0)
+    );
+    width: 80%;
+  }
+
+.specificVaccine .footerSet .footerStyle {
+    left: 0;
+    bottom: 0;
+  
+    width: 100%;
+    margin-top: 140px;
+    background-color: #343a40;
+  }
+
+.specificVaccine .footerSet .footerStyle .container-fluid {
+    width: 85%;
+  }
+  
+.specificVaccine .footerSet .footerStyle .container-fluid .col-lg-3 {
+    margin-top: 50px;
+  }
+  
+.specificVaccine .footerSet .live {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+.specificVaccine .glyp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.specificVaccine .glyp img {
+    margin: 10px;
+  }

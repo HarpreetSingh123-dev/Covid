@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import './VaccineTable.css'
+import ReactTimeAgo from 'react-time-ago'
 import {Link} from 'react-router-dom'
 import Skeleton from '@yisheng90/react-loading';
 
@@ -127,18 +128,31 @@ function setData(data) {
     var dataToSet = data
 
     for(var i = 0 ; i<dataToSet.length ; i++){
+
+        var fdaApproved 
+ 
+        var funder 
+      
+        if(dataToSet[i].FDAApproved === "undefined"){ fdaApproved = "No Data"}
+
+           else { fdaApproved = dataToSet[i].FDAApproved}
+
+
+        if(dataToSet[i].funder === "undefined"){funder = "No Data"}
+
+           else { funder = dataToSet[i].funder }
   
          var obj ={
 
             number : i+1,
-            company : <Link style={{color:'white'}} to={`/Treatment-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].developerResearcher}</Link>,
+            company : <Link style={{color:'white'}} to={`/Vaccine-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].developerResearcher}</Link>,
             category: dataToSet[i].category,
             phase: dataToSet[i].phase,
-            description:<Link style={{color:'white'}} to={`/Treatment-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].description}</Link>,
+            description:<Link style={{color:'white'}} to={`/Vaccine-Information/${dataToSet[i].trimedCategory}/${dataToSet[i].trimedName}`}>{dataToSet[i].description}</Link>,
             nextsteps:dataToSet[i].nextSteps,
-            fdaindications:dataToSet[i].FDAApproved,
-            funder:dataToSet[i].funder,
-            update:dataToSet[i].lastUpdated.slice(0, 10)
+            fdaindications:fdaApproved,
+            funder:funder,
+            update:<ReactTimeAgo date={dataToSet[i].lastUpdated.slice(0, 10)} locale="en-US"></ReactTimeAgo>
          }
 
          finalObject.push(obj)

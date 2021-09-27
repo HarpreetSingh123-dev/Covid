@@ -194,6 +194,8 @@ class SpecificCountryTable extends Component {
 
     var b = null
 
+    var c = null
+
     if(this.state.loader){
 
        b=(<Skeleton rows={30} height={20} color="lightgray"></Skeleton>)
@@ -225,14 +227,39 @@ class SpecificCountryTable extends Component {
 
 
         )
+
+        c= ( <div className="container-fluid">
+ 
+              <div className="row">
+           
+                   <div className="col-lg col-sm">
+           
+                   <p style={{color: "white"}}> <span style={{color: "#F7384F"}}><b>CASE FATALITY RATE (CFR)</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of Deaths due to Covid-19 divided by Total 
+                       Number of confirmed cases since the beginning of outbreak
+                      (It shows that how lethal covid-19 is in any country). Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.</span></p>
+
+                  </div>
+
+        
+                  <div className="col-lg col-sm">
+       
+                    <p style={{color: "white"}}> <span style={{color: "#19DAA4"}}><b>RECOVERY PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of recovered cases divided by Total number of covid-19 cases. People with mild symptoms who are otherwise healthy should manage their symptoms at home. On average it takes 5–6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days</span></p>
+               
+                  </div>
+       
+              </div>
+
+            </div>
+           )
   
        
       }
       else {
         a = null;
+        c= null
       }
 
-     b=a 
+      b=a 
     }
 
    
@@ -254,30 +281,9 @@ class SpecificCountryTable extends Component {
 
            <div className="terms">
                                  
-                                 <div className="container-fluid">
- 
-                                  <div className="row">
-                                     
-                                     <div className="col-lg col-sm">
-                                     
-                                             <p style={{color: "white"}}> <span style={{color: "#F7384F"}}><b>CASE FATALITY RATE (CFR)</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total Number of Deaths due to Covid-19 divided by Total 
-                                                 Number of confirmed cases since the beginning of outbreak
-                                                (It shows that how lethal covid-19 is in any country). Older people, and those with underlying medical problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer are more likely to develop serious illness.</span></p>
- 
-                                          </div>
- 
-                                  
-                                         <div className="col-lg col-sm">
+                {c}                 
                                  
-                                              <p style={{color: "white"}}> <span style={{color: "#19DAA4"}}><b>RECOVERY PERCENTAGE</b></span><span>&nbsp;:</span>&nbsp;<span className="text">Total number of recovered cases divided by Total number of covid-19 cases. People with mild symptoms who are otherwise healthy should manage their symptoms at home. On average it takes 5–6 days from when someone is infected with the virus for symptoms to show, however it can take up to 14 days</span></p>
-                                         
-                                         </div>
-                                 
-                                  </div>
- 
-                                </div>
- 
-                               </div> 
+            </div> 
 
            </div>
             

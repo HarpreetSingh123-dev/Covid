@@ -6,6 +6,7 @@ import Country from './Components/SpecificCountry/SpecificCountry'
 import Vaccine from './Components/Vaccine/Vaccine'
 import Treatment from './Components/Treatment/Treatment'
 import SpecificTreatment from './Components/Treatment/SpecificTreatment/SpecificTreatment';
+import SpecificVaccine from './Components/Vaccine/SpecificVaccine/SpecificVaccine'
 import Maps from './Components/Map/Maps'
 import News from './Components/News/News'
 import About from './Components/About/About'
@@ -28,6 +29,7 @@ const FinalAssembly = () => {
                 <Route exact path='/Map' component={Maps}></Route>
                 <Route exact path='/News' component={News}></Route>
                 <Route exact path='/Treatment-Information/:trimedCategory/:trimedName' component={SpecificTreatment}></Route>
+                <Route exact path='/Vaccine-Information/:trimedCategory/:trimedName' component={SpecificVaccine}></Route>
                 <Route exact path='/About' component={About}></Route>
                 
             </Switch>

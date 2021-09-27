@@ -149,7 +149,7 @@ var display = null
                                                    else{
 
                                                        var i = 1
-                                                       return <a href={value}>Link{i+index} &nbsp;</a>
+                                                       return <a href={value} target="_blank">Link{i+index} &nbsp;</a>
                                                    }
 
                                                    

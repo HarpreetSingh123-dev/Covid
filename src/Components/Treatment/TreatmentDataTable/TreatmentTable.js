@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import './TreatmentTable.css'
+import ReactTimeAgo from 'react-time-ago'
 import {Link} from 'react-router-dom'
 import Skeleton from '@yisheng90/react-loading';
 
@@ -141,7 +142,7 @@ function setData(data) {
             nextsteps:dataToSet[i].nextSteps,
             fdaindications:fdaApproved,
             funder:funder,
-            update:dataToSet[i].lastUpdated.slice(0, 10)
+            update:<ReactTimeAgo date={dataToSet[i].lastUpdated.slice(0, 10)} locale="en-US"></ReactTimeAgo>
          }
 
          finalObject.push(obj)
