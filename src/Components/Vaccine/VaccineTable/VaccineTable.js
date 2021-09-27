@@ -227,7 +227,7 @@ function searchFind(value){
             
                {table}
 
-              
+              {console.log(finalTableData)}
            </div>
     );
 }

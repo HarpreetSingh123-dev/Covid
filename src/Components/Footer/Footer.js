@@ -32,12 +32,12 @@ function Footer() {
                                  <hr className="ruleTwo"></hr>
  
                              
-                                   <p className="text-center">All Vaccines</p>
-                                   <p className="text-center">Pfizer</p>
-                                   <p className="text-center">Moderna</p>
-                                   <p className="text-center">Oxford</p>
-                                   <p className="text-center">Novavax</p>
-                                   <p className="text-center">Sinovac</p>
+                                   <p className="text-center"><Link to={'/Vaccine'} style={{color:'white'}}>All Vaccines</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color:'white'}} to={'/Treatment-Information/rna-based-vaccine/biontech-pfizer-fosun-pharma-rentschler-biopharma'}>Pfizer</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color:'white'}} to={'/Treatment-Information/rna-based-vaccine/moderna-niaid-lonza-catalent-rovi-medidata-bioqual'}>Moderna</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color:'white'}} to={'/Treatment-Information/non-replicating-viral-vector/university-of-oxford-oxford-biomedica,-vaccines-manufacturing-and-innovation-centre,-pall-life-sciences,-cobra-biologics,-halixbv,-advent-s.r.l.,-merck-kgaa,-the-serum-institute,-vaccitech,-catalent,-csl,-and-astrazenecaiqvia'}>Oxford</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color:'white'}} to={'/Treatment-Information/protein-subunit/novavaxemergent-biosolutions-praha-vaccines-biofabri-fujifilm-diosynth-biotechnologies-fdb-serum-institute-of-india-sk-bioscience-takeda-pharmaceutical-company-limited-agc-biologics-polypeptide-group-endo'}>Noravax</Link></p>
+                                   <p className="text-center"><Link className="setLinkColor" style={{color:'white'}} to={'/Treatment-Information/inactivated-virus/beijing-institute-of-biological-products-sinopharm'}>Wuhan</Link></p>
 
                             
 
