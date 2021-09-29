@@ -42,10 +42,27 @@ const columns = [
         NEW <br></br>CASES
       </h6>
     ),
-    selector: "newcases",
+    selector: row => row.newcases,
     center: true,
-
+   
     grow: 1,
+
+    conditionalCellStyles: [
+
+                   {      when: row => row.newcases.replace(/,/g, '') > 1000 ,
+
+                            style:{
+
+                              backgroundColor:'rgb(255,238,170)',
+                              color:'black'
+                            }
+                     
+
+
+
+                   }
+
+                  ]
   },
 
   {
@@ -76,10 +93,28 @@ const columns = [
         ACTIVE <br></br>CASES
       </h6>
     ),
-    selector: "activecases",
+    selector: row=> row.activecases,
     center: "True",
 
     grow: 1,
+
+    conditionalCellStyles: [
+
+      {      when: row => row.activecases.replace(/,/g, '') >= 100000 ,
+
+               style:{
+
+                 backgroundColor:'indianred',
+                 color:'black'
+               }
+
+       }
+
+     ]
+
+
+
+   
   },
 
   {
@@ -99,9 +134,26 @@ const columns = [
         NEW <br></br>DEATHS
       </h6>
     ),
-    selector: "newdeaths",
+    selector: row=> row.newdeaths,
     center: "True",
     grow: 1,
+
+    conditionalCellStyles: [
+
+      {      when: row => row.newdeaths.replace(/,/g, '') > 50 ,
+
+               style:{
+
+                 backgroundColor:'lightcoral',
+                 color:'black'
+               }
+        
+
+
+
+      }
+
+     ]
   },
 
   {
@@ -187,8 +239,15 @@ const customStyles = {
   headCells: {
     style: {
       backgroundColor: "dimgrey",
-    },
+    },   
   },
+
+  cells:{
+    style: {
+      //border:"0.1px solid black",
+     // backgroundColor: "dimgrey",
+    },
+  }
 };
 
 class MainPageTable extends Component {
@@ -330,6 +389,7 @@ class MainPageTable extends Component {
           /\B(?=(\d{3})+(?!\d))/g,
           ","
         ),
+        
         infectionrisk: this.state.table[i].Infection_Risk + "%",
         seriouscritical: this.state.table[
           i

@@ -81,6 +81,7 @@ useEffect(()=>{
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("ALL TREATMENTS")
              setLoader(false)
 
 
@@ -104,6 +105,7 @@ else {   /* this logic is initialized if data is already in reducer and no fetch
              var jumbotronHeadingsData = {heading : heading,subHeading: subHeading}
 
              setJumboHeading(jumbotronHeadingsData)
+             setWhichButtonClicked("ALL TREATMENTS")
              setLoader(false)
             
     }

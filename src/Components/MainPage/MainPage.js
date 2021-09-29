@@ -6,6 +6,7 @@ import LiveCurrentTotals from './Totals/Totals'
 import Countries from './Countries/Countries'
 import ShowCountries from './Countries/ShowCountries'
 import MainPageChart from '../MainPageChart/MainPageChart'
+import FooterWorldStats from './FooterWorldStats/FooterWorldStats';
 import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import Footer from '../Footer/Footer'
@@ -36,7 +37,11 @@ class MainPage extends Component {
         loader:true,
         showRegions:false,
 
-        region:''
+        region:'',
+
+        worldFooter:true,
+
+        footerTrendsHeadLine:'The World'
         
        
         }
@@ -117,13 +122,15 @@ fetchDataFromBackend(){
       var totalCases= data.TotalCases
       var totalDeaths=data.TotalDeaths
       var totalRecovered=data.TotalRecovered
+      //var newRecovered = data.NewRecovered
+      var deathsPerMillion = data.Deaths_1M_pop
       var activeCases=data.ActiveCases
       var newCases=data.NewCases
       var newDeaths=data.NewDeaths
       var newRecovered=data.NewRecovered
       var seriousCritical=data.Serious_Critical 
   
-     const p =[{totalCases,totalDeaths,totalRecovered,activeCases,newCases,newDeaths,newRecovered,seriousCritical}]
+     const p =[{totalCases,totalDeaths,totalRecovered,activeCases,newCases,newDeaths,newRecovered,seriousCritical,deathsPerMillion}]
 
      
       this.setState({liveCovidStats:p})
@@ -199,6 +206,7 @@ closeRegions(){
                                            newCases={p.newCases.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                                            seriousCritical={p.seriousCritical.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                                            newDeaths={p.newDeaths.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}  >
+
                            </LiveCurrentTotals>
                         )}
                 </div>)
@@ -282,7 +290,35 @@ closeRegions(){
             
               )
 
-            }
+
+              var d = null
+
+              if(this.state.loader){
+
+                   d = (<Skeleton rows={6} color="lightgray"></Skeleton>)
+              }
+
+              else {
+
+                   d= (    <div> 
+                          
+                          { this.state.liveCovidStats.map((data)=>
+
+                                <FooterWorldStats
+                                 
+                                     totalRecovered = {data.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                     newRecovered = {data.newRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                     deathsPerMillion={data.deathsPerMillion.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                                 
+                                    ></FooterWorldStats>
+
+                                 )}
+                          
+                           </div>
+                      )
+                     }
+
+   }
           
 
 
@@ -418,14 +454,17 @@ closeRegions(){
                
                     <div className="container-fluid">
                
-                        <h2  className="text-center">Overall Trend Of Covid-19 Cases</h2>
+                        <h2  className="text-center">More trends of {this.state.footerTrendsHeadLine} Covid-19 cases</h2>
                 
                            <hr className="rule"></hr>
                          
-                                 <div className="MainChartSet">
+                                 {/* CHARTS REMOVED AS API IS DOWN <div className="MainChartSet">
                                     <MainPageChart></MainPageChart>
-                                 </div>
-                   </div>
+                              </div>*/}
+                               
+                             {d}
+                   
+                    </div>
                
                </div>
 

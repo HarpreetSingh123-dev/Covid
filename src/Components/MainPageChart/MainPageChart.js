@@ -32,7 +32,9 @@ class MainPageChart extends Component {
            criticalCasesLoader:true,
            ratioLoader:true,
 
-           dataFetchingRequired:true
+           dataFetchingRequired:true,
+
+           error:false
            
         }
 
@@ -41,6 +43,8 @@ class MainPageChart extends Component {
         this.setActiveCasesData = this.setActiveCasesData.bind(this)
         this.setCriticalCasesData = this.setCriticalCasesData.bind(this)
         this.setRatioComparison = this.setRatioComparison.bind(this)
+
+        
 
     }
     
@@ -60,7 +64,7 @@ componentDidMount(){
       axios.request(options).then(function (response) {
      
 
-       
+       console.log(response)
 
        const data = response.data
 
@@ -83,7 +87,10 @@ componentDidMount(){
          
       
       .catch(function (error) {
-          console.error(error);
+         
+        
+         
+            console.error(error);
       });
 
   
@@ -131,6 +138,7 @@ componentDidMount(){
         {console.log("test below")}
         {console.log(this.state.data)}*/
 }    
+
 
 setDataModel(data){
 
