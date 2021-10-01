@@ -305,6 +305,8 @@ class MainPageTable extends Component {
     this.setSouthAmericaData = this.setSouthAmericaData.bind(this);
 
     this.fetchDataFromBackend = this.fetchDataFromBackend.bind(this);
+
+    this.setFooterData = this.setFooterData.bind(this)
   }
 
   /*//////////////////////////////////////////////////////////////////////////////////*/
@@ -474,6 +476,15 @@ class MainPageTable extends Component {
 
   }
 
+  /*////////////////////////////////////////////////////////////////////////////////////////////*/
+
+setFooterData(value){
+
+   this.props.clicked(value)
+   //console.log(value)
+
+}  
+  
   /*////////////////////////////////////////////////////////////////////////////////////////////*/
   setWorldData() {
     this.setState({ loader: true });
@@ -823,7 +834,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setWorldData}
+                onClick={ ()=>{ this.setWorldData() ; this.setFooterData("WORLD")}}
                 style={{backgroundColor:this.state.worldBackgroundColor}}
               >
                 <b>WORLD</b>
@@ -835,7 +846,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setAsiaData}
+                onClick={() => { this.setAsiaData() ; this.setFooterData("ASIA");}}
                 style={{backgroundColor:this.state.asiaBackgroundColor}}
               >
                 <b>ASIA</b>
@@ -846,7 +857,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setAfricaData}
+                onClick={()=>{ this.setAfricaData() ; this.setFooterData("AFRICA")}}
                 style={{backgroundColor:this.state.africaBackgroundColor}}
               >
                 <b>AFRICA</b>
@@ -857,7 +868,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setAustraliaData}
+                onClick={()=>{this.setAustraliaData() ; this.setFooterData("AUSTRALIA")}}
                 style={{backgroundColor:this.state.australiaBackgroundColor}}
               >
                 <b>AUSTRALIA</b>
@@ -868,7 +879,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setEuropeData}
+                onClick={ ()=>{ this.setEuropeData() ; this.setFooterData("EUROPE")}}
                 style={{backgroundColor:this.state.europeBackgroundColor}}
               >
                 <b>EUROPE</b>
@@ -879,7 +890,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setNorthAmericaData}
+                onClick={ ()=>{ this.setNorthAmericaData() ; this.setFooterData("NORTH_AMERICA") }}
                 style={{backgroundColor:this.state.northAmericaBackgroundColor}}
               >
                 <b>NORTH AMERICA</b>
@@ -890,7 +901,7 @@ class MainPageTable extends Component {
             <li class="nav-item">
               <a
                 class="flex-sm-fill text-sm-center nav-link"
-                onClick={this.setSouthAmericaData}
+                onClick={ ()=>{this.setSouthAmericaData() ; this.setFooterData("SOUTH_AMERICA") }}
                 style={{backgroundColor:this.state.southAmericaBackgroundColor}}
               >
                 <b>SOUTH AMERICA</b>

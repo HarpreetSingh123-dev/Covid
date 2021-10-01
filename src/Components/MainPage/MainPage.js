@@ -7,6 +7,7 @@ import Countries from './Countries/Countries'
 import ShowCountries from './Countries/ShowCountries'
 import MainPageChart from '../MainPageChart/MainPageChart'
 import FooterWorldStats from './FooterWorldStats/FooterWorldStats';
+import FooterContinentStats from './FooterContinentStats/FooterContinentStats';
 import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import Footer from '../Footer/Footer'
@@ -41,7 +42,11 @@ class MainPage extends Component {
 
         worldFooter:true,
 
-        footerTrendsHeadLine:'The World'
+        footerTrendsHeadLine:'The World',
+
+        footerValue:'World',
+
+        otherContinentData:''
         
        
         }
@@ -52,7 +57,8 @@ class MainPage extends Component {
         this.closeRegions= this.closeRegions.bind(this)
 
         this.fetchDataFromBackend=this.fetchDataFromBackend.bind(this)
-        
+        this.setFooterDataType=this.setFooterDataType.bind(this)
+        this.setContinentsData=this.setContinentsData.bind(this)      
     }
     
 ///////////////////////////////////////////////////////////////////////////////////    
@@ -87,6 +93,16 @@ fetchDataFromBackend(){
       }
     };
     
+
+    var options3 = {
+      method: 'GET',
+      url: 'https://covid-19-coronavirus-statistics2.p.rapidapi.com/continentData',
+      headers: {
+        'x-rapidapi-host': 'covid-19-coronavirus-statistics2.p.rapidapi.com',
+        'x-rapidapi-key': '92e00d3476msh9086087f266cc20p1d4d74jsn45214a2fcb36'
+      }
+    };
+
   /////////////////////////////////////////FIRST API REQUEST/////////////////////////  
     axios.request(options1).then(function (response) {
      
@@ -113,6 +129,19 @@ fetchDataFromBackend(){
       .catch(function (error) {
             console.error(error);
           });
+  ///////////////////////////////////////////////////////////////////////////////////////
+  
+  axios.request(options3).then(function (response) {
+    
+     const continentData = response.data.result
+
+     return continentData
+     
+    }).then(this.setContinentsData)
+    
+    .catch(function (error) {
+       console.error(error);
+      });
 
 }
 
@@ -152,6 +181,13 @@ fetchDataFromBackend(){
   
     this.setState({countries:a})
 }
+
+
+setContinentsData(data){
+
+this.setState({otherContinentData:data})
+
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
 
@@ -165,6 +201,69 @@ this.setState({showRegions:true})
 closeRegions(){
 
   this.setState({showRegions:false})
+
+}
+
+
+setFooterDataType(value){
+
+   if(value ==="WORLD")
+     
+     { 
+        this.setState({worldFooter:true , footerValue:value , footerTrendsHeadLine:"The World"})
+         
+     }
+
+   else
+      { 
+        var headline = null
+
+          switch(value){
+
+             case 'ASIA':
+                  
+             headline="Asian Continent"
+
+             break;
+
+             case 'AFRICA':
+             
+              headline ="African Continent"
+
+             break;
+
+             case 'AUSTRALIA':
+
+              headline="Australian Continent"
+
+             break;
+
+             case 'EUROPE':
+
+              headline = "European Continent"
+             
+             break;
+
+             case 'NORTH_AMERICA':
+
+              headline ="North American Continent"
+
+             break;
+
+             case 'SOUTH_AMERICA':
+
+              headline ="South American Continent"
+
+             break;
+
+
+             
+
+          }
+
+
+        this.setState({worldFooter:false , footerValue:value , footerTrendsHeadLine:headline})
+      }
 
 }
 
@@ -300,11 +399,13 @@ closeRegions(){
 
               else {
 
-                   d= (    <div> 
-                          
-                          { this.state.liveCovidStats.map((data)=>
+                   if(this.state.worldFooter){
 
-                                <FooterWorldStats
+                        d= (    <div> 
+                          
+                                { this.state.liveCovidStats.map((data)=>
+
+                                    <FooterWorldStats
                                  
                                      totalRecovered = {data.totalRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                                      newRecovered = {data.newRecovered.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
@@ -312,11 +413,21 @@ closeRegions(){
                                  
                                     ></FooterWorldStats>
 
-                                 )}
+                                    )}
                           
-                           </div>
-                      )
+                                 </div>
+                             )
                      }
+
+                    else{
+
+
+                        d=(  <div><FooterContinentStats  value={this.state.footerValue} data={this.state.otherContinentData}></FooterContinentStats></div> )
+                        
+                    }
+
+                    }
+                    
 
    }
           
@@ -387,7 +498,7 @@ closeRegions(){
                             
                             <div className="col-lg-10 col-md-9">
     
-                                  <Table></Table>
+                                  <Table clicked={this.setFooterDataType}></Table>
                                 
                            {/*    <div className="row"> 
                                <div className="col">
