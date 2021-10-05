@@ -3,6 +3,7 @@ import './MainPageNews.css'
 import axios from 'axios'
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 import ErrorImage from '../../../Images/Covid_2.jpg'
+import ReactTimeAgo from 'react-time-ago'
 
 
 //import { waitFor } from '@testing-library/dom';
@@ -76,6 +77,7 @@ function MainPageNews(props) {
                var header
                var caption
                var link
+               var lastUpdate 
 
                  if(value.media === null){
                  
@@ -91,10 +93,11 @@ function MainPageNews(props) {
                  
                  altText = "No Preview Avaliable"
                  header = value.title
-                 //caption = value.summary
+                 caption = value.summary
                  link = value.link
+                 lastUpdate =  <ReactTimeAgo date={value.published_date} locale="en-US"></ReactTimeAgo>
                  
-                 var finalObject = {src,altText,header,/*caption,*/link}
+                 var finalObject = {src,altText,header,caption,link, lastUpdate}
 
                  finalDataSet.push(finalObject)
 
@@ -132,10 +135,22 @@ function MainPageNews(props) {
             key={item.src}
           >
            
+           <div class="card">
+  <div class="card-body">
+    <h3 class="card-title text-center"><b>{item.header}</b></h3>
+    <p class="card-text">{item.caption}</p>
+
+    <a href={item.link} target="_blank">Click To Know More</a>
+    <p class="card-text"><small class="text-muted">{item.lastUpdate}</small></p>
+    
+  </div>
+  <a href={item.link} target="_blank" ><img class="card-img-bottom imgg" src={item.src} alt="Card image cap"></img></a>
+</div>
+
                 
-               <a href={item.link} target="_blank"><img className="imgg" src={item.src} alt={item.altText} ></img></a>
+              {/*<a href={item.link} target="_blank"><img className="imgg" src={item.src} alt={item.altText} ></img></a>*/}
             
-            <CarouselCaption  className="tt" captionText={item.caption} captionHeader={item.header} />
+            {/*<CarouselCaption  className="tt" captionText={item.caption} captionHeader={item.header} />*/}
           </CarouselItem>
         );
       });
@@ -148,7 +163,7 @@ function MainPageNews(props) {
 
 return (
  
-        <div className="container-fluid" style={{width:'80%'}}>
+        <div className="container-fluid offset-0.9" style={{width:'80%', marginTop:'70px'}} >
 
       <Carousel
             activeIndex={activeIndex}
