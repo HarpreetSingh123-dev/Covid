@@ -8,6 +8,7 @@ import ShowCountries from './Countries/ShowCountries'
 import MainPageChart from '../MainPageChart/MainPageChart'
 import FooterWorldStats from './FooterWorldStats/FooterWorldStats';
 import FooterContinentStats from './FooterContinentStats/FooterContinentStats';
+import MainPageNews from './MainPageNews/MainPageNews';
 import Table from '../MainPageTable/MainPageTable'
 import Jumbotron from '../Jumbotron/Jumbotron'
 import Footer from '../Footer/Footer'
@@ -587,7 +588,19 @@ setFooterDataType(value){
                <div className="ThirdChart">
                  <h1>Chart No 3</h1>
                </div> */}
+               <div className="MainPageNewsSection">
                
+                   <h2  className="text-center">Latest Covid-19 News</h2>
+
+                   <h2  className="text-center"></h2>
+
+                   <hr className="rule"></hr>
+                    
+                   <MainPageNews></MainPageNews>
+
+               </div>
+
+
                <div className="footerSet">
  
                    <Footer></Footer>
