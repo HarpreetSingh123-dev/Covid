@@ -10,6 +10,7 @@ import Countries from '../MainPage/Countries/Countries'
 import CountryChanges from '../SpecificCountry/CountryChanges'
 import Table from '../SpecificCountry/SpecificCountryTable'
 import CountryCharts from './SpecificCountryCharts'
+import SpecificCountryCummulativeChart from './SpecificCountryCummulativeChart';
 import Regions from '../Regions/Regions'
 import Footer from '../Footer/Footer'
 
@@ -700,6 +701,11 @@ var dataSet = changes.data.change
 
                           <div className="countryCharts"> 
                             <CountryCharts t={this.props.match.params}></CountryCharts>
+
+                         </div>
+
+                         <div className="container-fluid">
+                             <SpecificCountryCummulativeChart  country={this.props.match.params.id}></SpecificCountryCummulativeChart>
 
                          </div>
 
