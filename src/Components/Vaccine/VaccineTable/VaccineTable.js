@@ -216,7 +216,7 @@ function searchFind(value){
                            fixedHeader={true}
                            highlightOnHover={true}
                            responsive={true}
-                           dense={true}
+                          // dense={true}
                            subHeader={true}
                            fixedHeader={true}
                            theme={"dark"}
