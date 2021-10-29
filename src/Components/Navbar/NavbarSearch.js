@@ -87,8 +87,6 @@ var searchDisplayBox = null
                   
                   {searchDisplayBox}
                  
-                 {console.log("state check below")}
-                 {console.log(countries)}
         </div>
     );
 }

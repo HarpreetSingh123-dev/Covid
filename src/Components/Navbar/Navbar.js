@@ -201,8 +201,6 @@ function Navbar(props) {
 
                  <SearchBar countries={countriesForSearchBar}></SearchBar>
 
-                 {console.log("in navv")}
-                 {console.log(props.countries)}
  
             </div>
 

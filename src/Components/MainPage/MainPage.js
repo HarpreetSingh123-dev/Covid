@@ -588,7 +588,7 @@ setFooterDataType(value){
                <div className="ThirdChart">
                  <h1>Chart No 3</h1>
                </div> */}
-               <div className="MainPageNewsSection">
+               <div className="MainPageNewsSection container-fluid" style={{width:"85%"}}>
                
                    <h2  className="text-center">Latest Covid-19 News</h2>
 
@@ -596,7 +596,7 @@ setFooterDataType(value){
 
                    <hr className="rule"></hr>
                     
-                  {/* <MainPageNews></MainPageNews>*/}
+                   <MainPageNews></MainPageNews>
 
                </div>
 
