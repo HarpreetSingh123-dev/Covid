@@ -134,9 +134,12 @@ fetchDataFromBackend(){
   
   axios.request(options3).then(function (response) {
     
-     const continentData = response.data.result
+     const continentData = response
 
-     return continentData
+     console.log("to check continent data is null")
+     console.log(continentData)
+
+     //return continentData
      
     }).then(this.setContinentsData)
     
@@ -186,6 +189,9 @@ fetchDataFromBackend(){
 
 setContinentsData(data){
 
+ 
+    
+  
 this.setState({otherContinentData:data})
 
 }

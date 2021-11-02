@@ -10,6 +10,7 @@ import SpecificVaccine from './Components/Vaccine/SpecificVaccine/SpecificVaccin
 import Maps from './Components/Map/Maps'
 import News from './Components/News/News'
 import About from './Components/About/About'
+import NotFound from './Components/NotFound/NotFound'
 
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 
@@ -31,6 +32,7 @@ const FinalAssembly = () => {
                 <Route exact path='/Treatment-Information/:trimedCategory/:trimedName' component={SpecificTreatment}></Route>
                 <Route exact path='/Vaccine-Information/:trimedCategory/:trimedName' component={SpecificVaccine}></Route>
                 <Route exact path='/About' component={About}></Route>
+                <Route component={NotFound}></Route>
                 
             </Switch>
             </div>
