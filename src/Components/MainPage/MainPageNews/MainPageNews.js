@@ -49,8 +49,7 @@ function MainPageNews(props) {
 
     function setFetchedData(value){
 
-         console.log("in fetched data")
-         console.log(value)
+       
 
          var finalDataSet =[]
 
@@ -222,9 +221,7 @@ function MainPageNews(props) {
                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
                    <span class="sr-only">Next</span>
                  </a>
-                 {console.log("set data below")}
-              {console.log(data)}
-
+                 
                </div>
 
              

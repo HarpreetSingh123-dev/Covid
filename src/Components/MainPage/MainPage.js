@@ -19,10 +19,10 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import Countdown from 'react-countdown';
 
-//import {connect} from 'react-redux'
-//import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-//import setRegionAction from '../../Redux/Actions/RegionAction'
+import setCountryAndCodes from '../../Redux/Actions/SetCountryAndCodesAction'
 
 
 
@@ -134,12 +134,12 @@ fetchDataFromBackend(){
   
   axios.request(options3).then(function (response) {
     
-     const continentData = response
+     const continentData = response.data.result
 
-     console.log("to check continent data is null")
-     console.log(continentData)
+     //console.log("to check continent data is null")
+     //console.log(continentData)
 
-     //return continentData
+     return continentData
      
     }).then(this.setContinentsData)
     
@@ -183,7 +183,20 @@ fetchDataFromBackend(){
           a.push(b)
       }
   
-    this.setState({countries:a})
+    this.setState({countries:a}) 
+
+     // console.log("to check length of array")
+     //console.log(this.props.countryAndCodes.length)
+    if(this.props.countryAndCodes.length === 0){
+      
+       this.props.setCountryAndCodes(a) // used in redux to set countries and codes as global states
+    }
+
+    else{
+      
+      console.log("no data needs to be fetched")
+    
+    }
 }
 
 
@@ -621,17 +634,26 @@ setFooterDataType(value){
     }
 }
 
-/*
+const mapStateToProps = (state) =>{
+
+  return {
+
+      countryAndCodes:state.countryAndCodes
+  }
+
+}
+
+
 const mapActionsToProps =(dispatch) =>{
 
    return bindActionCreators({
  
-   setRegionAction  ,
+   setCountryAndCodes  ,
      
    }, dispatch)
  
  }
 
-export default connect(null, mapActionsToProps) (MainPage);*/
+export default connect(mapStateToProps , mapActionsToProps) (MainPage);
 
-export default MainPage;
+//export default MainPage;

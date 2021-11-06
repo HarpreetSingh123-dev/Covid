@@ -3,7 +3,7 @@ import './SpecificCountry.css'
 import axios from 'axios'
 import Skeleton from '@yisheng90/react-loading';
 import ReactCountryFlag from 'react-country-flag'
-import {Link} from 'react-router-dom'
+import {Link , Redirect , Route} from 'react-router-dom'
 import ReactTimeAgo from 'react-time-ago'
 import Navbar from '../Navbar/Navbar'
 import Countries from '../MainPage/Countries/Countries'
@@ -15,6 +15,9 @@ import Regions from '../Regions/Regions'
 import Footer from '../Footer/Footer'
 
 import USAtable from '../../Components/SpecificCountry/SpecificUSAtable'
+
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
 class SpecificCountry extends Component {
     
@@ -64,28 +67,44 @@ class SpecificCountry extends Component {
 
 ////////////////////////////////////////////////////////////////////////////////// 
 componentDidMount(){  
+  
+         console.log("mount fired")
+  
+         const country = this.props.match.params.id
 
-    this.fetchDataFromBackend()
+         const countryCode = this.props.match.params.type
 
-   this.myRef.current.scrollTo(0, 0);
+         const countryAndCodes = this.props.countryAndCodes
+
+         if(countryAndCodes.includes(country) /*&& countryAndCodes.includes(countryCode)*/){
+
+            console.log("yes country and code is present")
+            this.fetchDataFromBackend()
+            this.myRef.current.scrollTo(0, 0);
+
+         }
+
+         else {
+
+            console.log("country and code not present")
+           return 
+         }
+
+
 }    
 
 ////////////////////////////////////////////////////////////////////////////////
 
 componentDidUpdate(prevProps){
-
-   // console.log("previous props below")
-    //console.log(prevProps)
-    
-
-    if(this.props.match.params.id !== prevProps.match.params.id){
-
-        this.fetchDataFromBackend()
-        this.setState({changesLoader:true})
-        
-    }
-
    
+     if(this.props.match.params.id !== prevProps.match.params.id){
+
+            console.log("update fired")
+            this.fetchDataFromBackend()
+            this.setState({changesLoader:true})
+        
+         }
+         
 }
 
 //////////////////////////////////////////////////////////////////////////////////   
@@ -615,7 +634,7 @@ var dataSet = changes.data.change
         }
 
 
-       
+   
 
         return (
             <div className="specificCountry" ref={this.myRef} >
@@ -721,4 +740,19 @@ var dataSet = changes.data.change
     }
 }
 
-export default SpecificCountry;
+
+const mapStateToProps = (state) =>{
+
+   return {
+ 
+       countryAndCodes:state.countryAndCodes
+   }
+ 
+ }
+ 
+ 
+ 
+ 
+export default connect(mapStateToProps , null) (SpecificCountry);
+
+//export default SpecificCountry;

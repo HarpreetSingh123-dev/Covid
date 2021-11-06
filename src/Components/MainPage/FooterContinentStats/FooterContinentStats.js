@@ -76,7 +76,7 @@ function continentDisplayHandler(value){
            <div className="row">   
 
                   <div className="col-lg-4 col-sm-12 col-md-6 col-12 offset-0.6">
-                     {console.log(props.data)}
+                    
                       <div className="set shadow-lg  bg-white rounded"> 
                           <h1 className="text-center">ACTIVE CASES</h1>
                           <div className="text-center font text-info">{dataToDisplay.activeCases}</div>
