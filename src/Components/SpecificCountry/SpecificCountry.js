@@ -70,7 +70,39 @@ componentDidMount(){
   
          console.log("mount fired")
   
-         const country = this.props.match.params.id
+         //const country = this.props.match.params.id
+  
+         const str = this.props.match.params.id
+        
+         var country
+
+         var countryAsId = this.props.match.params.id
+        
+         isUpper(str,countryAsId)
+
+         function isUpper(str, countryAsId) {
+            
+            if(str === str.toUpperCase()){
+             
+                console.log("in upper  case")   
+
+                 var change = str.toLowerCase()
+
+                 country = change.charAt(0).toUpperCase() + change.slice(1)
+                 console.log("country upper case check")
+                 console.log(country)
+
+            }
+
+            else{
+
+                console.log("not in uppr case")
+                country = countryAsId
+        
+            }
+        }
+
+        
 
          const countryCode = this.props.match.params.type
 
