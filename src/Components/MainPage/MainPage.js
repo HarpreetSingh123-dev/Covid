@@ -23,6 +23,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import setCountryAndCodes from '../../Redux/Actions/SetCountryAndCodesAction'
+import setLowerContinentsStats from '../../Redux/Actions/MainPageContinentAction'
 
 
 
@@ -94,8 +95,10 @@ fetchDataFromBackend(){
       }
     };
     
-
-    var options3 = {
+   
+  
+    
+      var options3 = {
       method: 'GET',
       url: 'https://covid-19-coronavirus-statistics2.p.rapidapi.com/continentData',
       headers: {
@@ -104,6 +107,9 @@ fetchDataFromBackend(){
       }
     };
 
+    
+
+    
   /////////////////////////////////////////FIRST API REQUEST/////////////////////////  
     axios.request(options1).then(function (response) {
      
@@ -132,21 +138,30 @@ fetchDataFromBackend(){
           });
   ///////////////////////////////////////////////////////////////////////////////////////
   
-  axios.request(options3).then(function (response) {
+if( this.props.lowerContinentStats.length === 0 ){
+
+        axios.request(options3).then(function (response) {
     
-     const continentData = response.data.result
+         const continentData = response.data.result
 
-     //console.log("to check continent data is null")
-     //console.log(continentData)
+         //console.log("to check continent data is null")
+         //console.log(continentData)
 
-     return continentData
+          return continentData
      
-    }).then(this.setContinentsData)
+             }).then(this.setContinentsData)
     
-    .catch(function (error) {
-       console.error(error);
-      });
+               .catch(function (error) {
+               console.error(error);
+            });
+       }
 
+       else{
+
+          this.setState({otherContinentData:this.props.lowerContinentStats})
+          console.log("no lower continent data needs to be fetched ")
+
+       }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,9 +218,10 @@ fetchDataFromBackend(){
 setContinentsData(data){
 
  
-    
+  this.props.setLowerContinentsStats(data)  
   
-this.setState({otherContinentData:data})
+
+  this.setState({otherContinentData:data})
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
@@ -638,7 +654,8 @@ const mapStateToProps = (state) =>{
 
   return {
 
-      countryAndCodes:state.countryAndCodes
+      countryAndCodes:state.countryAndCodes,
+      lowerContinentStats:state.lowerContinentStats
   }
 
 }
@@ -649,6 +666,7 @@ const mapActionsToProps =(dispatch) =>{
    return bindActionCreators({
  
    setCountryAndCodes  ,
+   setLowerContinentsStats
      
    }, dispatch)
  

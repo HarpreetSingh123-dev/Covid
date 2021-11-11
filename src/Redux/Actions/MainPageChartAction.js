@@ -1,5 +1,4 @@
 
-
 export default function fetchChartData(data){
 
     console.log("action fired in chart")
