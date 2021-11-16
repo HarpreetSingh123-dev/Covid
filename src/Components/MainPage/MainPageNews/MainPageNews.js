@@ -122,17 +122,20 @@ function MainPageNews(props) {
                      <div class="carousel-item active">
                         <img class="imgg" src={data[0].src}   alt="First slide"></img>
                         <div class="carousel-caption">
-                          <h4>{data[0].header}</h4>
+                         
+                          <h4 className="text-center">{data[0].header}</h4>
                           <p className="cutting">{data[0].caption}</p>
                           <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[0].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[0].link}>Click for more information</a></p>
+                          
                        </div>
+                       
                      </div>
 
                     <div class="carousel-item">
                        <img class="imgg" src={data[1].src} alt="Second slide"></img>
                        <div class="carousel-caption">
-                         <h4>{data[1].header}</h4>
+                         <h4 className="text-center">{data[1].header}</h4>
                          <p className="cutting">{data[1].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[1].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[1].link}>Click for more information</a></p>
@@ -142,7 +145,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[2].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[2].header}</h4>
+                         <h4 className="text-center" >{data[2].header}</h4>
                          <p className="cutting">{data[2].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[2].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[2].link}>Click for more information</a></p>
@@ -152,7 +155,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[3].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[3].header}</h4>
+                         <h4 className="text-center" >{data[3].header}</h4>
                          <p className="cutting">{data[3].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[3].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[3].link}>Click for more information</a></p>
@@ -162,7 +165,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[4].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[4].header}</h4>
+                         <h4 className="text-center" >{data[4].header}</h4>
                          <p className="cutting" >{data[4].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[4].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[4].link}>Click for more information</a></p>
@@ -172,7 +175,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[5].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[5].header}</h4>
+                         <h4 className="text-center">{data[5].header}</h4>
                          <p className="cutting">{data[5].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[5].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[5].link}>Click for more information</a></p>
@@ -183,7 +186,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[6].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[6].header}</h4>
+                         <h4 className="text-center">{data[6].header}</h4>
                          <p className="cutting">{data[6].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[6].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[6].link}>Click for more information</a></p>
@@ -193,7 +196,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[7].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[7].header}</h4>
+                         <h4 className="text-center">{data[7].header}</h4>
                          <p className="cutting">{data[7].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[7].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[7].link}>Click for more information</a></p>
@@ -203,7 +206,7 @@ function MainPageNews(props) {
                     <div class="carousel-item">
                       <img class="imgg" src={data[8].src} alt="Third slide"></img>
                       <div class="carousel-caption">
-                         <h4>{data[8].header}</h4>
+                         <h4 className="text-center" >{data[8].header}</h4>
                          <p className="cutting">{data[8].caption}</p>
                          <p className="setLowerCarouselLinks"><b>Last Updated:</b>&nbsp;&nbsp;{data[8].lastUpdate}</p>
                           <p className="setLowerCarouselLinks"><a href={data[8].link}>Click for more information</a></p>
