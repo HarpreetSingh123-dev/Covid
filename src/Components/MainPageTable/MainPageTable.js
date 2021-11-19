@@ -919,7 +919,94 @@ setFooterData(value){
                      <div ><button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setSouthAmericaData}>SOUTH AMERICA</button></div>
               
         */}
+
+        
         </div>
+        
+        <div className="smallScreenContinentBar">
+        
+        <nav class="nav nav-pills  nav-fill">
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={ ()=>{ this.setWorldData() ; this.setFooterData("WORLD")}}
+                style={{backgroundColor:this.state.worldBackgroundColor}}
+              >
+                <b>WORLD</b>
+              </a>
+
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setWorldData}>WORLD</button>*/}
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={() => { this.setAsiaData() ; this.setFooterData("ASIA");}}
+                style={{backgroundColor:this.state.asiaBackgroundColor}}
+              >
+                <b>ASIA</b>
+              </a>
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAsiaData}>ASIA</button>*/}
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={()=>{ this.setAfricaData() ; this.setFooterData("AFRICA")}}
+                style={{backgroundColor:this.state.africaBackgroundColor}}
+              >
+                <b>AFRICA</b>
+              </a>
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAfricaData}>AFRICA</button>*/}
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={()=>{this.setAustraliaData() ; this.setFooterData("AUSTRALIA")}}
+                style={{backgroundColor:this.state.australiaBackgroundColor}}
+              >
+                <b>AUSTRALIA</b>
+              </a>
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setAustraliaData}>AUSTRALIA</button>*/}
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={ ()=>{ this.setEuropeData() ; this.setFooterData("EUROPE")}}
+                style={{backgroundColor:this.state.europeBackgroundColor}}
+              >
+                <b>EUROPE</b>
+              </a>
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setEuropeData}>EUROPE</button>*/}
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={ ()=>{ this.setNorthAmericaData() ; this.setFooterData("NORTH_AMERICA") }}
+                style={{backgroundColor:this.state.northAmericaBackgroundColor}}
+              >
+                <b>NORTH AMERICA</b>
+              </a>
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setNorthAmericaData}>NORTH-AMERICA</button>*/}
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="flex-sm-fill text-sm-center nav-link"
+                onClick={ ()=>{this.setSouthAmericaData() ; this.setFooterData("SOUTH_AMERICA") }}
+                style={{backgroundColor:this.state.southAmericaBackgroundColor}}
+              >
+                <b>SOUTH AMERICA</b>
+              </a>
+              {/*<button type="button" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={this.setSouthAmericaData}>SOUTH-AMERICA</button>*/}
+            </li>
+          </nav>
+
+        </div>
+        
         <hr className="rulee"></hr>
         {a}
 

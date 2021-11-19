@@ -50,4 +50,47 @@
   .mainTable .continentBar .nav a {
     margin-top: 10px;
   }
+
+
+  .mainTable .continentBar{
+    display: none;
+  }
+
+}
+
+@media (min-width: 791px) and (max-width: 2135px) {
+ 
+  .mainTable .smallScreenContinentBar{
+    display: none;
+  }
+}
+
+/*
+.mainTable .smallScreenContinentBar .nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+*/
+.mainTable .smallScreenContinentBar .nav .nav-item{
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.mainTable .smallScreenContinentBar .nav .nav-item .nav-link{
+  width: 85%;
+}
+
+.mainTable .smallScreenContinentBar .nav a{
+  background-color: #424242;
+  color: white;
+}
+
+.mainTable .smallScreenContinentBar .nav .nav-item .nav-link:hover{
+  cursor: pointer;
+  background-color: gray;
 }
