@@ -5,7 +5,8 @@ import Navbar from '../Navbar/Navbar'
 import LiveCurrentTotals from './Totals/Totals'
 import Countries from './Countries/Countries'
 import ShowCountries from './Countries/ShowCountries'
-import MainPageChart from '../MainPageChart/MainPageChart'
+//import MainPageChart from '../MainPageChart/MainPageChart'
+import Chart from './MainPageCummulitaiveChart/Chart'
 import FooterWorldStats from './FooterWorldStats/FooterWorldStats';
 import FooterContinentStats from './FooterContinentStats/FooterContinentStats';
 import MainPageNews from './MainPageNews/MainPageNews';
@@ -623,6 +624,12 @@ setFooterDataType(value){
                <div className="ThirdChart">
                  <h1>Chart No 3</h1>
                </div> */}
+               <div className="Chart">
+                
+                  <Chart></Chart>
+
+               </div>
+               
                <div className="MainPageNewsSection container-fluid" style={{width:"85%"}}>
                
                    <h2  className="text-center">Latest Covid-19 News</h2>

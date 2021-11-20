@@ -313,3 +313,7 @@
   position: relative;
   height: 34rem;
 }
+
+.MainPage .Chart{
+  margin-top: 25px;
+}
