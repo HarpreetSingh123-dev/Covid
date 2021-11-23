@@ -3,7 +3,7 @@ import './MainPageNews.css'
 import axios from 'axios'
 //import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 //import Slider from 'react-animated-slider';
-import 'react-animated-slider/build/horizontal.css';
+//import 'react-animated-slider/build/horizontal.css';
 import Skeleton from '@yisheng90/react-loading';
 import ErrorImage from '../../../Images/Covid_2.jpg'
 import ReactTimeAgo from 'react-time-ago'

@@ -638,7 +638,7 @@ setFooterDataType(value){
 
                    <hr className="rule"></hr>
                     
-                   {/*<MainPageNews></MainPageNews>*/}
+                   <MainPageNews></MainPageNews>
 
               </div>
 
