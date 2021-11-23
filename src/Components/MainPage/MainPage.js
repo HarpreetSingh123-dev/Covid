@@ -634,13 +634,13 @@ setFooterDataType(value){
                
                    <h2  className="text-center">Latest Covid-19 News</h2>
 
-                   <h2  className="text-center"></h2>
+                      <h2  className="text-center"></h2>
 
-                   <hr className="rule"></hr>
+                         <hr className="rule"></hr>
                     
-                   <MainPageNews></MainPageNews>
+                            <MainPageNews></MainPageNews>
 
-              </div>
+               </div>
 
 
                <div className="footerSet">
