@@ -630,7 +630,7 @@ setFooterDataType(value){
 
                </div>
                
-               <div className="MainPageNewsSection container-fluid" style={{width:"85%"}}>
+              {/* <div className="MainPageNewsSection container-fluid" style={{width:"85%"}}>
                
                    <h2  className="text-center">Latest Covid-19 News</h2>
 
@@ -640,7 +640,7 @@ setFooterDataType(value){
                     
                    <MainPageNews></MainPageNews>
 
-               </div>
+              </div>*/}
 
 
                <div className="footerSet">
