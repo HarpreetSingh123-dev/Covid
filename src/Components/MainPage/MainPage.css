@@ -317,3 +317,9 @@
 .MainPage .Chart{
   margin-top: 25px;
 }
+
+@media only screen and (max-width: 790px) {
+  .MainPage  .MainPageNewsSection {
+    display: none;
+  }
+}
