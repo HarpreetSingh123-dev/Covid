@@ -4,6 +4,7 @@ import axios from 'axios'
 import Skeleton from '@yisheng90/react-loading';
 import { Chart } from "react-google-charts"
 import { keys } from 'ramda';
+import './Chart.css'
 
 
 function LowerChart(props) {
@@ -102,25 +103,33 @@ function setDataSet(data){
 
   else {
 
-    whatToDisplay = (<Chart
-                          width={'100%'}
-                          height={'400px'}
-                          chartType="LineChart"
+    whatToDisplay = (<div className="shadow-lg bg-white  rounded"><Chart
+                          width={'80vmax'}
+                          height={'420px'}
+                          chartType="ScatterChart"
+                          
                           loader={<div>Loading Chart</div>}
                           data={data[0]}
                           options={{
+                                   title: 'Rise in cases since last month ',
                                    hAxis: {
                                             title: 'Date',
                                           },
                                    vAxis: {
                                             title: 'Cases',
                                           },
-                                   series: {
-                                            1: { curveType: 'function' },
-                                           },
+                                          
+
+                                   trendlines: { 0: {type: 'exponential'} },
+                                   
+                                   animation: {
+                                    startup: true,
+                                    easing: 'linear',
+                                    duration: 700,
+                                  }
                                   }}
                            rootProps={{ 'data-testid': '2' }}
-                     />
+                     /></div>
 
 
 
@@ -130,19 +139,21 @@ function setDataSet(data){
   }
 
     return (
-        
-              <div className="container">
-         
+              <div className="chartOuter">
+               <div className="container-fluid">
+                
                   <h2 className="text-center">Trends Of Last 30 Days</h2>
                   
                       <hr className="rule"></hr>
                  
-                         <div>
+                         <div className="chart">
                              {whatToDisplay}
                          </div>
                            {console.log("to check data")}
                            {console.log(data)}
              </div>
+             </div>
+             
     );
 }
 

@@ -1,0 +1,10 @@
+.chartOuter .chart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.chartOuter{
+    margin-top: 50px;
+}
